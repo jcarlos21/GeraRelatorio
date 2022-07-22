@@ -15,6 +15,12 @@ class CriaTexto:
         newSection = self.document.add_section(WD_SECTION.NEW_PAGE)
         newSection.different_first_page_header_footer = True
     
+    def addNewLine(self):
+        line = self.document.add_paragraph("")
+        line.paragraph_format.line_spacing = 1.50
+        line.paragraph_format.space_before = Pt(0)
+        line.paragraph_format.space_after = Pt(0)
+    
     def textoSimples (self, texto, alinhamento, negrito):
         """
             O alinhamento pode ser 1, 2, 3 e 4
@@ -34,10 +40,15 @@ class CriaTexto:
         paragrafo = self.document.add_paragraph()
         paragrafo.alignment = alinhamento
         paragrafo.paragraph_format.line_spacing = 1.50
+        paragrafo.paragraph_format.space_before = Pt(0)
+        paragrafo.paragraph_format.space_after = Pt(0)
+        
+        # O trecho de código abaixo se repete. Gere uma função.
+        
         r = paragrafo.add_run(texto)
         r.font.name = 'Arial'
         r.font.size = Pt(12)
-        if negrito: r.font.bold = True
+        r.font.bold = negrito
 
     def criaCabecalho (self, textoCabecalho, alinhamento):
         
@@ -58,7 +69,8 @@ class CriaTexto:
         titulo = self.document.add_paragraph()
         titulo.paragraph_format.alignment = WD_ALIGN_PARAGRAPH.CENTER
         titulo.paragraph_format.line_spacing = 1.50
-        r = titulo.add_run(f"""{textoTitulo} {anexo}""")
+        texto = f"""{textoTitulo} {anexo}"""
+        r = titulo.add_run(texto)
         r.font.name = 'Arial'
         r.font.size = Pt(12)
         r.bold = True
@@ -76,5 +88,18 @@ class CriaTexto:
         footer_p_styles.font.name = 'Arial'
         footer_p_styles.font.size = Pt(12)
 
-        
+    def addMarcadores (self, dado, alinhamento):
+        marcador = self.document.add_paragraph()
+        marcador.alignment = alinhamento
+        marcador.paragraph_format.line_spacing = 1.50
+        marcador.paragraph_format.space_before = Pt(0)
+        marcador.paragraph_format.space_after = Pt(0)
+        marcador.style = 'List Bullet'
+
+        r = marcador.add_run(dado)
+        r.font.name = 'Arial'
+        r.font.size = Pt(12)
+        r.font.bold = True
+
+
 
