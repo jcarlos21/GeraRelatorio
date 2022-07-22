@@ -1,0 +1,77 @@
+# https://python-docx.readthedocs.io/en/latest/user/hdrftr.html
+# https://stackoverflow.com/questions/38508320/put-header-with-python-docx
+# https://www.geeksforgeeks.org/working-with-page-break-python-docx-module/
+
+# https://automatetheboringstuff.com/chapter13/
+
+
+How to align:
+
+https://stackoverflow.com/questions/24031011/python-docx-library-text-align
+
+Textos:
+
+https://python-docx.readthedocs.io/en/latest/index.html
+
+Bold:
+
+https://www.geeksforgeeks.org/working-with-text-in-python-docx-module/#:~:text=To%20set%20the%20text%20to%20bold%20you%20have%20to%20set%20it%20true.&text=To%20highlight%20a%20specific%20word,with%20its%20add_run()%20statement.
+
+Formatação rodapé:
+
+https://webkul.com/blog/create-word-document-in-python-odoo-python-docx/
+
+https://stackoverflow.com/questions/50595953/how-do-i-apply-both-bold-and-center-in-python-docx
+https://stackoverflow.com/questions/62451416/font-type-and-font-size-in-python-docx
+https://pythonguides.com/create-word-document-in-python-tkinter/
+
+# https://www.geeksforgeeks.org/working-with-page-break-python-docx-module/
+
+Códigos antigos:
+
+
+# ============================================= Header ===================================================== #
+
+# https://python-docx.readthedocs.io/en/latest/api/section.html
+# https://stackoverflow.com/questions/57252132/add-header-and-footer-on-all-the-pages-except-the-first-page
+
+# https://automatetheboringstuff.com/chapter13/
+
+section = document.sections[0]
+# section.different_first_page_header_footer = True  # Inserting a header only on the first page.
+# section.first_page_header = True
+header1 = section.header
+paragraph = header1.paragraphs[0]
+paragraph.text = """PONTO DE PRESENÇA DA REDE NACIONAL DE ENSINO E PESQUISA NO RIO GRANDE DO NORTE - POP-RN\n REDE GIGAMETROPOLE
+                    DEPARTAMENTO DE ENGENHARIA E OPERAÇÕES"""
+paragraph.alignment = 1
+
+
+
+https://stackoverflow.com/questions/43710188/using-python-docx-to-remove-blank-lines#:~:text=text%3Dparagraph.,that%20paragraph%20does%20the%20trick.
+
+
+https://stackoverflow.com/questions/60921603/how-do-i-change-heading-font-face-and-size-in-python-docx
+
+
+https://python-docx.readthedocs.io/en/latest/user/hdrftr.html
+
+
+
+
+      # header_p = header.add_paragraph()
+        # header_p.paragraph_format.alignment = WD_ALIGN_PARAGRAPH.CENTER
+        # header_p.paragraph_format.space_before = None
+        # header_p.paragraph_format.space_after = None
+        # text = f"""{textoCabecalho}"""
+        # header_r = header_p.add_run(text)
+        # header_r.font.name = 'Arial'
+        # header_r.font.size = Pt(12)
+
+Novas secções de páginas para não copiar cabeçalhos e rodapés:
+
+# https://python-docx.readthedocs.io/en/latest/user/sections.html
+# https://python-docx.readthedocs.io/en/latest/api/enum/WdSectionStart.html
+# >>> dir(document.add_section())
+
+
