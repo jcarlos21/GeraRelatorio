@@ -11,13 +11,7 @@ class StylesText:
         self.document = document
         pass
 
-    def addStyles(self, alinhamento, dado, fonte, negrito, italico, tamanhoFonte):
-        texto = self.document.add_paragraph()
-        texto.alignment = alinhamento
-        texto.paragraph_format.line_spacing = 1.50
-        texto.paragraph_format.space_before = Pt(0)
-        texto.paragraph_format.space_after = Pt(0)
-        r = texto.add_run(dado)
+    def addStyles(self, r, fonte, negrito, italico, tamanhoFonte):
         r.font.name = fonte
         r.font.size = Pt(tamanhoFonte)
         r.font.bold = negrito

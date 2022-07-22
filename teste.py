@@ -23,7 +23,7 @@ texto.criaRodape(rodape, data)
 # ============================================== Autor e Título ============================================ #
 
 autor = "\n"*5 + "José Carlos dos Santos" + "\n"*8
-texto.textoSimples(autor, 1, False)
+texto.textoSimples(autor, 1, False, False, 12)
 
 bilhete = "2022.2-BR01"  # deve ser coletado no arquivo .txt
 titulo = "Rede Giga Metrópole\nRelatório de Conformidade Referente ao Bilhete"
@@ -52,13 +52,18 @@ celulas = "CA2-ZN-12.1"  # deve ser coletado no arquivo .txt
 objetivo = f"""Objetivo: certificar o serviço de manutenção corretiva realizado pela Interjato (bilhete {bilhete}) para restabelecer à conectividade GPON na(s) célula(s) {celulas}. Os dados apresentados nesse documento foram obtidos a partir do monitoramento da rede GPON realizado pelo software GRAFANA. """
 textoEntidades = "Entidade(s) afetada(s) pelo rompimento do cabo de fibras óptica:"
 entidades = "EM CMEI EVANGELINA ELITA DE SOUZA"
-texto.textoSimples("Manutenção Corretiva RGM", 1, True)
+texto.textoSimples("Manutenção Corretiva RGM", 1, True, False, 12)
 texto.addNewLine()
-texto.textoSimples(objetivo, 3, False)
+texto.textoSimples(objetivo, 3, False, False, 12)
 texto.addNewLine()
-texto.textoSimples(textoEntidades, 3, False)
+texto.textoSimples(textoEntidades, 3, False, False, 12)
 texto.addNewLine()
-texto.addMarcadores(entidades, 0)
+texto.addMarcadores(entidades, 0)  # Dentro do método, use um for para mais escolas
+texto.addNewLine()
+textoLocalOcorrencia = "Local da Ocorrência:"
+texto.textoSimples(textoLocalOcorrencia, 3, False, False, 12)
+texto.addNewLine()
+
 
 
 # https://python-docx.readthedocs.io/en/latest/user/quickstart.html

@@ -2,8 +2,10 @@ from docx import Document
 from docx.enum.text import WD_ALIGN_PARAGRAPH
 from docx.enum.section import WD_SECTION
 from docx.shared import Pt
+from stylesTexts import StylesText
 
 document = Document()
+estilos = StylesText(document)
 
 class CriaTexto:
 
@@ -21,7 +23,7 @@ class CriaTexto:
         line.paragraph_format.space_before = Pt(0)
         line.paragraph_format.space_after = Pt(0)
     
-    def textoSimples (self, texto, alinhamento, negrito):
+    def textoSimples (self, texto, alinhamento, negrito, italico, tam):
         """
             O alinhamento pode ser 1, 2, 3 e 4
                 0 - LEFT: Left-aligned
@@ -43,12 +45,9 @@ class CriaTexto:
         paragrafo.paragraph_format.space_before = Pt(0)
         paragrafo.paragraph_format.space_after = Pt(0)
         
-        # O trecho de código abaixo se repete. Gere uma função.
-        
         r = paragrafo.add_run(texto)
-        r.font.name = 'Arial'
-        r.font.size = Pt(12)
-        r.font.bold = negrito
+
+        estilos.addStyles(r, 'Arial', negrito, italico, tam)
 
     def criaCabecalho (self, textoCabecalho, alinhamento):
         
