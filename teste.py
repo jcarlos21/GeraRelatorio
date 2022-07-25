@@ -48,10 +48,10 @@ texto.criaTitulo(titulo, bilhete)
 
 texto.addNovaSection()
 
-celulas = "CA2-ZN-12.1"  # deve ser coletado no arquivo .txt
-objetivo = f"""Objetivo: certificar o serviço de manutenção corretiva realizado pela Interjato (bilhete {bilhete}) para restabelecer à conectividade GPON na(s) célula(s) {celulas}. Os dados apresentados nesse documento foram obtidos a partir do monitoramento da rede GPON realizado pelo software GRAFANA. """
+listaCelulas = "CA2-ZN-12.1"  # deve ser coletado no arquivo .txt/ou adicionado a um dict.
+objetivo = f"""Objetivo: certificar o serviço de manutenção corretiva realizado pela Interjato (bilhete {bilhete}) para restabelecer à conectividade GPON na(s) célula(s) {listaCelulas}. Os dados apresentados nesse documento foram obtidos a partir do monitoramento da rede GPON realizado pelo software GRAFANA. """
 textoEntidades = "Entidade(s) afetada(s) pelo rompimento do cabo de fibras óptica:"
-entidades = "EM CMEI EVANGELINA ELITA DE SOUZA"
+entidades = "EM CMEI EVANGELINA ELITA DE SOUZA"  # deve ser coletado no arquivo .txt
 texto.textoSimples("Manutenção Corretiva RGM", 1, True, False, 12)
 texto.addNewLine()
 texto.textoSimples(objetivo, 3, False, False, 12)
@@ -60,8 +60,11 @@ texto.textoSimples(textoEntidades, 3, False, False, 12)
 texto.addNewLine()
 texto.addMarcadores(entidades, 0)  # Dentro do método, use um for para mais escolas
 texto.addNewLine()
-textoLocalOcorrencia = "Local da Ocorrência:"
+textoLocalOcorrencia = "Local da Ocorrência:"  # Use um for para imprimir os locais, incluíndo os marcadores.
 texto.textoSimples(textoLocalOcorrencia, 3, False, False, 12)
+texto.addNewLine()
+texto.textoSimples('Grupo ', 3, False, False, 12)  # Use um for para imprimir os locais, incluíndo os marcadores.
+texto.textoSimples(f'{listaCelulas}:', 3, True, False, 12)
 texto.addNewLine()
 
 
