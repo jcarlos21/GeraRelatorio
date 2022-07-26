@@ -9,6 +9,26 @@ texto = CriaTexto(document)
 
 # ============================================= Dados Coletados =================================================== #
 
+# https://pythonacademy.com.br/blog/dicts-ou-dicionarios-no-python
+
+celularEEntidades = dict()  # irá compor as celulas e entidades
+listaCelulas = dict()  # esperado que seja uma lista de dicts
+listaEntidades = dict()  # esperado que cada lista de entidades seja o valor de uma celula (que é um dict)
+atributosEntidades = list()  # esperado que seja os elementos abaixo:
+
+"""
+Atributos das entidades:
+    - Endereço
+	- Trecho (preparado pelo próprio software)
+	- Range considerado
+	- Potência antes da corretiva
+	- Potência depois da corretiva
+	- Média de potência atual
+	- Imagem referente ao range (previamente salva pelo usuário na pasta do software)
+"""
+
+
+
 # ============================================= Header&Footer ===================================================== #
 
 cabecalho = """Ponto de Presença da Rede Nacional de Ensino e Pesquisa no Rio Grande do Norte - Pop-Rn
