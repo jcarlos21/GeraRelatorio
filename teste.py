@@ -9,9 +9,9 @@ texto = CriaTexto(document)
 
 # ============================================= Header ===================================================== #
 
-cabecalho = """PONTO DE PRESENÇA DA REDE NACIONAL DE ENSINO E PESQUISA NO RIO GRANDE DO NORTE - POP-RN
-REDE GIGAMETROPOLE
-DEPARTAMENTO DE ENGENHARIA E OPERAÇÕES"""
+cabecalho = """Ponto de Presença da Rede Nacional de Ensino e Pesquisa no Rio Grande do Norte - Pop-Rn
+Rede Gigametropole
+Setor de Infraestrutura"""
 texto.criaCabecalho(cabecalho, 1)
 
 # ============================================= Footer ===================================================== #
@@ -49,7 +49,7 @@ texto.criaTitulo(titulo, bilhete)
 texto.addNovaSection()
 
 listaCelulas = "CA2-ZN-12.1"  # deve ser coletado no arquivo .txt/ou adicionado a um dict.
-objetivo = f"""Objetivo: certificar o serviço de manutenção corretiva realizado pela Interjato (bilhete {bilhete}) para restabelecer à conectividade GPON na(s) célula(s) {listaCelulas}. Os dados apresentados nesse documento foram obtidos a partir do monitoramento da rede GPON realizado pelo software GRAFANA. """
+objetivo = f"""Objetivo: certificar o serviço de manutenção corretiva realizado pela empresa Interjato Soluções (bilhete {bilhete}) para restabelecer à conectividade GPON na(s) célula(s) {listaCelulas}. Os dados apresentados nesse documento foram obtidos a partir do monitoramento da rede GPON realizado pelo software GRAFANA. """
 textoEntidades = "Entidade(s) afetada(s) pelo rompimento do cabo de fibras óptica:"
 entidades = "EM CMEI EVANGELINA ELITA DE SOUZA"  # deve ser coletado no arquivo .txt
 texto.textoSimples("Manutenção Corretiva RGM", 1, True, False, 12)
@@ -63,8 +63,9 @@ texto.addNewLine()
 textoLocalOcorrencia = "Local da Ocorrência:"  # Use um for para imprimir os locais, incluíndo os marcadores.
 texto.textoSimples(textoLocalOcorrencia, 3, False, False, 12)
 texto.addNewLine()
-texto.textoSimples('Grupo ', 3, False, False, 12)  # Use um for para imprimir os locais, incluíndo os marcadores.
-texto.textoSimples(f'{listaCelulas}:', 3, True, False, 12)
+texto
+# texto.textoSimples('Grupo ', 3, False, False, 12)  # Use um for para imprimir os locais, incluíndo os marcadores.
+# texto.textoSimples(f'{listaCelulas}:', 3, True, False, 12)
 texto.addNewLine()
 
 
