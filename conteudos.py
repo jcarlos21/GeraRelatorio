@@ -17,8 +17,8 @@ class CriaTexto:
         newSection = self.document.add_section(WD_SECTION.NEW_PAGE)
         newSection.different_first_page_header_footer = True
     
-    def addNewLine(self):
-        line = self.document.add_paragraph("")
+    def addNewLine(self, qtd):
+        line = self.document.add_paragraph("\n"*qtd)
         line.paragraph_format.line_spacing = 1.50
         line.paragraph_format.space_before = Pt(0)
         line.paragraph_format.space_after = Pt(0)
