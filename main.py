@@ -24,11 +24,11 @@ texto.textoSimples(nomeTecnico, 1, False, False, 12)
 texto.textoSimples(f'Matrícula: {matriculaTecnico}', 1, False, False, 12)
 texto.textoSimples(f'Bolsista: {nomeBolsista}', 1, False, False, 12)
 texto.textoSimples(f'Matrícula: {matriculaBolsista}', 1, False, False, 12)
-texto.addNewLine(5)
+texto.addNewLine(6)
 
 titulo = f'Rede Giga Metrópole\nRelatório de Conformidade Referente ao Bilhete {bilhete}'
 texto.textoSimples(titulo, 1, True, False, 12)
-texto.addNewLine(5)
+texto.addNewLine(6)
 
 cabecalho = """Ponto de Presença da Rede Nacional de Ensino e Pesquisa no Rio Grande do Norte - POP-RN
 Rede GigaMetropole
@@ -45,30 +45,39 @@ texto.textoSimples(data, 1, False, False, 12)
 # ===================================== Manutenção Corretiva RGM ============================================= #
 document.add_page_break()
 
+texto.textoSimples ('Manutenção Corretiva RGM', 1, True, False, 12)
+texto.addNewLine(0)
+
 celulas = '*Nome da caixa*'
 
-p = document.add_paragraph('Objetivo: certificar o serviço de manutenção corretiva realizado pela empresa Interjato Soluções (')
-b = p.add_run(f'bilhete {bilhete}')
-b.font.name = 'Arial'
-b.font.size = Pt(12)
-b.bold = True
-p.add_run(') para restabelecer à conectividade GPON na(s) célula(s) ').font.name = 'Arial'
-c = p.add_run(f'{celulas}. ')
-c.font.name = 'Arial'
-c.font.size = Pt(12)
-c.bold = True
-p.add_run('Os dados apresentados nesse documento foram obtidos a partir do monitoramento da rede GPON realizado pelo software ').font.name = 'Arial'
-r = p.add_run('Grafana')
-# r.bold = True
-# r.italic = True
+p = document.add_paragraph()
+t1 = p.add_run('Objetivo: certificar o serviço de manutenção corretiva realizado pela empresa Interjato Soluções (bilhete ')
+estilos.addStyles(t1, 'Arial', False, False, 12)
 
-estilos.addStyles(r, 'Arial', True, True, 12)  # aplique esta função nas outras linhas.
+t2 = p.add_run(f'{bilhete}')
+estilos.addStyles(t2, 'Arial', True, False, 12)
+
+t3 = p.add_run(') para restabelecer à conectividade GPON na(s) célula(s) ')
+estilos.addStyles(t3, 'Arial', False, False, 12)
+
+t4 = p.add_run(f'{celulas}')
+estilos.addStyles(t4, 'Arial', True, False, 12)
+
+t5 = p.add_run('. Os dados apresentados nesse documento foram obtidos a partir do monitoramento da rede GPON realizado pelo software ')
+estilos.addStyles(t5, 'Arial', False, False, 12)
+
+t6 = p.add_run('Grafana.')
+estilos.addStyles(t6, 'Arial', True, True, 12)
+texto.addNewLine(0)
+
+texto.textoSimples ('Entidade(s) afetada(s) pelo rompimento do cabo de fibras óptica:', 3, False, False, 12)
+texto.addNewLine(0)
+
 
 p.alignment = 3
 p.paragraph_format.line_spacing = 1.50
 p.paragraph_format.space_before = Pt(0)
 p.paragraph_format.space_after = Pt(0)
-
 
 # ===================================== Armazenamento do arquivo ============================================= #
 document.save(f"REPORT_{bilhete}.docx")
