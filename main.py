@@ -20,24 +20,24 @@ matriculaBolsista = '*Matrícula do bolsista*'
 bilhete = '20XX.X-BRXX'
 data = 'XX de mês de 20XX'
 
-texto.textoSimples(nomeTecnico, 1, False, False, 12)
-texto.textoSimples(f'Matrícula: {matriculaTecnico}', 1, False, False, 12)
-texto.textoSimples(f'Bolsista: {nomeBolsista}', 1, False, False, 12)
-texto.textoSimples(f'Matrícula: {matriculaBolsista}', 1, False, False, 12)
+texto.textoSimples(nomeTecnico, 'Arial', 1, False, False, 12)
+texto.textoSimples(f'Matrícula: {matriculaTecnico}', 'Arial', 1, False, False, 12)
+texto.textoSimples(f'Bolsista: {nomeBolsista}', 'Arial', 1, False, False, 12)
+texto.textoSimples(f'Matrícula: {matriculaBolsista}', 'Arial', 1, False, False, 12)
 texto.addNewLine(6)
 
 titulo = f'Rede Giga Metrópole\nRelatório de Conformidade Referente ao Bilhete {bilhete}'
-texto.textoSimples(titulo, 1, True, False, 12)
+texto.textoSimples(titulo, 'Arial', 1, True, False, 12)
 texto.addNewLine(6)
 
 cabecalho = """Ponto de Presença da Rede Nacional de Ensino e Pesquisa no Rio Grande do Norte - POP-RN
 Rede GigaMetropole
 Setor de Infraestrutura"""
-texto.textoSimples(cabecalho, 1, False, False, 12)
+texto.textoSimples(cabecalho, 'Arial', 1, False, False, 12)
 texto.addNewLine(5)
 
-texto.textoSimples('Natal - RN', 1, False, False, 12)
-texto.textoSimples(data, 1, False, False, 12)
+texto.textoSimples('Natal - RN', 'Arial', 1, False, False, 12)
+texto.textoSimples(data, 'Arial', 1, False, False, 12)
 
 
 # ============================================== Sumário ===================================================== #
@@ -45,12 +45,13 @@ texto.textoSimples(data, 1, False, False, 12)
 # ===================================== Manutenção Corretiva RGM ============================================= #
 document.add_page_break()
 
-texto.textoSimples ('Manutenção Corretiva RGM', 1, True, False, 12)
+texto.textoSimples ('Manutenção Corretiva RGM', 'Arial', 1, True, False, 12)
 texto.addNewLine(0)
 
 celulas = '*Nome da caixa*'
 
 p = document.add_paragraph()
+
 t1 = p.add_run('Objetivo: certificar o serviço de manutenção corretiva realizado pela empresa Interjato Soluções (bilhete ')
 estilos.addStyles(t1, 'Arial', False, False, 12)
 
@@ -70,7 +71,13 @@ t6 = p.add_run('Grafana.')
 estilos.addStyles(t6, 'Arial', True, True, 12)
 texto.addNewLine(0)
 
-texto.textoSimples ('Entidade(s) afetada(s) pelo rompimento do cabo de fibras óptica:', 3, False, False, 12)
+texto.textoSimples ('Entidade(s) afetada(s) pelo rompimento do cabo de fibras óptica:', 'Arial', 3, False, False, 12)
+texto.addNewLine(0)
+
+entidades = ['Escola 01', 'Escola 02', 'Escola 03']
+for escola in entidades:
+    texto.addMarcadores(escola, 'Arial', 0, True, False, 12)
+
 texto.addNewLine(0)
 
 

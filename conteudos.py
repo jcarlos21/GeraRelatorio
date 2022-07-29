@@ -3,6 +3,7 @@ from docx.enum.text import WD_ALIGN_PARAGRAPH
 from docx.enum.section import WD_SECTION
 from docx.shared import Pt
 from stylesTexts import StylesText
+from docx.shared import Inches
 
 document = Document()
 estilos = StylesText(document)
@@ -23,7 +24,7 @@ class CriaTexto:
         line.paragraph_format.space_before = Pt(0)
         line.paragraph_format.space_after = Pt(0)
     
-    def textoSimples (self, texto, alinhamento, negrito, italico, tam):
+    def textoSimples (self, texto, fonte, alinhamento, negrito, italico, tam):
         """
             O alinhamento pode ser 1, 2, 3 e 4
                 0 - LEFT: Left-aligned
@@ -47,7 +48,7 @@ class CriaTexto:
         
         r = paragrafo.add_run(texto)
 
-        estilos.addStyles(r, 'Arial', negrito, italico, tam)
+        estilos.addStyles(r, fonte, negrito, italico, tam)
 
     def criaCabecalho (self, textoCabecalho, alinhamento):
         
@@ -87,8 +88,12 @@ class CriaTexto:
         footer_p_styles.font.name = 'Arial'
         footer_p_styles.font.size = Pt(12)
 
-    def addMarcadores (self, dado, alinhamento):
+    def addMarcadores (self, dado, fonte, alinhamento, negrito, italico, tam):
         marcador = self.document.add_paragraph()
+
+        paragraph_format = marcador.paragraph_format
+        paragraph_format.left_indent = Inches(0.5)
+
         marcador.alignment = alinhamento
         marcador.paragraph_format.line_spacing = 1.50
         marcador.paragraph_format.space_before = Pt(0)
@@ -96,9 +101,10 @@ class CriaTexto:
         marcador.style = 'List Bullet'
 
         r = marcador.add_run(dado)
-        r.font.name = 'Arial'
-        r.font.size = Pt(12)
-        r.font.bold = True
+        r.font.name = fonte
+        r.font.size = Pt(tam)
+        r.font.bold = negrito
+        r.font.italic = italico
 
 
 
