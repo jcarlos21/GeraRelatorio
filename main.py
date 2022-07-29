@@ -82,6 +82,9 @@ texto.addNewLine(0)
 
 texto.textoSimples('Local da Ocorrência:', 'Arial', 3, False, False, 12)
 
+enderecosEntidade = ['Rua do Bambelô - Lagoa Azul, Natal - RN', 'Rua do Fandango, 3145 - Lagoa Azul, Natal - RN', 'Rua das Crendices, 1001 - Lagoa Azul, Natal - RN']
+for i in range(0, len(enderecosEntidade)):
+    texto.addMarcadores(f'Endereço {i+1}: {enderecosEntidade[i]}', 'Arial', 0, True, False, 12)
 
 p.alignment = 3
 p.paragraph_format.line_spacing = 1.50
