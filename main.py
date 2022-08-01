@@ -87,11 +87,10 @@ enderecosEntidade = ['Rua do Bambelô - Lagoa Azul, Natal - RN', 'Rua do Fandang
 for i in range(0, len(enderecosEntidade)):
     texto.addMarcadores(f'Endereço {i+1}: {enderecosEntidade[i]}', 'Arial', 0, False, False, 12)
 
-q = document.add_paragraph()  # necessário pois ao usar o método .textoSimples() um novo .add_paragraph() é iniciado
+q = document.add_paragraph()  # necessário pois, ao usar o método .textoSimples(), um novo .add_paragraph() é iniciado.
 
 pf = q.paragraph_format
 pf.left_indent = Inches(0.5)
-
 r = q.add_run('Trecho(s): ')
 q.style = 'List Bullet'
 r.font.name = 'Arial'
@@ -101,19 +100,12 @@ for i in range(0, len(entidades)):
     estilos.addStyles(q.add_run(f'{celulas} - {entidades[i]}'), 'Arial', False, False, 12)
     if i + 1 < len(entidades):
         estilos.addStyles(q.add_run('; '), 'Arial', False, False, 12)
+texto.addNewLine(0)
 
-
-# texto.addMarcadores('Trecho(s): ', 'Arial', 0, False, False, 12)
-
-# t7 = p.add_run('Trecho(s): ')
-# estilos.addStyles(t7, 'Arial', False, False, 12)
-
-# def addTextoEmSerie (texto):
-#     estilos.addStyles(p.add_run(texto), 'Arial', False, False, 12)
-
-# for i in range(0, len(entidades)):
-#     addTextoEmSerie(f'{celulas} + {entidades[i]}')
-
+causaCorrecao =  'O rompimento nas fibras foi causado por acidente por árvores.'
+texto.addNewLine(0)
+texto.textoSimples('Informações do Cabo:', 'Arial', 3, False, False, 12)
+texto.addMarcadores(causaCorrecao, 'Arial', 0, False, False, 12)
 
 p.alignment = 3
 p.paragraph_format.line_spacing = 1.50
