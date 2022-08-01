@@ -96,6 +96,8 @@ q.style = 'List Bullet'
 r.font.name = 'Arial'
 r.font.size = Pt(12)
 
+
+
 for i in range(0, len(entidades)):
     estilos.addStyles(q.add_run(f'{celulas} - {entidades[i]}'), 'Arial', False, False, 12)
     if i + 1 < len(entidades):
@@ -103,14 +105,34 @@ for i in range(0, len(entidades)):
 texto.addNewLine(0)
 
 causaCorrecao =  'O rompimento nas fibras foi causado por acidente por árvores.'
-texto.addNewLine(0)
 texto.textoSimples('Informações do Cabo:', 'Arial', 3, False, False, 12)
+texto.addNewLine(0)
 texto.addMarcadores(causaCorrecao, 'Arial', 0, False, False, 12)
 
-p.alignment = 3
-p.paragraph_format.line_spacing = 1.50
-p.paragraph_format.space_before = Pt(0)
-p.paragraph_format.space_after = Pt(0)
+texto.textoFormat(p, 3, 1.50, 0, 0)
+texto.textoFormat(q, 3, 1.50, 0, 0)
+
+# ============================================== Seção 1 ===================================================== #
+
+document.add_page_break()
+
+texto1 = """Todos os ativos GPON da Rede Gigametrópole são monitorados pelo software GRAFANA. Dentre os parâmetros monitorados, são de interesse nesse processo de certificação os valores de potência óptica recebidos que são enviados periodicamente pelas ONUs. A certificação é baseadas nos seguintes requisitos:"""
+
+texto.textoSimples('1       Certificação', 'Arial', 3, True, False, 12)
+texto.addNewLine(0)
+texto.textoSimples('1.1     Metodologia', 'Arial', 3, True, False, 12)
+texto.addNewLine(0)
+texto.textoSimples(texto1, 'Arial', 3, False, False, 12)
+texto.addNewLine(0)
+
+requisitos = ['Comparação entre os valores de potência recebidos antes e depois do incidente;',
+'Comparação entre os valores de potência recebido em cada cliente (ONU) afetado pelo incidente e a média de potência recebida nos outros clientes da mesma célula;',
+'Análise do comportamento do sinal recebido na(s) ONU(s), buscando identificar oscilações relevantes (maiores que 1 dB entorno do valor médio) na magnitude do sinal.']
+
+for i in range(0, len(requisitos)):
+    texto.addMarcadores(requisitos[i], 'Arial', 3, False, False, 12)
+
+
 
 # ===================================== Armazenamento do arquivo ============================================= #
 document.save(f"REPORT_{bilhete}.docx")

@@ -94,10 +94,12 @@ class CriaTexto:
         paragraph_format = marcador.paragraph_format
         paragraph_format.left_indent = Inches(0.5)
 
-        marcador.alignment = alinhamento
-        marcador.paragraph_format.line_spacing = 1.50
-        marcador.paragraph_format.space_before = Pt(0)
-        marcador.paragraph_format.space_after = Pt(0)
+        CriaTexto(document).textoFormat(marcador, alinhamento, 1.50, 0, 0)
+
+        # marcador.alignment = alinhamento
+        # marcador.paragraph_format.line_spacing = 1.50
+        # marcador.paragraph_format.space_before = Pt(0)
+        # marcador.paragraph_format.space_after = Pt(0)
         marcador.style = 'List Bullet'
 
         r = marcador.add_run(dado)
@@ -105,6 +107,12 @@ class CriaTexto:
         r.font.size = Pt(tam)
         r.font.bold = negrito
         r.font.italic = italico
+    
+    def textoFormat(self, instancia, alinhamento, space, space_after, space_before):
+        instancia.alignment = alinhamento
+        instancia.paragraph_format.line_spacing = space
+        instancia.paragraph_format.space_before = Pt(space_after)
+        instancia.paragraph_format.space_after = Pt(space_before)
 
 
 
