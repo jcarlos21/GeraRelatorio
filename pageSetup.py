@@ -13,7 +13,7 @@ class SetupPage:
     def marginsPage(self, top, bottom, left, right):
         sections = self.document.sections
         for section in sections:
-            section.top_margin = Cm(0.5)
-            section.bottom_margin = Cm(0.5)
-            section.left_margin = Cm(1)
-            section.right_margin = Cm(1)
+            section.top_margin = Cm(top)
+            section.bottom_margin = Cm(bottom)
+            section.left_margin = Cm(left)
+            section.right_margin = Cm(right)
