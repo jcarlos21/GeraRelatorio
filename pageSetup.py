@@ -3,6 +3,8 @@ from docx.shared import Inches, Cm
 
 document = Document()
 
+# https://stackoverflow.com/questions/32914595/modify-docx-page-margins-with-python-docx
+
 class SetupPage:
 
     def __init__(self, document):
