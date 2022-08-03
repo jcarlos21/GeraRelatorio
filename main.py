@@ -5,12 +5,18 @@ from docx.shared import Pt
 from conteudos import CriaTexto
 from stylesTexts import StylesText
 from docx.shared import Inches
+from pageSetup import SetupPage
 
 document = Document()
 texto = CriaTexto(document)
 estilos = StylesText(document)
+pageConfig = SetupPage(document)
 
 # Páginas
+
+# ============================================== Margins ===================================================== #
+
+pageConfig.marginsPage(3.0, 3.0, 2.0, 2.0)
 
 # ================================================ Capa ====================================================== #
 
@@ -138,6 +144,20 @@ texto.addNewLine(0)
 texto2 = """A comparação dos resultados obtidos pelo monitoramento apresentados no(s) gráfico(s) da(s) figura(s) apresentada(s) no Resultados e nos dados da tabela 3, mostram que os níveis de potência óptica recebidos na(s) ONU(s) são coerentes. São sintetizados nas tabelas 1 e 2, as respostas aos requisitos estabelecidos e o diagnóstico da manutenção corretiva. """
 texto.textoSimples(texto2, 'Arial', 3, False, False, 12, True)
 texto.addNewLine(0)
+
+potenciaMedia = [-13.54, -13.44, -17.39]
+requisitos1 = ['R1 – Os valores de potência permaneceram na mesma ordem de grandeza antes e depois do incidente?',
+f'R2 – Considerando que o valor médio de potência óptica recebida nas ONUs das 3 escolas, nas células {celulas} é de ({potenciaMedia}) dBm, respectivamente, a potência obtida na(s) ONU(s) após o reparo estão na mesma ordem de grandeza do valor médio?',
+'R3 – A oscilação no sinal recebido é aceitável?']
+
+for i in range(0, len(requisitos)):
+    texto.addMarcadores(requisitos1[i], 'Arial', 3, False, False, 12)
+
+texto.textoSimples('Legendas das respostas aos requisitos:', 'Arial', 3, False, False, 12, False)
+texto.textoSimples('1.  OK – Em conformidade;', 'Arial', 3, False, False, 12, True)
+texto.textoSimples('2.  X – Não atende ao requisito.', 'Arial', 3, False, False, 12, True)
+
+
 
 # ===================================== Armazenamento do arquivo ============================================= #
 document.save(f"REPORT_{bilhete}.docx")
