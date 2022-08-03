@@ -10,7 +10,7 @@ class SetupPage:
     def __init__(self, document):
         self.document = document
     
-    def marginsPage(self, top, bottom, left, right):
+    def marginsPage(self, top, left, bottom, right):
         sections = self.document.sections
         for section in sections:
             section.top_margin = Cm(top)
