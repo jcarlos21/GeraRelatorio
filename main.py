@@ -156,6 +156,11 @@ for i in range(0, len(requisitos)):
 texto.textoSimples('Legendas das respostas aos requisitos:', 'Arial', 3, False, False, 12, False)
 texto.textoSimples('1.  OK – Em conformidade;', 'Arial', 3, False, False, 12, True)
 texto.textoSimples('2.  X – Não atende ao requisito.', 'Arial', 3, False, False, 12, True)
+texto.addNewLine(0)
+
+texto.textoSimples('Tabela 1 – Resultado do diagnóstico', 'Arial', 0, False, False, 12, False)
+
+
 
 
 
