@@ -161,7 +161,12 @@ texto.addNewLine(0)
 texto.textoSimples('Tabela 1 – Resultado do diagnóstico', 'Arial', 0, False, False, 12, False)
 
 
+# https://python-docx.readthedocs.io/en/latest/api/table.html
+# https://www.geeksforgeeks.org/working-with-tables-python-docx-module/
+# https://mlhive.com/2022/04/working-with-tables-in-python-docx
 
+# Table data in a form of list
+dataDiagnostic = ((1, 'Geek 1'))
 
 
 # ===================================== Armazenamento do arquivo ============================================= #
