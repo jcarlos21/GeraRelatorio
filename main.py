@@ -1,5 +1,6 @@
 from docx import Document
 from docx.enum.text import WD_ALIGN_PARAGRAPH
+from docx.enum.table import WD_TABLE_ALIGNMENT
 from docx.enum.section import WD_SECTION
 from docx.shared import Pt
 from conteudos import CriaTexto
@@ -158,16 +159,46 @@ texto.textoSimples('1.  OK – Em conformidade;', 'Arial', 3, False, False, 12, 
 texto.textoSimples('2.  X – Não atende ao requisito.', 'Arial', 3, False, False, 12, True)
 texto.addNewLine(0)
 
-texto.textoSimples('Tabela 1 – Resultado do diagnóstico', 'Arial', 0, False, False, 12, False)
+texto.textoSimples('Tabela 1 – Resultado do diagnóstico', 'Arial', 1, False, False, 12, False)
 
 
 # https://python-docx.readthedocs.io/en/latest/api/table.html
 # https://www.geeksforgeeks.org/working-with-tables-python-docx-module/
 # https://mlhive.com/2022/04/working-with-tables-in-python-docx
+# https://stackoverflow.com/questions/43051462/python-docx-how-to-set-cell-width-in-tables
 
 # Table data in a form of list
-dataDiagnostic = ((1, 'Geek 1'))
+dataDiagnostic = []
 
+for i in range(0,3):
+    dataDiagnostic.append([f'Entidade {i+1}', 'OK', 'OK', 'OK'])
+
+# Creating a table object
+table = document.add_table(rows=1, cols=4)
+
+# Adding heading in the 1st row of the table
+row = table.rows[0].cells
+row[0].text = 'ESCOLA'
+row[1].text = 'R1'
+row[2].text = 'R2'
+row[3].text = 'R3'
+
+
+for escola, r1, r2, r3 in dataDiagnostic:
+  
+    # Adding a row and then adding data in it.
+    row = table.add_row().cells
+    row[0].text = escola
+    row[1].text = r1
+    row[2].text = r2
+    row[3].text = r3
+
+for i in range(0, 4):
+    for cell in table.columns[i].cells:
+        cell.width = Inches(0.9)
+
+table.style = 'Colorful List'
+table.alignment = WD_TABLE_ALIGNMENT.CENTER
 
 # ===================================== Armazenamento do arquivo ============================================= #
 document.save(f"REPORT_{bilhete}.docx")
