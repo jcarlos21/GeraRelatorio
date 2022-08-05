@@ -154,13 +154,14 @@ f'R2 – Considerando que o valor médio de potência óptica recebida nas ONUs 
 for i in range(0, len(requisitos)):
     texto.addMarcadores(requisitos1[i], 'Arial', 3, False, False, 12)
 
+# ============================================== Seção 2 ===================================================== #
+
 texto.textoSimples('Legendas das respostas aos requisitos:', 'Arial', 3, False, False, 12, False)
 texto.textoSimples('1.  OK – Em conformidade;', 'Arial', 3, False, False, 12, True)
 texto.textoSimples('2.  X – Não atende ao requisito.', 'Arial', 3, False, False, 12, True)
 texto.addNewLine(0)
 
 texto.textoSimples('Tabela 1 – Resultado do diagnóstico', 'Arial', 1, False, False, 12, False)
-
 
 # https://python-docx.readthedocs.io/en/latest/api/table.html
 # https://www.geeksforgeeks.org/working-with-tables-python-docx-module/
@@ -183,15 +184,26 @@ row[1].text = 'R1'
 row[2].text = 'R2'
 row[3].text = 'R3'
 
+texto.alinhaTabela(row, 4)
+
 
 for escola, r1, r2, r3 in dataDiagnostic:
-  
+
     # Adding a row and then adding data in it.
     row = table.add_row().cells
-    row[0].text = escola
-    row[1].text = r1
-    row[2].text = r2
-    row[3].text = r3
+    p = row[0].add_paragraph('left justified text')
+    p.text = escola
+    p1 = row[1].add_paragraph('left justified text')
+    p1.text = r1
+    p2 = row[2].add_paragraph('left justified text')
+    p2.text = r2
+    p3 = row[3].add_paragraph('left justified text')
+    p3.text = r3
+    p.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    p1.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    p2.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    p3.alignment = WD_ALIGN_PARAGRAPH.CENTER
+
 
 for i in range(0, 4):
     for cell in table.columns[i].cells:

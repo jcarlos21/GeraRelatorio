@@ -121,3 +121,6 @@ class CriaTexto:
 
 
 
+    def alinhaTabela (self, rowTable, qtde):
+        for i in range(0, qtde):
+            rowTable[i].add_paragraph('left justified text').alignment = WD_ALIGN_PARAGRAPH.CENTER
