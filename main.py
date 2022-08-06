@@ -161,38 +161,76 @@ texto.textoSimples('1.  OK – Em conformidade;', 'Arial', 3, False, False, 12, 
 texto.textoSimples('2.  X – Não atende ao requisito.', 'Arial', 3, False, False, 12, True)
 texto.addNewLine(0)
 
-texto.textoSimples('Tabela 1 – Resultado - do diagnóstico', 'Arial', 1, False, False, 12, False)
+# Tabela 1: __________________________________________________________________________
 
-# https://python-docx.readthedocs.io/en/latest/api/table.html
-# https://www.geeksforgeeks.org/working-with-tables-python-docx-module/
-# https://mlhive.com/2022/04/working-with-tables-in-python-docx
-# https://stackoverflow.com/questions/43051462/python-docx-how-to-set-cell-width-in-tables
+texto.textoSimples('Tabela 1 – Resultado do diagnóstico', 'Arial', 1, False, False, 12, False)
 
-# Table data in a form of list
-dataDiagnostic = []
-for i in range(0,3):
+table = document.add_table(rows=1, cols=4)
+row = table.rows[0].cells
+headerRow = ['ESCOLA', 'R1', 'R2', 'R3']
+texto.alimentaTabela(row, headerRow, 'Arial', 12)
+
+dataDiagnostic = []  # Table data in a form of list
+for i in range(0,3):  # o range do for pode variar em função da quantidade de entidades
     dataDiagnostic.append([f'Entidade {i+1}', 'OK', 'OK', 'OK'])
 
-# Creating a table object
-table = document.add_table(rows=1, cols=4)
-
-# Adding heading in the 1st row of the table
-row = table.rows[0].cells
-listRow = ['ESCOLA', 'R1', 'R2', 'R3']
-texto.alimentaTabela(row, listRow)
-
-for escola, r1, r2, r3 in dataDiagnostic:
-    # Adding a row and then adding data in it.
+for escola, r1, r2, r3 in dataDiagnostic:  # Adding a row and then adding data in it.
     row = table.add_row().cells
     listaLinhas = [escola, r1, r2, r3]
-    texto.alimentaTabela(row, listaLinhas)
+    texto.alimentaTabela(row, listaLinhas, 'Arial', 12)
 
-for i in range(0, 4):
+for cell1 in table.columns[0].cells:
+    cell1.width = Inches(2.8)
+
+for i in range(1, 4):
     for cell in table.columns[i].cells:
-        cell.width = Inches(0.9)
+        cell.width = Inches(0.5)
 
-# table.style = 'Colorful List'
+table.style = 'Table Grid'
 table.alignment = WD_TABLE_ALIGNMENT.CENTER
+texto.addNewLine(0)
+
+# Tabela 2: __________________________________________________________________________
+
+texto.textoSimples('1.3 Status', 'Arial', 3, True, False, 12, False)
+texto.addNewLine(0)
+texto.textoSimples('O serviço de manutenção corretiva é qualificado conforme os status apresentados na tabela 2.', 'Arial', 3, False, False, 12, True)
+texto.addNewLine(0)
+
+texto.textoSimples('Tabela 2 – Status do serviço de manutenção corretiva', 'Arial', 1, False, False, 12, False)
+
+table2 = document.add_table(rows=1, cols=2)
+row2 = table2.rows[0].cells
+headerRow2 = ['PONTO ATENDIDO', 'STATUS']
+texto.alimentaTabela(row2, headerRow2, 'Arial', 12)
+
+dataStatus = []  # Table data in a form of list
+for i in range(0,3):  # o range do for pode variar em função da quantidade de entidades
+    dataStatus.append([f'Entidade {i+1}', 'APROVADO'])
+
+for escola, status in dataStatus:  # Adding a row and then adding data in it.
+    row2 = table2.add_row().cells
+    listaLinhas2 = [escola, status]
+    texto.alimentaTabela(row2, listaLinhas2, 'Arial', 12)
+
+for cell2 in table2.columns[0].cells:
+    cell2.width = Inches(2.8)
+
+for i in range(1, 2):
+    for cell in table2.columns[i].cells:
+        cell.width = Inches(1.5)
+
+table2.style = 'Table Grid'
+table2.alignment = WD_TABLE_ALIGNMENT.CENTER
+texto.addNewLine(0)
+
+texto.textoSimples('2   Resultados', 'Arial', 3, True, False, 12, False)
+texto.addNewLine(0)
+texto.textoSimples('Tabela 3 – Valor médio da potência óptica recebida nas ONUs', 'Arial', 1, False, False, 12, False)
+
+
+# ============================================== Seção 3 ===================================================== #
+document.add_page_break()
 
 # ===================================== Armazenamento do arquivo ============================================= #
 document.save(f"REPORT_{bilhete}.docx")

@@ -119,8 +119,20 @@ class CriaTexto:
         instancia.paragraph_format.space_before = Pt(space_after)
         instancia.paragraph_format.space_after = Pt(space_before)
 
-
-
-    def alimentaTabela (self, rowTable, listRows):
+    def alimentaTabela (self, rowTable, listRows, fonte, tam):
         for i in range(0, len(listRows)):
-            rowTable[i].add_paragraph(listRows[i]).alignment = WD_ALIGN_PARAGRAPH.CENTER
+            rowTable[i].text = listRows[i]
+            p = rowTable[i].paragraphs[0]
+            p.alignment = WD_ALIGN_PARAGRAPH.CENTER
+            r = p.runs[0]
+            estilos.addStyles(r, fonte, False, False, tam)
+            # r.font.name = 'Arial'
+            # r.font.size = Pt(12)
+        
+
+
+
+            # p.font.name = 'Arial'
+            # p.font.size = Pt(12)
+            
+            # rowTable[i].add_paragraph(listRows[i]).alignment = WD_ALIGN_PARAGRAPH.CENTER
