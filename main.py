@@ -161,7 +161,7 @@ texto.textoSimples('1.  OK – Em conformidade;', 'Arial', 3, False, False, 12, 
 texto.textoSimples('2.  X – Não atende ao requisito.', 'Arial', 3, False, False, 12, True)
 texto.addNewLine(0)
 
-texto.textoSimples('Tabela 1 – Resultado do diagnóstico', 'Arial', 1, False, False, 12, False)
+texto.textoSimples('Tabela 1 – Resultado - do diagnóstico', 'Arial', 1, False, False, 12, False)
 
 # https://python-docx.readthedocs.io/en/latest/api/table.html
 # https://www.geeksforgeeks.org/working-with-tables-python-docx-module/
@@ -170,7 +170,6 @@ texto.textoSimples('Tabela 1 – Resultado do diagnóstico', 'Arial', 1, False, 
 
 # Table data in a form of list
 dataDiagnostic = []
-
 for i in range(0,3):
     dataDiagnostic.append([f'Entidade {i+1}', 'OK', 'OK', 'OK'])
 
@@ -179,37 +178,20 @@ table = document.add_table(rows=1, cols=4)
 
 # Adding heading in the 1st row of the table
 row = table.rows[0].cells
-row[0].text = 'ESCOLA'
-row[1].text = 'R1'
-row[2].text = 'R2'
-row[3].text = 'R3'
-
-texto.alinhaTabela(row, 4)
-
+listRow = ['ESCOLA', 'R1', 'R2', 'R3']
+texto.alimentaTabela(row, listRow)
 
 for escola, r1, r2, r3 in dataDiagnostic:
-
     # Adding a row and then adding data in it.
     row = table.add_row().cells
-    p = row[0].add_paragraph('left justified text')
-    p.text = escola
-    p1 = row[1].add_paragraph('left justified text')
-    p1.text = r1
-    p2 = row[2].add_paragraph('left justified text')
-    p2.text = r2
-    p3 = row[3].add_paragraph('left justified text')
-    p3.text = r3
-    p.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    p1.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    p2.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    p3.alignment = WD_ALIGN_PARAGRAPH.CENTER
-
+    listaLinhas = [escola, r1, r2, r3]
+    texto.alimentaTabela(row, listaLinhas)
 
 for i in range(0, 4):
     for cell in table.columns[i].cells:
         cell.width = Inches(0.9)
 
-table.style = 'Colorful List'
+# table.style = 'Colorful List'
 table.alignment = WD_TABLE_ALIGNMENT.CENTER
 
 # ===================================== Armazenamento do arquivo ============================================= #
