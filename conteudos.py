@@ -14,7 +14,7 @@ class CriaTexto:
         self.document = document
         pass
     
-    def addNovaSection(self):
+    def addNovaSection(self):  # não foi usado.
         newSection = self.document.add_section(WD_SECTION.NEW_PAGE)
         newSection.different_first_page_header_footer = True
     
@@ -126,13 +126,3 @@ class CriaTexto:
             p.alignment = WD_ALIGN_PARAGRAPH.CENTER
             r = p.runs[0]
             estilos.addStyles(r, fonte, False, False, tam)
-            # r.font.name = 'Arial'
-            # r.font.size = Pt(12)
-        
-
-
-
-            # p.font.name = 'Arial'
-            # p.font.size = Pt(12)
-            
-            # rowTable[i].add_paragraph(listRows[i]).alignment = WD_ALIGN_PARAGRAPH.CENTER

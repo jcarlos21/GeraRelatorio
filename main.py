@@ -228,6 +228,30 @@ texto.textoSimples('2   Resultados', 'Arial', 3, True, False, 12, False)
 texto.addNewLine(0)
 texto.textoSimples('Tabela 3 – Valor médio da potência óptica recebida nas ONUs', 'Arial', 1, False, False, 12, False)
 
+table3 = document.add_table(rows=1, cols=3)
+row3 = table3.rows[0].cells
+headerRow3 = ['ESCOLA', 'PRxA[dBm]', 'PRxB[dBm]']
+texto.alimentaTabela(row3, headerRow3, 'Arial', 12)
+
+dataStatus = []  # Table data in a form of list
+for i in range(0,3):  # o range do for pode variar em função da quantidade de entidades
+    dataStatus.append([f'Entidade {i+1}', str(-17.65), str(-12.65)])
+
+for escola, ptA, ptD in dataStatus:  # Adding a row and then adding data in it.
+    row3 = table3.add_row().cells
+    listaLinhas3 = [escola, ptA, ptD]
+    texto.alimentaTabela(row3, listaLinhas3, 'Arial', 12)
+
+for cell3 in table3.columns[0].cells:
+    cell3.width = Inches(2.8)
+
+for i in range(1, 3):
+    for cell in table3.columns[i].cells:
+        cell.width = Inches(1.0)
+
+table3.style = 'Table Grid'
+table3.alignment = WD_TABLE_ALIGNMENT.CENTER
+texto.addNewLine(0)
 
 # ============================================== Seção 3 ===================================================== #
 document.add_page_break()
