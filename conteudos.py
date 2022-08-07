@@ -112,6 +112,7 @@ class CriaTexto:
         r.font.size = Pt(tam)
         r.font.bold = negrito
         r.font.italic = italico
+        # Pode ser fatorado
     
     def textoFormat(self, instancia, alinhamento, space, space_after, space_before):
         instancia.alignment = alinhamento

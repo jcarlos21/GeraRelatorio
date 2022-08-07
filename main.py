@@ -83,7 +83,7 @@ texto.textoSimples ('Entidade(s) afetada(s) pelo rompimento do cabo de fibras ó
 texto.addNewLine(0)
 
 entidades = ['Entidade 01', 'Entidade 02', 'Entidade 03']
-for escola in entidades:  # O uso do for pode ser alocado em uma função para refatorar o código
+for escola in entidades:  # O uso do for pode ser alocado em uma função (Lambdas) para refatorar o código
     texto.addMarcadores(escola, 'Arial', 0, True, False, 12)
 texto.addNewLine(0)
 
@@ -252,6 +252,9 @@ for i in range(1, 3):
 table3.style = 'Table Grid'
 table3.alignment = WD_TABLE_ALIGNMENT.CENTER
 texto.addNewLine(0)
+
+texto.addMarcadores ('PRxA [dBm] - Potência óptica recebida na ONU antes do incidente;', 'Arial', 3, False, False, 12)
+texto.addMarcadores ('PRxB [dBm] - Potência óptica recebida na ONU após o reparo.', 'Arial', 3, False, False, 12)
 
 # ============================================== Seção 3 ===================================================== #
 document.add_page_break()
