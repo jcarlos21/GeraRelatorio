@@ -47,51 +47,10 @@ class CriaTexto:
             pf.first_line_indent = Inches(0.5)
 
         CriaTexto(document).textoFormat(paragrafo, alinhamento, 1.50, 0, 0)
-        # paragrafo.alignment = alinhamento
-        # paragrafo.paragraph_format.line_spacing = 1.50
-        # paragrafo.paragraph_format.space_before = Pt(0)
-        # paragrafo.paragraph_format.space_after = Pt(0)
-        
+
         r = paragrafo.add_run(texto)
 
         estilos.addStyles(r, fonte, negrito, italico, tam)
-
-    def criaCabecalho (self, textoCabecalho, alinhamento):  # não foi usado.
-        
-        section = self.document.sections[0]
-        header = section.header
-        # header = section.first_page_header  # não foi usado.
-
-        cabecalho = header.paragraphs[0]
-        cabecalho.text = textoCabecalho  # Para textos com quebra de linha usar """ """.
-        cabecalho.alignment = alinhamento  # Siga a docstring do método textoSimples()
-        cabecalho_styles = self.document.styles["Header"]
-        cabecalho_styles.font.name = 'Arial'
-        cabecalho_styles.font.size = Pt(12)
-        
-    def criaTitulo (self, textoTitulo, anexo):  # não foi usado.
-
-        titulo = self.document.add_paragraph()
-        titulo.paragraph_format.alignment = WD_ALIGN_PARAGRAPH.CENTER
-        titulo.paragraph_format.line_spacing = 1.50
-        texto = f"""{textoTitulo} {anexo}"""
-        r = titulo.add_run(texto)
-        r.font.name = 'Arial'
-        r.font.size = Pt(12)
-        r.bold = True
-    
-    def criaRodape (self, textoRodape, data):  # não foi usado.
-
-        section = self.document.sections[0]
-        footer = section.footer
-        # footer = section.first_page_footer  # não foi usado.
-
-        footer_p = footer.paragraphs[0]
-        footer_p.text = f"{textoRodape}\n{data}"
-        footer_p.alignment = 1
-        footer_p_styles = self.document.styles["Footer"]
-        footer_p_styles.font.name = 'Arial'
-        footer_p_styles.font.size = Pt(12)
 
     def addMarcadores (self, dado, fonte, alinhamento, negrito, italico, tam):
         marcador = self.document.add_paragraph()
