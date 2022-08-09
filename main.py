@@ -259,6 +259,11 @@ texto.addMarcadores ('PRxB [dBm] - Potência óptica recebida na ONU após o rep
 # ============================================== Seção 3 ===================================================== #
 document.add_page_break()
 
+rangeTeste = 45
+texto3 = f'No(s) gráfico(s) apresentado(s) na(s) figura(s) a seguir, os resultados mostram o comportamento do sinal recebido durante o período de {rangeTeste} dias para as escolas {entidades}, considerando antes e após o serviço de reparação ser executado. É importante ressaltar que no decorrer do período de amostragem apresentado no(s) gráfico(s) podem ocorrer intervalos sem amostras, como o período de observação é grande e os dados são enviados pelas ONU, é possível que em algum momento o equipamento seja desligado.'
+
+texto.textoSimples(texto3, 'Arial', 3, False, False, 12, True)
+
 # ===================================== Armazenamento do arquivo ============================================= #
 document.save(f"REPORT_{bilhete}.docx")
 
