@@ -261,3 +261,7 @@ document.add_page_break()
 
 # ===================================== Armazenamento do arquivo ============================================= #
 document.save(f"REPORT_{bilhete}.docx")
+
+
+# git config --list
+# git pull
