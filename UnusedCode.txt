@@ -34,3 +34,8 @@ def criaCabecalho (self, textoCabecalho, alinhamento):  # não foi usado.
         footer_p_styles = self.document.styles["Footer"]
         footer_p_styles.font.name = 'Arial'
         footer_p_styles.font.size = Pt(12)
+
+    
+    def addNovaSection(self):  # não foi usado.
+        newSection = self.document.add_section(WD_SECTION.NEW_PAGE)
+        newSection.different_first_page_header_footer = True
