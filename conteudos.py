@@ -13,10 +13,7 @@ class CriaTexto:
     def __init__(self, document):
         self.document = document
         pass
-    
-    def addNovaSection(self):  # não foi usado.
-        newSection = self.document.add_section(WD_SECTION.NEW_PAGE)
-        newSection.different_first_page_header_footer = True
+
     
     def addNewLine(self, qtd):
         line = self.document.add_paragraph("\n"*qtd)
@@ -31,13 +28,6 @@ class CriaTexto:
                 1 - CENTER: Center-aligned
                 2 - RIGHT: Right-aligned
                 3 - JUSTIFY: Fully justified.
-
-            Example:
-
-            from docx.enum.text import WD_ALIGN_PARAGRAPH
-
-            paragraph = document.add_paragraph()
-            paragraph.alignment = WD_ALIGN_PARAGRAPH.CENTER
         """
 
         paragrafo = self.document.add_paragraph()
@@ -60,10 +50,6 @@ class CriaTexto:
 
         CriaTexto(document).textoFormat(marcador, alinhamento, 1.50, 0, 0)
 
-        # marcador.alignment = alinhamento
-        # marcador.paragraph_format.line_spacing = 1.50
-        # marcador.paragraph_format.space_before = Pt(0)
-        # marcador.paragraph_format.space_after = Pt(0)
         marcador.style = 'List Bullet'
 
         r = marcador.add_run(dado)
