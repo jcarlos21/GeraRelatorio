@@ -52,11 +52,7 @@ class CriaTexto:
         marcador.style = 'List Bullet'
 
         r = marcador.add_run(dado)
-        r.font.name = fonte
-        r.font.size = Pt(tam)
-        r.font.bold = negrito
-        r.font.italic = italico
-        # Pode ser fatorado
+        estilos.addStyles(r, fonte, negrito, italico, tam)
     
     def textoFormat(self, instancia, alinhamento, space, space_after, space_before):
         instancia.alignment = alinhamento

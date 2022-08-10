@@ -7,6 +7,7 @@ from conteudos import CriaTexto
 from stylesTexts import StylesText
 from docx.shared import Inches
 from pageSetup import SetupPage
+from analysisFunctions import AnalysisFunc
 
 document = Document()
 texto = CriaTexto(document)
@@ -90,7 +91,7 @@ texto.textoSimples ('Entidade(s) afetada(s) pelo rompimento do cabo de fibras ó
 texto.addNewLine(0)
 
 for escola in entidades:  # O uso do for pode ser alocado em uma função (Lambdas) para refatorar o código
-    texto.addMarcadores(escola, 'Arial', 0, True, False, 12)
+    texto.addMarcadores(escola.upper(), 'Arial', 0, True, False, 12)
 texto.addNewLine(0)
 
 texto.textoSimples('Local da Ocorrência:', 'Arial', 3, False, False, 12, False)
@@ -110,9 +111,9 @@ r.font.size = Pt(12)
 # O trecho acima pode ser fatorado
 
 for i in range(0, len(entidades)):
-    estilos.addStyles(q.add_run(f'{celulas} - {entidades[i]}'), 'Arial', False, False, 12)
+    estilos.addStyles(q.add_run(f'{celulas.upper()} - {entidades[i].upper()}'), 'Arial', True, False, 12)
     if i + 1 < len(entidades):
-        estilos.addStyles(q.add_run('; '), 'Arial', False, False, 12)
+        estilos.addStyles(q.add_run('; '), 'Arial', True, False, 12)
 texto.addNewLine(0)
 
 texto.textoSimples('Informações do Cabo:', 'Arial', 3, False, False, 12, False)
@@ -281,6 +282,7 @@ texto4 = 'Conclui-se que os resultados apresentados nesse documento certificam q
 texto.textoSimples(texto4, 'Arial', 3, False, False, 12, True)
 
 # ===================================== Armazenamento do arquivo ============================================= #
+
 document.save(f"REPORT_{bilhete}.docx")
 
 # git config --list
