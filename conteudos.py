@@ -13,7 +13,6 @@ class CriaTexto:
     def __init__(self, document):
         self.document = document
         pass
-
     
     def addNewLine(self, qtd):
         line = self.document.add_paragraph("\n"*qtd)

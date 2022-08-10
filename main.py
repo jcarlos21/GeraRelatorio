@@ -264,7 +264,6 @@ texto3 = f'No(s) gráfico(s) apresentado(s) na(s) figura(s) a seguir, os resulta
 
 texto.textoSimples(texto3, 'Arial', 3, False, False, 12, True)
 
-
 document.add_picture('01.JPG', width=Inches(1.25))
 
 # ===================================== Armazenamento do arquivo ============================================= #
