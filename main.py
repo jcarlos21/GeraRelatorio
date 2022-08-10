@@ -259,12 +259,15 @@ texto.addMarcadores ('PRxB [dBm] - Potência óptica recebida na ONU após o rep
 # ============================================== Seção 3 ===================================================== #
 document.add_page_break()
 
-rangeTeste = 45
+rangeTeste = 30
 texto3 = f'No(s) gráfico(s) apresentado(s) na(s) figura(s) a seguir, os resultados mostram o comportamento do sinal recebido durante o período de {rangeTeste} dias para as escolas {entidades}, considerando antes e após o serviço de reparação ser executado. É importante ressaltar que no decorrer do período de amostragem apresentado no(s) gráfico(s) podem ocorrer intervalos sem amostras, como o período de observação é grande e os dados são enviados pelas ONU, é possível que em algum momento o equipamento seja desligado.'
-
 texto.textoSimples(texto3, 'Arial', 3, False, False, 12, True)
+texto.addNewLine(0)
 
-document.add_picture('01.JPG', width=Inches(1.25))
+for i in range(0, len(entidades)):
+    texto.textoSimples(f'Figura {i+1} - Monitoramento GPON: potência óptica recebida na ONU da {entidades[i]}', 'Arial', 1, False, False, 12, False)
+    document.add_picture(f'img/{str(i+1)}.JPG')
+    texto.addNewLine(0)
 
 # ===================================== Armazenamento do arquivo ============================================= #
 document.save(f"REPORT_{bilhete}.docx")
