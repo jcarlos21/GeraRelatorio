@@ -15,6 +15,17 @@ pageConfig = SetupPage(document)
 
 # Páginas
 
+# ================================= Dados para alimentação do relatório ====================================== #
+
+bilhete = '20XX.X-BRXX'
+celulas = '*Nome da caixa*'
+entidades = ['Entidade 01', 'Entidade 02', 'Entidade 03']
+enderecosEntidade = ['Rua do Bambelô - Lagoa Azul, Natal - RN', 'Rua do Fandango, 3145 - Lagoa Azul, Natal - RN', 'Rua das Crendices, 1001 - Lagoa Azul, Natal - RN']
+causaCorrecao =  'O rompimento nas fibras foi causado por acidente por árvores.'
+potenciaMedia = [-13.54, -13.44, -17.39]
+potMediaBeforeAfter = {entidades[0]: [-13.54, -17.65, -12.65], entidades[1]: [-13.44, -17.65, -12.65], entidades[2]: [-17.39, -17.65, -12.65]}  # pode ser alimentado via for.
+rangeTeste = 30
+
 # ============================================== Margins ===================================================== #
 
 pageConfig.marginsPage(3.0, 3.0, 2.0, 2.0)
@@ -25,7 +36,6 @@ nomeTecnico = '*Nome do Técnico*'
 matriculaTecnico = '****'
 nomeBolsista = '*Nome do bolsista*'
 matriculaBolsista = '*Matrícula do bolsista*'
-bilhete = '20XX.X-BRXX'
 data = 'XX de mês de 20XX'
 
 texto.textoSimples(nomeTecnico, 'Arial', 1, False, False, 12, False)
@@ -47,7 +57,6 @@ texto.addNewLine(5)
 texto.textoSimples('Natal - RN', 'Arial', 1, False, False, 12, False)
 texto.textoSimples(data, 'Arial', 1, False, False, 12, False)
 
-
 # ============================================== Sumário ===================================================== #
 
 # ===================================== Manutenção Corretiva RGM ============================================= #
@@ -55,8 +64,6 @@ document.add_page_break()
 
 texto.textoSimples ('Manutenção Corretiva RGM', 'Arial', 1, True, False, 12, False)
 texto.addNewLine(0)
-
-celulas = '*Nome da caixa*'  # pode ser uma lista
 
 p = document.add_paragraph()
 
@@ -82,7 +89,6 @@ texto.addNewLine(0)
 texto.textoSimples ('Entidade(s) afetada(s) pelo rompimento do cabo de fibras óptica:', 'Arial', 3, False, False, 12, False)
 texto.addNewLine(0)
 
-entidades = ['Entidade 01', 'Entidade 02', 'Entidade 03']
 for escola in entidades:  # O uso do for pode ser alocado em uma função (Lambdas) para refatorar o código
     texto.addMarcadores(escola, 'Arial', 0, True, False, 12)
 texto.addNewLine(0)
@@ -90,7 +96,6 @@ texto.addNewLine(0)
 texto.textoSimples('Local da Ocorrência:', 'Arial', 3, False, False, 12, False)
 texto.addNewLine(0)
 
-enderecosEntidade = ['Rua do Bambelô - Lagoa Azul, Natal - RN', 'Rua do Fandango, 3145 - Lagoa Azul, Natal - RN', 'Rua das Crendices, 1001 - Lagoa Azul, Natal - RN']
 for i in range(0, len(enderecosEntidade)):
     texto.addMarcadores(f'Endereço {i+1}: {enderecosEntidade[i]}', 'Arial', 0, False, False, 12)
 
@@ -110,7 +115,6 @@ for i in range(0, len(entidades)):
         estilos.addStyles(q.add_run('; '), 'Arial', False, False, 12)
 texto.addNewLine(0)
 
-causaCorrecao =  'O rompimento nas fibras foi causado por acidente por árvores.'
 texto.textoSimples('Informações do Cabo:', 'Arial', 3, False, False, 12, False)
 texto.addNewLine(0)
 texto.addMarcadores(causaCorrecao, 'Arial', 0, False, False, 12)
@@ -146,7 +150,6 @@ texto2 = """A comparação dos resultados obtidos pelo monitoramento apresentado
 texto.textoSimples(texto2, 'Arial', 3, False, False, 12, True)
 texto.addNewLine(0)
 
-potenciaMedia = [-13.54, -13.44, -17.39]
 requisitos1 = ['R1 – Os valores de potência permaneceram na mesma ordem de grandeza antes e depois do incidente?',
 f'R2 – Considerando que o valor médio de potência óptica recebida nas ONUs das 3 escolas, nas células {celulas} é de ({potenciaMedia}) dBm, respectivamente, a potência obtida na(s) ONU(s) após o reparo estão na mesma ordem de grandeza do valor médio?',
 'R3 – A oscilação no sinal recebido é aceitável?']
@@ -259,7 +262,6 @@ texto.addMarcadores ('PRxB [dBm] - Potência óptica recebida na ONU após o rep
 # ============================================== Seção 3 ===================================================== #
 document.add_page_break()
 
-rangeTeste = 30
 texto3 = f'No(s) gráfico(s) apresentado(s) na(s) figura(s) a seguir, os resultados mostram o comportamento do sinal recebido durante o período de {rangeTeste} dias para as escolas {entidades}, considerando antes e após o serviço de reparação ser executado. É importante ressaltar que no decorrer do período de amostragem apresentado no(s) gráfico(s) podem ocorrer intervalos sem amostras, como o período de observação é grande e os dados são enviados pelas ONU, é possível que em algum momento o equipamento seja desligado.'
 texto.textoSimples(texto3, 'Arial', 3, False, False, 12, True)
 texto.addNewLine(0)
@@ -269,9 +271,17 @@ for i in range(0, len(entidades)):
     document.add_picture(f'img/{str(i+1)}.JPG')
     texto.addNewLine(0)
 
+# ============================================== Seção 4 ===================================================== #
+
+document.add_page_break()
+
+texto.textoSimples('3   Conclusão', 'Arial', 3, True, False, 12, False)
+texto.addNewLine(0)
+texto4 = 'Conclui-se que os resultados apresentados nesse documento certificam que o serviço de manutenção corretiva foi executado em conformidade com os padrões exigidos e sanando todas as pendências, garantindo o correto funcionamento da rede.'
+texto.textoSimples(texto4, 'Arial', 3, False, False, 12, True)
+
 # ===================================== Armazenamento do arquivo ============================================= #
 document.save(f"REPORT_{bilhete}.docx")
-
 
 # git config --list
 # git pull
