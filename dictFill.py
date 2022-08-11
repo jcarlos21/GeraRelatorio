@@ -28,7 +28,9 @@ class WriteDict:
 			dadosDict[celula] = {entidade: [endereco, potMedia, potBefore, potAfter]}
 			return 'Dados adicionados!'
 		else:
-			return 'Célula já existe.'
+			# OBS: Note que se a entidade já existir, o valor dela será substituído por [endereco, potMedia, potBefore, potAfter]
+			dadosDict[celula][entidade] = [endereco, potMedia, potBefore, potAfter]
+			return 'Dados adicionados!'
 
 
 
@@ -40,6 +42,7 @@ class WriteDict:
 # dicionario['Carlos']['Hobby'][0]
 # 'Tocar'
 
+{'Carlos': {'Hobby': ['Tocar', 'Cantar'], 'Graduação': ['C&T', 'Eng. Telecomunicações']}}
 
 DadosGerais = {celula: {entidade: [endereco, potMedia, potBefore, potAfter],
 						entidade: [endereco, potMedia, potBefore, potAfter],
