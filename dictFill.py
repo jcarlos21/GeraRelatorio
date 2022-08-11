@@ -33,6 +33,9 @@ class WriteDict:
 			return 'Dados adicionados!'
 
 
+teste = WriteDict()
+
+dadosGerais = teste.fillDict()
 
 # dicionario = {'Carlos': {'Hobby': ['Tocar', 'Cantar']}}
 # dicionario['Carlos']
@@ -42,7 +45,12 @@ class WriteDict:
 # dicionario['Carlos']['Hobby'][0]
 # 'Tocar'
 
-{'Carlos': {'Hobby': ['Tocar', 'Cantar'], 'Graduação': ['C&T', 'Eng. Telecomunicações']}}
+# dicionario = {'Carlos': {'Hobby': ['Tocar', 'Cantar']}}
+# dicionario['Carlos']['Graduação'] = ['C&T', 'Eng. Telecomunicações']
+# dicionario
+# {'Carlos': {'Hobby': ['Tocar', 'Cantar'], 'Graduação': ['C&T', 'Eng. Telecomunicações']}}
+
+# {'Carlos': {'Hobby': ['Tocar', 'Cantar'], 'Graduação': ['C&T', 'Eng. Telecomunicações']}}
 
 DadosGerais = {celula: {entidade: [endereco, potMedia, potBefore, potAfter],
 						entidade: [endereco, potMedia, potBefore, potAfter],
