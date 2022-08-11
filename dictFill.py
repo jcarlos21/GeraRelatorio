@@ -26,16 +26,16 @@ class WriteDict:
 	def fillDict (self, dadosDict, celula, entidade, endereco, potMedia, potBefore, potAfter):
 		if not dadosDict.get(celula):
 			dadosDict[celula] = {entidade: [endereco, potMedia, potBefore, potAfter]}
-			return 'Dados adicionados!'
+			return dadosDict
 		else:
 			# OBS: Note que se a entidade já existir, o valor dela será substituído por [endereco, potMedia, potBefore, potAfter]
 			dadosDict[celula][entidade] = [endereco, potMedia, potBefore, potAfter]
-			return 'Dados adicionados!'
+			return dadosDict
 
 
-teste = WriteDict()
+# teste = WriteDict()
 
-dadosGerais = teste.fillDict()
+# dadosGerais = teste.fillDict()
 
 # dicionario = {'Carlos': {'Hobby': ['Tocar', 'Cantar']}}
 # dicionario['Carlos']

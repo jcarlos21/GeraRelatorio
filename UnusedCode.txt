@@ -39,3 +39,38 @@ def criaCabecalho (self, textoCabecalho, alinhamento):  # não foi usado.
     def addNovaSection(self):  # não foi usado.
         newSection = self.document.add_section(WD_SECTION.NEW_PAGE)
         newSection.different_first_page_header_footer = True
+
+
+
+
+TESTE DE ENTRADA DE DADOS
+
+celula = 'CAIXA1'
+entidade = 'ENTIDADE 2'
+endereco = 'ENDERECO 2'
+potMedia = 0
+potBefore = 0
+potAfter = 0
+
+dadosDict = preencheDict.fillDict(dadosDict, celula, entidade, endereco, potMedia, potBefore, potAfter)
+# print(dadosDict)
+
+celula = 'CAIXA2'
+entidade = 'ENTIDADE 1'
+endereco = 'ENDERECO 1'
+potMedia = 0
+potBefore = 0
+potAfter = 0
+
+dadosDict = preencheDict.fillDict(dadosDict, celula, entidade, endereco, potMedia, potBefore, potAfter)
+# print(dadosDict)
+
+celula = 'CAIXA2'
+entidade = 'ENTIDADE 2'
+endereco = 'ENDERECO 2'
+potMedia = 0
+potBefore = 0
+potAfter = 0
+
+dadosDict = preencheDict.fillDict(dadosDict, celula, entidade, endereco, potMedia, potBefore, potAfter)
+print(dadosDict)

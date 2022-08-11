@@ -23,21 +23,22 @@ pageConfig = SetupPage(document)
 bilhete = '20XX.X-BRXX'
 celulas = '*Nome da caixa*'
 entidades = ['Entidade 01', 'Entidade 02', 'Entidade 03']
-enderecosEntidade = ['Rua do Bambelô - Lagoa Azul, Natal - RN', 'Rua do Fandango, 3145 - Lagoa Azul, Natal - RN', 'Rua das Crendices, 1001 - Lagoa Azul, Natal - RN']
+enderecosEntidade = ['Rua, Numero, Bairro, Cidade/Estado', 'Rua, Numero, Bairro, Cidade/Estado', 'Rua, Numero, Bairro, Cidade/Estado']
 causaCorrecao =  'O rompimento nas fibras foi causado por acidente por árvores.'
 potenciaMedia = [-13.54, -13.44, -17.39]
 potMediaBeforeAfter = {entidades[0]: [-13.54, -17.65, -12.65], entidades[1]: [-13.44, -17.65, -12.65], entidades[2]: [-17.39, -17.65, -12.65]}  # pode ser alimentado via for.
 rangeTeste = 30
 
-celula = ''
-entidade = ''
-endereco = ''
+celula = 'CAIXA1'
+entidade = 'ENTIDADE 1'
+endereco = 'ENDERECO 1'
 potMedia = 0
 potBefore = 0
 potAfter = 0
 dadosDict = dict()
 
-preencheDict.fillDict(dadosDict, celula, entidade, endereco, potMedia, potBefore, potAfter)  # dever ser chamada desta forma no botão da interface
+dadosDict = preencheDict.fillDict(dadosDict, celula, entidade, endereco, potMedia, potBefore, potAfter)  # dever ser chamada desta forma no botão da interface
+print(dadosDict)
 
 # ============================================== Margins ===================================================== #
 
@@ -82,21 +83,15 @@ p = document.add_paragraph()
 
 t1 = p.add_run('Objetivo: certificar o serviço de manutenção corretiva realizado pela empresa Interjato Soluções (bilhete ')
 estilos.addStyles(t1, 'Arial', False, False, 12)
-
-t2 = p.add_run(f'{bilhete}')
-estilos.addStyles(t2, 'Arial', True, False, 12)
+estilos.addStyles(p.add_run(f'{bilhete}'), 'Arial', True, False, 12)
 
 t3 = p.add_run(') para restabelecer à conectividade GPON na(s) célula(s) ')
 estilos.addStyles(t3, 'Arial', False, False, 12)
-
-t4 = p.add_run(f'{celulas}')
-estilos.addStyles(t4, 'Arial', True, False, 12)
+estilos.addStyles(p.add_run(f'{celulas}'), 'Arial', True, False, 12)
 
 t5 = p.add_run('. Os dados apresentados nesse documento foram obtidos a partir do monitoramento da rede GPON realizado pelo software ')
 estilos.addStyles(t5, 'Arial', False, False, 12)
-
-t6 = p.add_run('Grafana.')
-estilos.addStyles(t6, 'Arial', True, True, 12)
+estilos.addStyles(p.add_run('Grafana.'), 'Arial', True, True, 12)
 texto.addNewLine(0)
 
 texto.textoSimples ('Entidade(s) afetada(s) pelo rompimento do cabo de fibras óptica:', 'Arial', 3, False, False, 12, False)
@@ -242,6 +237,9 @@ texto.addNewLine(0)
 
 texto.textoSimples('2   Resultados', 'Arial', 3, True, False, 12, False)
 texto.addNewLine(0)
+
+# Tabela 3: __________________________________________________________________________
+
 texto.textoSimples('Tabela 3 – Valor médio da potência óptica recebida nas ONUs', 'Arial', 1, False, False, 12, False)
 
 table3 = document.add_table(rows=1, cols=3)
@@ -316,6 +314,7 @@ document.save(f"REPORT_{bilhete}.docx")  # deve ser chamada pelo botão da inter
 #         self.backGroundImage = PhotoImage(file="imgMainScreen/background1.png")
 #         Label(root, image=self.backGroundImage).place(x=0, y=0)
 
+#         # ==================== Barra de Menu ============================= #
 #         self.menubar = Menu(root)
 #         self.file = Menu(root, tearoff=False)
 #         self.file.add_separator()
@@ -327,6 +326,8 @@ document.save(f"REPORT_{bilhete}.docx")  # deve ser chamada pelo botão da inter
 #         self.menubar.add_cascade(label="About", menu=self.file2)
 
 #         self.root.config(menu=self.menubar)
+
+#         # ==================== Botões ============================= #
     
 #     def exitLogin(self):
 #         self.result = messagebox.askquestion('System', 'Are you sure you want to exit?', icon="warning")
