@@ -8,10 +8,12 @@ from stylesTexts import StylesText
 from docx.shared import Inches
 from pageSetup import SetupPage
 from analysisFunctions import AnalysisFunc
+from dictFill import WriteDict
 
 document = Document()
 texto = CriaTexto(document)
 estilos = StylesText(document)
+preencheDict = WriteDict()
 pageConfig = SetupPage(document)
 
 # Páginas
@@ -26,6 +28,16 @@ causaCorrecao =  'O rompimento nas fibras foi causado por acidente por árvores.
 potenciaMedia = [-13.54, -13.44, -17.39]
 potMediaBeforeAfter = {entidades[0]: [-13.54, -17.65, -12.65], entidades[1]: [-13.44, -17.65, -12.65], entidades[2]: [-17.39, -17.65, -12.65]}  # pode ser alimentado via for.
 rangeTeste = 30
+
+celula = ''
+entidade = ''
+endereco = ''
+potMedia = 0
+potBefore = 0
+potAfter = 0
+dadosDict = dict()
+
+preencheDict.fillDict(dadosDict, celula, entidade, endereco, potMedia, potBefore, potAfter)  # dever ser chamada desta forma no botão da interface
 
 # ============================================== Margins ===================================================== #
 
@@ -283,7 +295,51 @@ texto.textoSimples(texto4, 'Arial', 3, False, False, 12, True)
 
 # ===================================== Armazenamento do arquivo ============================================= #
 
-document.save(f"REPORT_{bilhete}.docx")
+document.save(f"REPORT_{bilhete}.docx")  # deve ser chamada pelo botão da interface
+
+
+# ========================================== Interface Gráfica =============================================== #
+
+# from tkinter import *
+# from tkinter import messagebox
+
+# class ScreenMain:
+#     def __init__(self, root):
+#         self.root = root
+#         self.root.title("Gerador de Relatórios - POP-RN/RNP")
+#         self.root.configure(background="blue")
+#         self.root.geometry("700x500")
+#         self.root.iconbitmap("imgMainScreen/doc2.ico")
+#         self.root.resizable(False, False)
+
+#         # ============= Imagem de Fundo ================================== #
+#         self.backGroundImage = PhotoImage(file="imgMainScreen/background1.png")
+#         Label(root, image=self.backGroundImage).place(x=0, y=0)
+
+#         self.menubar = Menu(root)
+#         self.file = Menu(root, tearoff=False)
+#         self.file.add_separator()
+#         self.file.add_command(label="Exit", command=self.exitLogin)
+#         self.menubar.add_cascade(label="File", menu=self.file)
+
+#         self.file2 = Menu(root, tearoff=False)
+#         self.file2.add_command(label="Version 1.0")
+#         self.menubar.add_cascade(label="About", menu=self.file2)
+
+#         self.root.config(menu=self.menubar)
+    
+#     def exitLogin(self):
+#         self.result = messagebox.askquestion('System', 'Are you sure you want to exit?', icon="warning")
+#         if self.result == 'yes':
+#             self.root.destroy()
+#             exit()
+
+
+# root = Tk()
+# obj = ScreenMain(root)
+
+# if __name__ == "__main__":
+#     root.mainloop()
 
 # git config --list
 # git pull
