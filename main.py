@@ -1,6 +1,7 @@
 from docx import Document
 from docx.enum.text import WD_ALIGN_PARAGRAPH
 from docx.enum.table import WD_TABLE_ALIGNMENT
+from docx.enum.text import WD_PARAGRAPH_ALIGNMENT
 from docx.enum.section import WD_SECTION
 from docx.shared import Pt
 from conteudos import CriaTexto
@@ -15,6 +16,8 @@ texto = CriaTexto(document)
 estilos = StylesText(document)
 preencheDict = WriteDict()
 pageConfig = SetupPage(document)
+
+# ================================================ Page Number =============================================== #
 
 # Páginas
 
@@ -42,6 +45,8 @@ print(dadosDict)
 # ============================================== Margins ===================================================== #
 
 pageConfig.marginsPage(3.0, 3.0, 2.0, 2.0)
+
+# https://stackoverflow.com/questions/56658872/add-page-number-using-python-docx
 
 # ================================================ Capa ====================================================== #
 
@@ -343,3 +348,4 @@ document.save(f"REPORT_{bilhete}.docx")  # deve ser chamada pelo botão da inter
 
 # git config --list
 # git pull
+
