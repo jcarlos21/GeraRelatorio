@@ -67,3 +67,8 @@ class CriaTexto:
             p.alignment = WD_ALIGN_PARAGRAPH.CENTER
             r = p.runs[0]
             estilos.addStyles(r, fonte, False, False, tam)
+    
+    def addNovaSection(self):
+        newSection = self.document.add_section(WD_SECTION.CONTINUOUS)
+        self.document.sections[1].footer.is_linked_to_previous = False
+        # newSection.different_first_page_header_footer = True

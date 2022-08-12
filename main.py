@@ -18,36 +18,6 @@ estilos = StylesText(document)
 preencheDict = WriteDict()
 pageConfig = SetupPage(document)
 
-# ================================================ Page Number =============================================== #
-
-section = document.sections[0]
-footer = section.footer
-footer_p = footer.paragraphs[0]
-
-def create_element(name):
-    return OxmlElement(name)
-
-def create_attribute(element, name, value):
-    element.set(ns.qn(name), value)
-
-def add_page_number(run):
-    fldChar1 = create_element('w:fldChar')
-    create_attribute(fldChar1, 'w:fldCharType', 'begin')
-
-    instrText = create_element('w:instrText')
-    create_attribute(instrText, 'xml:space', 'preserve')
-    instrText.text = "PAGE"
-
-    fldChar2 = create_element('w:fldChar')
-    create_attribute(fldChar2, 'w:fldCharType', 'end')
-
-    run._r.append(fldChar1)
-    run._r.append(instrText)
-    run._r.append(fldChar2)
-    run._r.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
-
-add_page_number(footer_p.add_run())
-
 # Páginas
 
 # ================================= Dados para alimentação do relatório ====================================== #
@@ -105,6 +75,15 @@ texto.textoSimples('Natal - RN', 'Arial', 1, False, False, 12, False)
 texto.textoSimples(data, 'Arial', 1, False, False, 12, False)
 
 # ============================================== Sumário ===================================================== #
+
+texto.textoSimples('INSIRA O SUMÁRIO AQUI', 'Arial', 1, False, False, 40, False)
+
+# ================================================ Page Number =============================================== #
+
+section = document.sections[0]
+footer = section.footer
+texto.addNovaSection()
+pageConfig.add_page_number(footer.paragraphs[0])
 
 # ===================================== Manutenção Corretiva RGM ============================================= #
 document.add_page_break()
