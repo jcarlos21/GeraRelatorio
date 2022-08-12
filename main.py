@@ -35,9 +35,8 @@ endereco = 'ENDERECO 1'
 potMedia = 0
 potBefore = 0
 potAfter = 0
-dadosDict = dict()
 
-dadosDict = preencheDict.fillDict(dadosDict, celula, entidade, endereco, potMedia, potBefore, potAfter)  # dever ser chamada desta forma no botão da interface
+dadosDict = preencheDict.fillDict(celula, entidade, endereco, potMedia, potBefore, potAfter)  # dever ser chamada desta forma no botão da interface
 print(dadosDict)
 
 # ============================================== Margins ===================================================== #

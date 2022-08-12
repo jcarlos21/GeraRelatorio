@@ -23,7 +23,8 @@ class WriteDict:
 	def __init__(self):
 		pass
 
-	def fillDict (self, dadosDict, celula, entidade, endereco, potMedia, potBefore, potAfter):
+	def fillDict (self, celula, entidade, endereco, potMedia, potBefore, potAfter):
+		dadosDict = dict()
 		if not dadosDict.get(celula):
 			dadosDict[celula] = {entidade: [endereco, potMedia, potBefore, potAfter]}
 			return dadosDict
