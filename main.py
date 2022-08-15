@@ -138,24 +138,31 @@ texto.textoSimples('Local da Ocorrência:', 'Arial', 3, False, False, 12, False)
 texto.addNewLine(0)
 
 i=0
-for caixa in dadosDict.keys():
+for caixa in dadosDict.keys():  # Lembre-se de criar um método para tratar os loops
     for escola in dadosDict[caixa].keys():
         texto.addMarcadores(f'Endereço {i+1}: {dadosDict[caixa][escola][0]}', 'Arial', 0, False, False, 12)
 
 q = document.add_paragraph()  # necessário pois, ao usar o método .textoSimples(), um novo .add_paragraph() é iniciado.
-
 pf = q.paragraph_format
 pf.left_indent = Inches(0.5)
 r = q.add_run('Trecho(s): ')
 q.style = 'List Bullet'
-r.font.name = 'Arial'
-r.font.size = Pt(12)
+# r.font.name = 'Arial'
+# r.font.size = Pt(12)
 # O trecho acima pode ser fatorado
+estilos.addStyles(r, 'Arial', False, False, 12)
 
-for i in range(0, len(entidades)):
-    estilos.addStyles(q.add_run(f'{celulas.upper()} - {entidades[i].upper()}'), 'Arial', True, False, 12)
-    if i + 1 < len(entidades):
-        estilos.addStyles(q.add_run('; '), 'Arial', True, False, 12)
+for caixa in dadosDict.keys():
+    for escola in dadosDict[caixa].keys():
+        estilos.addStyles(q.add_run(f'{caixa.upper()} - {escola.upper()};'), 'Arial', True, False, 12)
+        # if i + 1 < len(entidades):
+        #     estilos.addStyles(q.add_run('; '), 'Arial', True, False, 12)
+
+
+# for i in range(0, len(entidades)):
+#     estilos.addStyles(q.add_run(f'{celulas.upper()} - {entidades[i].upper()}'), 'Arial', True, False, 12)
+#     if i + 1 < len(entidades):
+#         estilos.addStyles(q.add_run('; '), 'Arial', True, False, 12)
 texto.addNewLine(0)
 
 texto.textoSimples('Informações do Cabo:', 'Arial', 3, False, False, 12, False)
