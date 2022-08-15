@@ -33,7 +33,7 @@ rangeTeste = 30
 
 celula = 'CAIXA1'
 entidade = 'ENTIDADE 1 DA CAIXA 1'
-endereco = 'ENDERECO 1'
+endereco = 'Rua, Numero, Bairro, Cidade/Estado'
 potMedia = 0
 potBefore = 0
 potAfter = 0
@@ -43,7 +43,7 @@ dadosDict = preencheDict.fillDict(dadosDict, celula, entidade, endereco, potMedi
 
 celula = 'CAIXA1'
 entidade = 'ENTIDADE 2 DA CAIXA 1'
-endereco = 'ENDERECO 2'
+endereco = 'Rua, Numero, Bairro, Cidade/Estado'
 potMedia = 0
 potBefore = 0
 potAfter = 0
@@ -52,7 +52,7 @@ dadosDict = preencheDict.fillDict(dadosDict, celula, entidade, endereco, potMedi
 
 celula = 'CAIXA2'
 entidade = 'ENTIDADE 1 DA CAIXA 2'
-endereco = 'ENDERECO 2'
+endereco = 'Rua, Numero, Bairro, Cidade/Estado'
 potMedia = 0
 potBefore = 0
 potAfter = 0
@@ -137,8 +137,10 @@ texto.addNewLine(0)
 texto.textoSimples('Local da Ocorrência:', 'Arial', 3, False, False, 12, False)
 texto.addNewLine(0)
 
-for i in range(0, len(enderecosEntidade)):
-    texto.addMarcadores(f'Endereço {i+1}: {enderecosEntidade[i]}', 'Arial', 0, False, False, 12)
+i=0
+for caixa in dadosDict.keys():
+    for escola in dadosDict[caixa].keys():
+        texto.addMarcadores(f'Endereço {i+1}: {dadosDict[caixa][escola][0]}', 'Arial', 0, False, False, 12)
 
 q = document.add_paragraph()  # necessário pois, ao usar o método .textoSimples(), um novo .add_paragraph() é iniciado.
 
