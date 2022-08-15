@@ -34,9 +34,9 @@ rangeTeste = 30
 celula = 'CAIXA1'
 entidade = 'ENTIDADE 1 DA CAIXA 1'
 endereco = 'Rua, Numero, Bairro, Cidade/Estado'
-potMedia = 0
-potBefore = 0
-potAfter = 0
+potMedia = -13
+potBefore = -14
+potAfter = -12
 dadosDict = dict()
 
 dadosDict = preencheDict.fillDict(dadosDict, celula, entidade, endereco, potMedia, potBefore, potAfter)  # dever ser chamada desta forma no botão da interface
@@ -44,18 +44,18 @@ dadosDict = preencheDict.fillDict(dadosDict, celula, entidade, endereco, potMedi
 celula = 'CAIXA1'
 entidade = 'ENTIDADE 2 DA CAIXA 1'
 endereco = 'Rua, Numero, Bairro, Cidade/Estado'
-potMedia = 0
-potBefore = 0
-potAfter = 0
+potMedia = -11
+potBefore = -15
+potAfter = -11
 
 dadosDict = preencheDict.fillDict(dadosDict, celula, entidade, endereco, potMedia, potBefore, potAfter)
 
 celula = 'CAIXA2'
 entidade = 'ENTIDADE 1 DA CAIXA 2'
 endereco = 'Rua, Numero, Bairro, Cidade/Estado'
-potMedia = 0
-potBefore = 0
-potAfter = 0
+potMedia = -10
+potBefore = -12
+potAfter = -11
 
 dadosDict = preencheDict.fillDict(dadosDict, celula, entidade, endereco, potMedia, potBefore, potAfter)
 
@@ -201,7 +201,7 @@ texto.textoSimples(texto2, 'Arial', 3, False, False, 12, True)
 texto.addNewLine(0)
 
 requisitos1 = ['R1 – Os valores de potência permaneceram na mesma ordem de grandeza antes e depois do incidente?',
-f'R2 – Considerando que o valor médio de potência óptica recebida nas ONUs das 3 escolas, nas células {celulas} é de ({potenciaMedia}) dBm, respectivamente, a potência obtida na(s) ONU(s) após o reparo estão na mesma ordem de grandeza do valor médio?',
+f'R2 – Considerando que o valor médio de potência óptica recebida nas ONUs das escolas, nas células {celulas} é de ({potenciaMedia}) dBm, respectivamente, a potência obtida na(s) ONU(s) após o reparo estão na mesma ordem de grandeza do valor médio?',
 'R3 – A oscilação no sinal recebido é aceitável?']
 
 for i in range(0, len(requisitos)):
@@ -223,6 +223,7 @@ row = table.rows[0].cells
 headerRow = ['ESCOLA', 'R1', 'R2', 'R3']
 texto.alimentaTabela(row, headerRow, 'Arial', 12)
 
+# Você pode criar uma lista para armazenas as entidade. A tabela abaixo deve ser dinâmica, ou seja, deverá avaliar os três requisitos.
 dataDiagnostic = []  # Table data in a form of list
 for i in range(0,3):  # o range do for pode variar em função da quantidade de entidades
     dataDiagnostic.append([f'Entidade {i+1}', 'OK', 'OK', 'OK'])
@@ -257,6 +258,7 @@ row2 = table2.rows[0].cells
 headerRow2 = ['PONTO ATENDIDO', 'STATUS']
 texto.alimentaTabela(row2, headerRow2, 'Arial', 12)
 
+# A tabela abaixo deve ser dinâmica, ou seja, deverá avaliar os três requisitos.
 dataStatus = []  # Table data in a form of list
 for i in range(0,3):  # o range do for pode variar em função da quantidade de entidades
     dataStatus.append([f'Entidade {i+1}', 'APROVADO'])
