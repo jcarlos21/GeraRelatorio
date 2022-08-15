@@ -32,13 +32,33 @@ potMediaBeforeAfter = {entidades[0]: [-13.54, -17.65, -12.65], entidades[1]: [-1
 rangeTeste = 30
 
 celula = 'CAIXA1'
-entidade = 'ENTIDADE 1'
+entidade = 'ENTIDADE 1 DA CAIXA 1'
 endereco = 'ENDERECO 1'
 potMedia = 0
 potBefore = 0
 potAfter = 0
+dadosDict = dict()
 
-dadosDict = preencheDict.fillDict(celula, entidade, endereco, potMedia, potBefore, potAfter)  # dever ser chamada desta forma no botão da interface
+dadosDict = preencheDict.fillDict(dadosDict, celula, entidade, endereco, potMedia, potBefore, potAfter)  # dever ser chamada desta forma no botão da interface
+
+celula = 'CAIXA1'
+entidade = 'ENTIDADE 2 DA CAIXA 1'
+endereco = 'ENDERECO 2'
+potMedia = 0
+potBefore = 0
+potAfter = 0
+
+dadosDict = preencheDict.fillDict(dadosDict, celula, entidade, endereco, potMedia, potBefore, potAfter)
+
+celula = 'CAIXA2'
+entidade = 'ENTIDADE 1 DA CAIXA 2'
+endereco = 'ENDERECO 2'
+potMedia = 0
+potBefore = 0
+potAfter = 0
+
+dadosDict = preencheDict.fillDict(dadosDict, celula, entidade, endereco, potMedia, potBefore, potAfter)
+
 print(dadosDict)
 
 # ============================================== Margins ===================================================== #
@@ -109,8 +129,9 @@ texto.addNewLine(0)
 texto.textoSimples ('Entidade(s) afetada(s) pelo rompimento do cabo de fibras óptica:', 'Arial', 3, False, False, 12, False)
 texto.addNewLine(0)
 
-for escola in entidades:  # O uso do for pode ser alocado em uma função (Lambdas) para refatorar o código
-    texto.addMarcadores(escola.upper(), 'Arial', 0, True, False, 12)
+for caixa in dadosDict.keys():
+    for escola in dadosDict[caixa].keys():
+        texto.addMarcadores(escola, 'Arial', 0, True, False, 12)
 texto.addNewLine(0)
 
 texto.textoSimples('Local da Ocorrência:', 'Arial', 3, False, False, 12, False)
