@@ -28,7 +28,7 @@ entidades = ['Entidade 01', 'Entidade 02', 'Entidade 03']
 enderecosEntidade = ['Rua, Numero, Bairro, Cidade/Estado', 'Rua, Numero, Bairro, Cidade/Estado', 'Rua, Numero, Bairro, Cidade/Estado']
 causaCorrecao =  'O rompimento nas fibras foi causado por acidente por árvores.'
 potenciaMedia = [-13.54, -13.44, -17.39]
-potMediaBeforeAfter = {entidades[0]: [-13.54, -17.65, -12.65], entidades[1]: [-13.44, -17.65, -12.65], entidades[2]: [-17.39, -17.65, -12.65]}  # pode ser alimentado via for.
+potMediaBeforeAfter = {entidades[0]: [-13.54, -17.65, -12.65], entidades[1]: [-13.44, -17.65, -12.65], entidades[2]: [-17.39, -17.65, -12.65]}  # pode ser alimentado via for
 rangeTeste = 30
 
 celula = 'CAIXA1'
