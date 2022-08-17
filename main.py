@@ -129,6 +129,8 @@ texto.addNewLine(0)
 texto.textoSimples ('Entidade(s) afetada(s) pelo rompimento do cabo de fibras óptica:', 'Arial', 3, False, False, 12, False)
 texto.addNewLine(0)
 
+print(list(dadosDict.keys())) #---------------------
+
 for caixa in dadosDict.keys():
     for escola in dadosDict[caixa].keys():
         texto.addMarcadores(escola, 'Arial', 0, True, False, 12)
