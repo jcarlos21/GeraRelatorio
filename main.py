@@ -112,6 +112,7 @@ texto.textoSimples ('Manutenção Corretiva RGM', 'Arial', 1, True, False, 12, F
 texto.addNewLine(0)
 
 p = document.add_paragraph()  # criar função de repetição com essa linha e o método .addStyles()
+print(list(dadosDict.keys())) #---------------------
 
 t1 = p.add_run('Objetivo: certificar o serviço de manutenção corretiva realizado pela empresa Interjato Soluções (bilhete ')
 estilos.addStyles(t1, 'Arial', False, False, 12)
@@ -128,8 +129,6 @@ texto.addNewLine(0)
 
 texto.textoSimples ('Entidade(s) afetada(s) pelo rompimento do cabo de fibras óptica:', 'Arial', 3, False, False, 12, False)
 texto.addNewLine(0)
-
-print(list(dadosDict.keys())) #---------------------
 
 for caixa in dadosDict.keys():
     for escola in dadosDict[caixa].keys():
