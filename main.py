@@ -113,6 +113,7 @@ texto.addNewLine(0)
 
 p = document.add_paragraph()  # criar função de repetição com essa linha e o método .addStyles()
 print(list(dadosDict.keys())) #---------------------
+# texto.repeteListaEmUmaLinha(list(dadosDict.keys()), p, 'Arial', True, False, 12)
 
 t1 = p.add_run('Objetivo: certificar o serviço de manutenção corretiva realizado pela empresa Interjato Soluções (bilhete ')
 estilos.addStyles(t1, 'Arial', False, False, 12)

@@ -72,3 +72,8 @@ class CriaTexto:
         newSection = self.document.add_section(WD_SECTION.CONTINUOUS)
         self.document.sections[1].footer.is_linked_to_previous = False
         # newSection.different_first_page_header_footer = True
+
+    def repeteListaEmUmaLinha(self, lista, p, fonte, negrito, italico, tam):
+        for i in range(0, len(lista)):
+            t = p.add_run(f'{lista[i]}, ')
+            estilos.addStyles(t, fonte, negrito, italico, tam)
