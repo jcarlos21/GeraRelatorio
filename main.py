@@ -31,8 +31,8 @@ potenciaMedia = [-13.54, -13.44, -17.39]
 potMediaBeforeAfter = {entidades[0]: [-13.54, -17.65, -12.65], entidades[1]: [-13.44, -17.65, -12.65], entidades[2]: [-17.39, -17.65, -12.65]}  # pode ser alimentado via for
 rangeTeste = 30
 
-celula = 'CAIXA1'
-entidade = 'ENTIDADE 1 DA CAIXA 1'
+celula = 'CELULA 1'
+entidade = 'ENTIDADE 1 DA CELULA 1'
 endereco = 'Rua, Numero, Bairro, Cidade/Estado'
 potMedia = -13
 potBefore = -14
@@ -41,8 +41,8 @@ dadosDict = dict()
 
 dadosDict = preencheDict.fillDict(dadosDict, celula, entidade, endereco, potMedia, potBefore, potAfter)  # dever ser chamada desta forma no botão da interface
 
-celula = 'CAIXA1'
-entidade = 'ENTIDADE 2 DA CAIXA 1'
+celula = 'CELULA 1'
+entidade = 'ENTIDADE 2 DA CELULA 1'
 endereco = 'Rua, Numero, Bairro, Cidade/Estado'
 potMedia = -11
 potBefore = -15
@@ -50,8 +50,8 @@ potAfter = -11
 
 dadosDict = preencheDict.fillDict(dadosDict, celula, entidade, endereco, potMedia, potBefore, potAfter)
 
-celula = 'CAIXA2'
-entidade = 'ENTIDADE 1 DA CAIXA 2'
+celula = 'CELULA 2'
+entidade = 'ENTIDADE 1 DA CELULA 2'
 endereco = 'Rua, Numero, Bairro, Cidade/Estado'
 potMedia = -10
 potBefore = -12
@@ -112,6 +112,7 @@ texto.textoSimples ('Manutenção Corretiva RGM', 'Arial', 1, True, False, 12, F
 texto.addNewLine(0)
 
 p = document.add_paragraph()  # criar função de repetição com essa linha e o método .addStyles()
+
 print(list(dadosDict.keys())) #---------------------
 # texto.repeteListaEmUmaLinha(list(dadosDict.keys()), p, 'Arial', True, False, 12)
 
@@ -121,7 +122,8 @@ estilos.addStyles(p.add_run(f'{bilhete}'), 'Arial', True, False, 12)
 
 t3 = p.add_run(') para restabelecer à conectividade GPON na(s) célula(s) ')
 estilos.addStyles(t3, 'Arial', False, False, 12)
-estilos.addStyles(p.add_run(f'{celulas}'), 'Arial', True, False, 12)
+# estilos.addStyles(p.add_run(f'{celulas}'), 'Arial', True, False, 12)
+texto.repeteListaEmUmaLinha(list(dadosDict.keys()), p, 'Arial', True, False, 12)
 
 t5 = p.add_run('. Os dados apresentados nesse documento foram obtidos a partir do monitoramento da rede GPON realizado pelo software ')
 estilos.addStyles(t5, 'Arial', False, False, 12)
@@ -149,22 +151,13 @@ pf = q.paragraph_format
 pf.left_indent = Inches(0.5)
 r = q.add_run('Trecho(s): ')
 q.style = 'List Bullet'
-# r.font.name = 'Arial'
-# r.font.size = Pt(12)
-# O trecho acima pode ser fatorado
 estilos.addStyles(r, 'Arial', False, False, 12)
 
 for caixa in dadosDict.keys():
     for escola in dadosDict[caixa].keys():
-        estilos.addStyles(q.add_run(f'{caixa.upper()} - {escola.upper()};'), 'Arial', True, False, 12)
-        # if i + 1 < len(entidades):
-        #     estilos.addStyles(q.add_run('; '), 'Arial', True, False, 12)
+        estilos.addStyles(q.add_run(f'{caixa.upper()} - {escola.upper()}; '), 'Arial', True, False, 12)
 
 
-# for i in range(0, len(entidades)):
-#     estilos.addStyles(q.add_run(f'{celulas.upper()} - {entidades[i].upper()}'), 'Arial', True, False, 12)
-#     if i + 1 < len(entidades):
-#         estilos.addStyles(q.add_run('; '), 'Arial', True, False, 12)
 texto.addNewLine(0)
 
 texto.textoSimples('Informações do Cabo:', 'Arial', 3, False, False, 12, False)
@@ -202,12 +195,31 @@ texto2 = """A comparação dos resultados obtidos pelo monitoramento apresentado
 texto.textoSimples(texto2, 'Arial', 3, False, False, 12, True)
 texto.addNewLine(0)
 
-requisitos1 = ['R1 – Os valores de potência permaneceram na mesma ordem de grandeza antes e depois do incidente?',
-f'R2 – Considerando que o valor médio de potência óptica recebida nas ONUs das escolas, nas células {celulas} é de ({potenciaMedia}) dBm, respectivamente, a potência obtida na(s) ONU(s) após o reparo estão na mesma ordem de grandeza do valor médio?',
-'R3 – A oscilação no sinal recebido é aceitável?']
+# ============================================== Requisitos de teste ========================================= #
 
-for i in range(0, len(requisitos)):
-    texto.addMarcadores(requisitos1[i], 'Arial', 3, False, False, 12)
+r1 = 'R1 – Os valores de potência permaneceram na mesma ordem de grandeza antes e depois do incidente?'
+texto.addMarcadores(r1, 'Arial', 3, False, False, 12)
+
+pj = document.add_paragraph()
+pk = pj.paragraph_format
+pk.left_indent = Inches(0.5)
+r = pj.add_run('R2 – Considerando que o valor médio de potência óptica recebida nas ONUs das escolas, nas células ')
+pj.style = 'List Bullet'
+estilos.addStyles(r, 'Arial', False, False, 12)
+
+texto.repeteListaEmUmaLinha(list(dadosDict.keys()), pj, 'Arial', True, False, 12)
+
+r2b = ' é de '
+texto.repeteListaEmUmaLinha(r2b, pj, 'Arial', False, False, 12)
+
+r2c = 'dBm, respectivamente, a potência obtida na(s) ONU(s) após o reparo estão na mesma ordem de grandeza do valor médio?'
+texto.repeteListaEmUmaLinha(r2c, pj, 'Arial', False, False, 12)
+
+r3 = 'R3 – A oscilação no sinal recebido é aceitável?'
+texto.addMarcadores(r3, 'Arial', 3, False, False, 12)
+
+texto.textoFormat(pj, 3, 1.50, 0, 0)
+
 
 # ============================================== Seção 2 ===================================================== #
 
