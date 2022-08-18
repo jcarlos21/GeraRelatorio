@@ -113,12 +113,12 @@ texto.addNewLine(0)
 
 p = document.add_paragraph()  # criar função de repetição com essa linha e o método .addStyles()
 
-print(list(dadosDict.keys())) #---------------------
+# print(list(dadosDict.keys())) #---------------------
 # texto.repeteListaEmUmaLinha(list(dadosDict.keys()), p, 'Arial', True, False, 12)
 
-t1 = p.add_run('Objetivo: certificar o serviço de manutenção corretiva realizado pela empresa Interjato Soluções (bilhete ')
+t1 = p.add_run('Objetivo: certificar o serviço de manutenção corretiva realizado pela empresa Interjato Soluções (')
 estilos.addStyles(t1, 'Arial', False, False, 12)
-estilos.addStyles(p.add_run(f'{bilhete}'), 'Arial', True, False, 12)
+estilos.addStyles(p.add_run(f'bilhete {bilhete}'), 'Arial', True, False, 12)
 
 t3 = p.add_run(') para restabelecer à conectividade GPON na(s) célula(s) ')
 estilos.addStyles(t3, 'Arial', False, False, 12)
@@ -133,9 +133,9 @@ texto.addNewLine(0)
 texto.textoSimples ('Entidade(s) afetada(s) pelo rompimento do cabo de fibras óptica:', 'Arial', 3, False, False, 12, False)
 texto.addNewLine(0)
 
-for caixa in dadosDict.keys():
-    for escola in dadosDict[caixa].keys():
-        texto.addMarcadores(escola, 'Arial', 0, True, False, 12)
+# for caixa in dadosDict.keys():
+#     for escola in dadosDict[caixa].keys():
+texto.repetMarcadoreDict(dadosDict, 'Arial', 0, negrito=True, italico=False, tam=12)
 texto.addNewLine(0)
 
 texto.textoSimples('Local da Ocorrência:', 'Arial', 3, False, False, 12, False)
@@ -145,6 +145,7 @@ i=0
 for caixa in dadosDict.keys():  # Lembre-se de criar um método para tratar os loops
     for escola in dadosDict[caixa].keys():
         texto.addMarcadores(f'Endereço {i+1}: {dadosDict[caixa][escola][0]}', 'Arial', 0, False, False, 12)
+        i += 1
 
 q = document.add_paragraph()  # necessário pois, ao usar o método .textoSimples(), um novo .add_paragraph() é iniciado.
 pf = q.paragraph_format
@@ -171,7 +172,7 @@ texto.textoFormat(q, 3, 1.50, 0, 0)
 
 document.add_page_break()
 
-texto1 = """Todos os ativos GPON da Rede Gigametrópole são monitorados pelo software GRAFANA. Dentre os parâmetros monitorados, são de interesse nesse processo de certificação os valores de potência óptica recebidos que são enviados periodicamente pelas ONUs. A certificação é baseadas nos seguintes requisitos:"""
+texto1 = """Todos os ativos GPON da Rede Gigametrópole são monitorados pelo software GRAFANA. Dentre os parâmetros monitorados, são de interesse nesse processo de certificação os valores de potência óptica recebidos que são enviados periodicamente pelas ONU(s). A certificação é baseadas nos seguintes requisitos:"""
 
 texto.textoSimples('1   Certificação', 'Arial', 3, True, False, 12, False)
 texto.addNewLine(0)
@@ -185,8 +186,8 @@ requisitos = ['Comparação entre os valores de potência recebidos antes e depo
 'Comparação entre os valores de potência recebido em cada cliente (ONU) afetado pelo incidente e a média de potência recebida nos outros clientes da mesma célula;',
 'Análise do comportamento do sinal recebido na(s) ONU(s), buscando identificar oscilações relevantes (maiores que 1 dB entorno do valor médio) na magnitude do sinal.']
 
-for i in range(0, len(requisitos)):
-    texto.addMarcadores(requisitos[i], 'Arial', 3, False, False, 12)
+# for i in range(0, len(requisitos)):
+texto.repetMarcadores(requisitos, 'Arial', 3, False, False, 12)
 texto.addNewLine(0)
 
 texto.textoSimples('1.2 Diagnóstico', 'Arial', 3, True, False, 12, False)
@@ -203,27 +204,30 @@ texto.addMarcadores(r1, 'Arial', 3, False, False, 12)
 pj = document.add_paragraph()
 pk = pj.paragraph_format
 pk.left_indent = Inches(0.5)
-r = pj.add_run('R2 – Considerando que o valor médio de potência óptica recebida nas ONUs das escolas, nas células ')
+r = pj.add_run('R2 – Considerando que o valor médio de potência óptica recebida nas ONU(s) das escolas, nas células ')
 pj.style = 'List Bullet'
 estilos.addStyles(r, 'Arial', False, False, 12)
+texto.textoFormat(pj, 3, 1.50, 0, 0)
 
 texto.repeteListaEmUmaLinha(list(dadosDict.keys()), pj, 'Arial', True, False, 12)
 
 r2b = ' é de '
 texto.repeteListaEmUmaLinha(r2b, pj, 'Arial', False, False, 12)
 
-r2c = 'dBm, respectivamente, a potência obtida na(s) ONU(s) após o reparo estão na mesma ordem de grandeza do valor médio?'
+for caixa in dadosDict.keys():  # Lembre-se de criar um método para tratar os loops
+    for escola in dadosDict[caixa].keys():
+        texto.repeteListaEmUmaLinha(str(dadosDict[caixa][escola][1]) + ' dBm, ', pj, 'Arial', False, False, 12)
+
+r2c = ' a potência obtida na(s) ONU(s) após o reparo estão na mesma ordem de grandeza do valor médio?'
 texto.repeteListaEmUmaLinha(r2c, pj, 'Arial', False, False, 12)
 
 r3 = 'R3 – A oscilação no sinal recebido é aceitável?'
 texto.addMarcadores(r3, 'Arial', 3, False, False, 12)
 
-texto.textoFormat(pj, 3, 1.50, 0, 0)
-
-
 # ============================================== Seção 2 ===================================================== #
 
 texto.textoSimples('Legendas das respostas aos requisitos:', 'Arial', 3, False, False, 12, False)
+texto.addNewLine(0)
 texto.textoSimples('1.  OK – Em conformidade;', 'Arial', 3, False, False, 12, True)
 texto.textoSimples('2.  X – Não atende ao requisito.', 'Arial', 3, False, False, 12, True)
 texto.addNewLine(0)

@@ -47,7 +47,7 @@ class CriaTexto:
         paragraph_format = marcador.paragraph_format
         paragraph_format.left_indent = Inches(0.5)
 
-        CriaTexto(document).textoFormat(marcador, alinhamento, 1.50, 0, 0)
+        CriaTexto(self.document).textoFormat(marcador, alinhamento, 1.50, 0, 0)
 
         marcador.style = 'List Bullet'
 
@@ -85,3 +85,12 @@ class CriaTexto:
         else:
             t = p.add_run(dado)
             estilos.addStyles(t, fonte, negrito, italico, tam)
+        
+    def repetMarcadores(self, dado, fonte, alinhamento, negrito, italico, tam):
+        for i in range(0, len(dado)):
+            CriaTexto(self.document).addMarcadores (dado[i], fonte, alinhamento, negrito, italico, tam)
+    
+    def repetMarcadoreDict(self, dadosDict, fonte, alinhamento, negrito, italico, tam):
+        for entidadeSuperior in dadosDict.keys():
+            for entidadeInferior in dadosDict[entidadeSuperior].keys():
+                CriaTexto(self.document).addMarcadores (entidadeInferior, fonte, alinhamento, negrito, italico, tam)
