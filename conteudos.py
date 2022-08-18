@@ -74,6 +74,7 @@ class CriaTexto:
         # newSection.different_first_page_header_footer = True
 
     def repeteListaEmUmaLinha(self, dado, p, fonte, negrito, italico, tam):
+        
         if type(dado) == list:
             for i in range(0, len(dado)):
                 if i < len(dado) - 1:
@@ -94,3 +95,9 @@ class CriaTexto:
         for entidadeSuperior in dadosDict.keys():
             for entidadeInferior in dadosDict[entidadeSuperior].keys():
                 CriaTexto(self.document).addMarcadores (entidadeInferior, fonte, alinhamento, negrito, italico, tam)
+
+    def repetMarcadoreTextRun(self, dado, dadosDict):
+        for caixa in dadosDict.keys():
+            for escola in dadosDict[caixa].keys():
+                estilos.addStyles(dado, 'Arial', True, False, 12)
+                pass

@@ -59,7 +59,7 @@ potAfter = -11
 
 dadosDict = preencheDict.fillDict(dadosDict, celula, entidade, endereco, potMedia, potBefore, potAfter)
 
-print(dadosDict)
+print('Linha 62:', dadosDict)
 
 # ============================================== Margins ===================================================== #
 
@@ -113,16 +113,12 @@ texto.addNewLine(0)
 
 p = document.add_paragraph()  # criar função de repetição com essa linha e o método .addStyles()
 
-# print(list(dadosDict.keys())) #---------------------
-# texto.repeteListaEmUmaLinha(list(dadosDict.keys()), p, 'Arial', True, False, 12)
-
 t1 = p.add_run('Objetivo: certificar o serviço de manutenção corretiva realizado pela empresa Interjato Soluções (')
 estilos.addStyles(t1, 'Arial', False, False, 12)
 estilos.addStyles(p.add_run(f'bilhete {bilhete}'), 'Arial', True, False, 12)
 
 t3 = p.add_run(') para restabelecer à conectividade GPON na(s) célula(s) ')
 estilos.addStyles(t3, 'Arial', False, False, 12)
-# estilos.addStyles(p.add_run(f'{celulas}'), 'Arial', True, False, 12)
 texto.repeteListaEmUmaLinha(list(dadosDict.keys()), p, 'Arial', True, False, 12)
 
 t5 = p.add_run('. Os dados apresentados nesse documento foram obtidos a partir do monitoramento da rede GPON realizado pelo software ')
@@ -133,8 +129,6 @@ texto.addNewLine(0)
 texto.textoSimples ('Entidade(s) afetada(s) pelo rompimento do cabo de fibras óptica:', 'Arial', 3, False, False, 12, False)
 texto.addNewLine(0)
 
-# for caixa in dadosDict.keys():
-#     for escola in dadosDict[caixa].keys():
 texto.repetMarcadoreDict(dadosDict, 'Arial', 0, negrito=True, italico=False, tam=12)
 texto.addNewLine(0)
 
@@ -154,10 +148,11 @@ r = q.add_run('Trecho(s): ')
 q.style = 'List Bullet'
 estilos.addStyles(r, 'Arial', False, False, 12)
 
+# print(type(q.add_run('oi')))
+
 for caixa in dadosDict.keys():
     for escola in dadosDict[caixa].keys():
         estilos.addStyles(q.add_run(f'{caixa.upper()} - {escola.upper()}; '), 'Arial', True, False, 12)
-
 
 texto.addNewLine(0)
 
