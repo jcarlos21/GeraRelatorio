@@ -17,6 +17,7 @@ texto = CriaTexto(document)
 estilos = StylesText(document)
 preencheDict = WriteDict()
 pageConfig = SetupPage(document)
+analise = AnalysisFunc(document)
 
 # Páginas
 
@@ -28,15 +29,15 @@ entidades = ['Entidade 01', 'Entidade 02', 'Entidade 03']
 enderecosEntidade = ['Rua, Numero, Bairro, Cidade/Estado', 'Rua, Numero, Bairro, Cidade/Estado', 'Rua, Numero, Bairro, Cidade/Estado']
 causaCorrecao =  'O rompimento nas fibras foi causado por acidente por árvores.'
 potenciaMedia = [-13.54, -13.44, -17.39]
-potMediaBeforeAfter = {entidades[0]: [-13.54, -17.65, -12.65], entidades[1]: [-13.44, -17.65, -12.65], entidades[2]: [-17.39, -17.65, -12.65]}  # pode ser alimentado via for
+potMediaBeforeAfter = {entidades[0]: [-13.54, -17.65, -12.65], entidades[1]: [-13.44, -17.65, -12.65], entidades[2]: [-17.39, -17.65, -12.65]}
 rangeTeste = 30
 
 celula = 'CELULA 1'
 entidade = 'ENTIDADE 1 DA CELULA 1'
 endereco = 'Rua, Numero, Bairro, Cidade/Estado'
 potMedia = -13
-potBefore = -14
-potAfter = -12
+potBefore = -15
+potAfter = -15
 dadosDict = dict()
 
 dadosDict = preencheDict.fillDict(dadosDict, celula, entidade, endereco, potMedia, potBefore, potAfter)  # dever ser chamada desta forma no botão da interface
@@ -46,7 +47,7 @@ entidade = 'ENTIDADE 2 DA CELULA 1'
 endereco = 'Rua, Numero, Bairro, Cidade/Estado'
 potMedia = -11
 potBefore = -15
-potAfter = -11
+potAfter = -12
 
 dadosDict = preencheDict.fillDict(dadosDict, celula, entidade, endereco, potMedia, potBefore, potAfter)
 
@@ -55,7 +56,7 @@ entidade = 'ENTIDADE 1 DA CELULA 2'
 endereco = 'Rua, Numero, Bairro, Cidade/Estado'
 potMedia = -10
 potBefore = -12
-potAfter = -11
+potAfter = -15
 
 dadosDict = preencheDict.fillDict(dadosDict, celula, entidade, endereco, potMedia, potBefore, potAfter)
 
@@ -64,8 +65,6 @@ print('Linha 62:', dadosDict)
 # ============================================== Margins ===================================================== #
 
 pageConfig.marginsPage(3.0, 3.0, 2.0, 2.0)
-
-# https://stackoverflow.com/questions/56658872/add-page-number-using-python-docx
 
 # ================================================ Capa ====================================================== #
 
@@ -111,7 +110,7 @@ document.add_page_break()
 texto.textoSimples ('Manutenção Corretiva RGM', 'Arial', 1, True, False, 12, False)
 texto.addNewLine(0)
 
-p = document.add_paragraph()  # criar função de repetição com essa linha e o método .addStyles()
+p = document.add_paragraph()
 
 t1 = p.add_run('Objetivo: certificar o serviço de manutenção corretiva realizado pela empresa Interjato Soluções (')
 estilos.addStyles(t1, 'Arial', False, False, 12)
@@ -129,31 +128,21 @@ texto.addNewLine(0)
 texto.textoSimples ('Entidade(s) afetada(s) pelo rompimento do cabo de fibras óptica:', 'Arial', 3, False, False, 12, False)
 texto.addNewLine(0)
 
-texto.repetMarcadoreDict(dadosDict, 'Arial', 0, negrito=True, italico=False, tam=12)
+texto.repetMarcadoreEntidade(dadosDict, 'Arial', 0, negrito=True, italico=False, tam=12)
 texto.addNewLine(0)
 
 texto.textoSimples('Local da Ocorrência:', 'Arial', 3, False, False, 12, False)
 texto.addNewLine(0)
 
-i=0
-for caixa in dadosDict.keys():  # Lembre-se de criar um método para tratar os loops
-    for escola in dadosDict[caixa].keys():
-        texto.addMarcadores(f'Endereço {i+1}: {dadosDict[caixa][escola][0]}', 'Arial', 0, False, False, 12)
-        i += 1
+texto.imprimeMarcadorEndereco(dadosDict, 'Arial', negrito=False, italico=False, tam=12)
 
 q = document.add_paragraph()  # necessário pois, ao usar o método .textoSimples(), um novo .add_paragraph() é iniciado.
 pf = q.paragraph_format
 pf.left_indent = Inches(0.5)
-r = q.add_run('Trecho(s): ')
 q.style = 'List Bullet'
-estilos.addStyles(r, 'Arial', False, False, 12)
+texto.repeteListaEmUmaLinha('Trecho(s): ', q, fonte='Arial', negrito=False, italico=False, tam=12)
 
-# print(type(q.add_run('oi')))
-
-for caixa in dadosDict.keys():
-    for escola in dadosDict[caixa].keys():
-        estilos.addStyles(q.add_run(f'{caixa.upper()} - {escola.upper()}; '), 'Arial', True, False, 12)
-
+texto.imprimeCaixaEntidade(dadosDict, q, fonte='Arial', negrito=True, italico=False, tam=12)
 texto.addNewLine(0)
 
 texto.textoSimples('Informações do Cabo:', 'Arial', 3, False, False, 12, False)
@@ -161,7 +150,7 @@ texto.addNewLine(0)
 texto.addMarcadores(causaCorrecao, 'Arial', 0, False, False, 12)
 
 texto.textoFormat(p, 3, 1.50, 0, 0)
-texto.textoFormat(q, 3, 1.50, 0, 0)
+texto.textoFormat(q, 0, 1.50, 0, 0)
 
 # ============================================== Seção 1 ===================================================== #
 
@@ -181,7 +170,6 @@ requisitos = ['Comparação entre os valores de potência recebidos antes e depo
 'Comparação entre os valores de potência recebido em cada cliente (ONU) afetado pelo incidente e a média de potência recebida nos outros clientes da mesma célula;',
 'Análise do comportamento do sinal recebido na(s) ONU(s), buscando identificar oscilações relevantes (maiores que 1 dB entorno do valor médio) na magnitude do sinal.']
 
-# for i in range(0, len(requisitos)):
 texto.repetMarcadores(requisitos, 'Arial', 3, False, False, 12)
 texto.addNewLine(0)
 
@@ -237,9 +225,24 @@ headerRow = ['ESCOLA', 'R1', 'R2', 'R3']
 texto.alimentaTabela(row, headerRow, 'Arial', 12)
 
 # Você pode criar uma lista para armazenas as entidade. A tabela abaixo deve ser dinâmica, ou seja, deverá avaliar os três requisitos.
-dataDiagnostic = []  # Table data in a form of list
-for i in range(0,3):  # o range do for pode variar em função da quantidade de entidades
-    dataDiagnostic.append([f'Entidade {i+1}', 'OK', 'OK', 'OK'])
+# dataDiagnostic = []  # Table data in a form of list
+# for i in range(0,3):  # o range do for pode variar em função da quantidade de entidades
+#     dataDiagnostic.append([f'Entidade {i+1}', 'OK', 'OK', 'OK'])
+
+dataDiagnostic = list()
+dataDiagnosticPot = list()
+for enS in dadosDict.keys():
+    for enI in dadosDict[enS].keys():
+        a1 = analise.rR1(dadosDict[enS][enI][2], dadosDict[enS][enI][3])
+        a2 = analise.rR2(dadosDict[enS][enI][1], dadosDict[enS][enI][3])
+        a3 = analise.rR3(dadosDict[enS][enI][3])
+        status = analise.rStatus(a1, a2, a3)
+        dataDiagnostic.append([enI, a1, a2, a3])
+        dataDiagnosticPot.append([enI, status])
+
+print(dataDiagnostic)
+print(dataDiagnosticPot)
+
 
 for escola, r1, r2, r3 in dataDiagnostic:  # Adding a row and then adding data in it.
     row = table.add_row().cells
@@ -272,11 +275,11 @@ headerRow2 = ['PONTO ATENDIDO', 'STATUS']
 texto.alimentaTabela(row2, headerRow2, 'Arial', 12)
 
 # A tabela abaixo deve ser dinâmica, ou seja, deverá avaliar os três requisitos.
-dataStatus = []  # Table data in a form of list
-for i in range(0,3):  # o range do for pode variar em função da quantidade de entidades
-    dataStatus.append([f'Entidade {i+1}', 'APROVADO'])
+# dataStatus = []  # Table data in a form of list
+# for i in range(0,3):  # o range do for pode variar em função da quantidade de entidades
+#     dataStatus.append([f'Entidade {i+1}', 'APROVADO'])
 
-for escola, status in dataStatus:  # Adding a row and then adding data in it.
+for escola, status in dataDiagnosticPot:  # Adding a row and then adding data in it.
     row2 = table2.add_row().cells
     listaLinhas2 = [escola, status]
     texto.alimentaTabela(row2, listaLinhas2, 'Arial', 12)

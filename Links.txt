@@ -83,3 +83,5 @@ Tables:
 # https://stackoverflow.com/questions/43051462/python-docx-how-to-set-cell-width-in-tables
 
 # https://stackoverflow.com/questions/32914595/modify-docx-page-margins-with-python-docx
+
+https://stackoverflow.com/questions/56658872/add-page-number-using-python-docx

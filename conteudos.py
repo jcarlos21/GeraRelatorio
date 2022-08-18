@@ -91,13 +91,19 @@ class CriaTexto:
         for i in range(0, len(dado)):
             CriaTexto(self.document).addMarcadores (dado[i], fonte, alinhamento, negrito, italico, tam)
     
-    def repetMarcadoreDict(self, dadosDict, fonte, alinhamento, negrito, italico, tam):
-        for entidadeSuperior in dadosDict.keys():
-            for entidadeInferior in dadosDict[entidadeSuperior].keys():
+    def repetMarcadoreEntidade(self, dado, fonte, alinhamento, negrito, italico, tam):
+        for entidadeSuperior in dado.keys():
+            for entidadeInferior in dado[entidadeSuperior].keys():
                 CriaTexto(self.document).addMarcadores (entidadeInferior, fonte, alinhamento, negrito, italico, tam)
 
-    def repetMarcadoreTextRun(self, dado, dadosDict):
-        for caixa in dadosDict.keys():
-            for escola in dadosDict[caixa].keys():
-                estilos.addStyles(dado, 'Arial', True, False, 12)
-                pass
+    def imprimeMarcadorEndereco(self, dado, fonte, negrito, italico, tam):
+        i=0
+        for entidadeSuiperior in dado.keys():
+            for entidadeInferior in dado[entidadeSuiperior].keys():
+                CriaTexto(self.document).addMarcadores(f'Endereço {i+1}: {dado[entidadeSuiperior][entidadeInferior][0]}', fonte, 0, negrito, italico, tam)
+                i += 1
+    
+    def imprimeCaixaEntidade(self, dado, p, fonte, negrito, italico, tam):
+        for entidadeSuperior in dado.keys():
+            for entidadeInferior in dado[entidadeSuperior].keys():
+                estilos.addStyles(p.add_run(f'{entidadeSuperior.upper()} - {entidadeInferior.upper()}; '), fonte, negrito, italico, tam)

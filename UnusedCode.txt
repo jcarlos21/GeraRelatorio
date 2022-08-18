@@ -74,3 +74,22 @@ potAfter = 0
 
 dadosDict = preencheDict.fillDict(dadosDict, celula, entidade, endereco, potMedia, potBefore, potAfter)
 print(dadosDict)
+
+
+    def imprimeMarcadorEndereco(self, dado, p, fonte, negrito, italico, tam):
+        
+        i=0
+        # p.paragraph_format.left_indent = Inches(0.5)
+        # f.left_indent = Inches(0.5)
+        # p.style = 'List Bullet'
+
+        for entidadeSuiperior in dado.keys():  # Lembre-se de criar um método para tratar os loops
+            for entidadeInferior in dado[entidadeSuiperior].keys():
+                # t = p.add_run(f'Endereço {i+1}: ')
+                # s = p.add_run(f'{dado[entidadeSuiperior][entidadeInferior][0]}; \n')
+                # estilos.addStyles(t, fonte, negrito1, italico, tam)
+                # estilos.addStyles(s, fonte, negrito2, italico, tam)
+                # CriaTexto(self.document).textoFormat(p, 0, 1.50, 0, 0)
+                # p.style = 'List Bullet'
+                CriaTexto(self.document).addMarcadores(f'Endereço {i+1}: {dado[entidadeSuiperior][entidadeInferior][0]}', fonte, 0, negrito, italico, tam)
+                i += 1
