@@ -35,9 +35,9 @@ rangeTeste = 30
 celula = 'CELULA 1'
 entidade = 'ENTIDADE 1 DA CELULA 1'
 endereco = 'Rua, Numero, Bairro, Cidade/Estado'
-potMedia = -13
+potMedia = -14
 potBefore = -15
-potAfter = -15
+potAfter = -17
 dadosDict = dict()
 
 dadosDict = preencheDict.fillDict(dadosDict, celula, entidade, endereco, potMedia, potBefore, potAfter)  # dever ser chamada desta forma no botão da interface
@@ -223,11 +223,6 @@ table = document.add_table(rows=1, cols=4)
 row = table.rows[0].cells
 headerRow = ['ESCOLA', 'R1', 'R2', 'R3']
 texto.alimentaTabela(row, headerRow, 'Arial', 12)
-
-# Você pode criar uma lista para armazenas as entidade. A tabela abaixo deve ser dinâmica, ou seja, deverá avaliar os três requisitos.
-# dataDiagnostic = []  # Table data in a form of list
-# for i in range(0,3):  # o range do for pode variar em função da quantidade de entidades
-#     dataDiagnostic.append([f'Entidade {i+1}', 'OK', 'OK', 'OK'])
 
 dataDiagnostic = list()
 dataDiagnosticPot = list()
