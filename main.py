@@ -225,6 +225,7 @@ headerRow = ['ESCOLA', 'R1', 'R2', 'R3']
 texto.alimentaTabela(row, headerRow, 'Arial', 12)
 
 dataDiagnostic = list()
+dataDiagnosticStatus = list()
 dataDiagnosticPot = list()
 for enS in dadosDict.keys():
     for enI in dadosDict[enS].keys():
@@ -233,9 +234,11 @@ for enS in dadosDict.keys():
         a3 = analise.rR3(dadosDict[enS][enI][3])
         status = analise.rStatus(a1, a2, a3)
         dataDiagnostic.append([enI, a1, a2, a3])
-        dataDiagnosticPot.append([enI, status])
+        dataDiagnosticStatus.append([enI, status])
+        dataDiagnosticPot.append([enI, dadosDict[enS][enI][2], dadosDict[enS][enI][3]])
 
 print(dataDiagnostic)
+print(dataDiagnosticStatus)
 print(dataDiagnosticPot)
 
 
@@ -274,7 +277,7 @@ texto.alimentaTabela(row2, headerRow2, 'Arial', 12)
 # for i in range(0,3):  # o range do for pode variar em função da quantidade de entidades
 #     dataStatus.append([f'Entidade {i+1}', 'APROVADO'])
 
-for escola, status in dataDiagnosticPot:  # Adding a row and then adding data in it.
+for escola, status in dataDiagnosticStatus:  # Adding a row and then adding data in it.
     row2 = table2.add_row().cells
     listaLinhas2 = [escola, status]
     texto.alimentaTabela(row2, listaLinhas2, 'Arial', 12)
