@@ -35,8 +35,8 @@ rangeTeste = 30
 celula = 'CELULA 1'
 entidade = 'ENTIDADE 1 DA CELULA 1'
 endereco = 'Rua, Numero, Bairro, Cidade/Estado'
-potMedia = -14
-potBefore = -15
+potMedia = -16
+potBefore = -16
 potAfter = -17
 dadosDict = dict()
 
@@ -46,8 +46,8 @@ celula = 'CELULA 1'
 entidade = 'ENTIDADE 2 DA CELULA 1'
 endereco = 'Rua, Numero, Bairro, Cidade/Estado'
 potMedia = -11
-potBefore = -15
-potAfter = -12
+potBefore = -15.80
+potAfter = -12.79
 
 dadosDict = preencheDict.fillDict(dadosDict, celula, entidade, endereco, potMedia, potBefore, potAfter)
 
@@ -55,8 +55,8 @@ celula = 'CELULA 2'
 entidade = 'ENTIDADE 1 DA CELULA 2'
 endereco = 'Rua, Numero, Bairro, Cidade/Estado'
 potMedia = -10
-potBefore = -12
-potAfter = -15
+potBefore = -12.85
+potAfter = -15.64
 
 dadosDict = preencheDict.fillDict(dadosDict, celula, entidade, endereco, potMedia, potBefore, potAfter)
 
@@ -235,7 +235,7 @@ for enS in dadosDict.keys():
         status = analise.rStatus(a1, a2, a3)
         dataDiagnostic.append([enI, a1, a2, a3])
         dataDiagnosticStatus.append([enI, status])
-        dataDiagnosticPot.append([enI, dadosDict[enS][enI][2], dadosDict[enS][enI][3]])
+        dataDiagnosticPot.append([enI, str(dadosDict[enS][enI][2]), str(dadosDict[enS][enI][3])])
 
 print(dataDiagnostic)
 print(dataDiagnosticStatus)
@@ -309,7 +309,7 @@ dataStatus = []  # Table data in a form of list
 for i in range(0,3):  # o range do for pode variar em função da quantidade de entidades
     dataStatus.append([f'Entidade {i+1}', str(-17.65), str(-12.65)])
 
-for escola, ptA, ptD in dataStatus:  # Adding a row and then adding data in it.
+for escola, ptA, ptD in dataDiagnosticPot:  # Adding a row and then adding data in it.
     row3 = table3.add_row().cells
     listaLinhas3 = [escola, ptA, ptD]
     texto.alimentaTabela(row3, listaLinhas3, 'Arial', 12)
