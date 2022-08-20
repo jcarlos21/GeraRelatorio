@@ -272,11 +272,6 @@ row2 = table2.rows[0].cells
 headerRow2 = ['PONTO ATENDIDO', 'STATUS']
 texto.alimentaTabela(row2, headerRow2, 'Arial', 12)
 
-# A tabela abaixo deve ser dinâmica, ou seja, deverá avaliar os três requisitos.
-# dataStatus = []  # Table data in a form of list
-# for i in range(0,3):  # o range do for pode variar em função da quantidade de entidades
-#     dataStatus.append([f'Entidade {i+1}', 'APROVADO'])
-
 for escola, status in dataDiagnosticStatus:  # Adding a row and then adding data in it.
     row2 = table2.add_row().cells
     listaLinhas2 = [escola, status]
