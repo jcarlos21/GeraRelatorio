@@ -24,12 +24,7 @@ analise = AnalysisFunc(document)
 # ================================= Dados para alimentação do relatório ====================================== #
 
 bilhete = '20XX.X-BRXX'
-celulas = '*Nome da caixa*'
-entidades = ['Entidade 01', 'Entidade 02', 'Entidade 03']
-enderecosEntidade = ['Rua, Numero, Bairro, Cidade/Estado', 'Rua, Numero, Bairro, Cidade/Estado', 'Rua, Numero, Bairro, Cidade/Estado']
 causaCorrecao =  'O rompimento nas fibras foi causado por acidente por árvores.'
-potenciaMedia = [-13.54, -13.44, -17.39]
-potMediaBeforeAfter = {entidades[0]: [-13.54, -17.65, -12.65], entidades[1]: [-13.44, -17.65, -12.65], entidades[2]: [-17.39, -17.65, -12.65]}
 rangeTeste = 30
 
 celula = 'CELULA 1'
@@ -323,16 +318,17 @@ texto.addNewLine(0)
 texto.addMarcadores ('PRxA [dBm] - Potência óptica recebida na ONU antes do incidente;', 'Arial', 3, False, False, 12)
 texto.addMarcadores ('PRxB [dBm] - Potência óptica recebida na ONU após o reparo.', 'Arial', 3, False, False, 12)
 
+
 # ============================================== Seção 3 ===================================================== #
 document.add_page_break()
 
-texto3 = f'No(s) gráfico(s) apresentado(s) na(s) figura(s) a seguir, os resultados mostram o comportamento do sinal recebido durante o período de {rangeTeste} dias para as escolas {entidades}, considerando antes e após o serviço de reparação ser executado. É importante ressaltar que no decorrer do período de amostragem apresentado no(s) gráfico(s) podem ocorrer intervalos sem amostras, como o período de observação é grande e os dados são enviados pelas ONU, é possível que em algum momento o equipamento seja desligado.'
+texto3 = f'No(s) gráfico(s) apresentado(s) na(s) figura(s) a seguir, os resultados mostram o comportamento do sinal recebido durante o período de {rangeTeste} dias, considerando antes e após o serviço de reparação ser executado. É importante ressaltar que no decorrer do período de amostragem apresentado no(s) gráfico(s) podem ocorrer intervalos sem amostras, como o período de observação é grande e os dados são enviados pelas ONU, é possível que em algum momento o equipamento seja desligado.'
 texto.textoSimples(texto3, 'Arial', 3, False, False, 12, True)
 texto.addNewLine(0)
 
-for i in range(0, len(entidades)):
-    texto.textoSimples(f'Figura {i+1} - Monitoramento GPON: potência óptica recebida na ONU da {entidades[i]}', 'Arial', 1, False, False, 12, False)
-    document.add_picture(f'img/{str(i+1)}.JPG')
+for i in range(0, len(dataDiagnosticStatus)):
+    texto.textoSimples(f'Figura {i+1} - Monitoramento GPON: potência óptica recebida na ONU da {dataDiagnosticStatus[i][0]}', 'Arial', 1, False, False, 12, False)
+    document.add_picture(f'img/0{str(i+1)}.JPG')
     texto.addNewLine(0)
 
 # ============================================== Seção 4 ===================================================== #
