@@ -349,11 +349,10 @@ document.save(f"REPORT_{bilhete}.docx")  # deve ser chamada pelo botão da inter
 
 # ========================================== Interface Gráfica =============================================== #
 
-# from tkinter import *
-# # from Tkinter import *
-# from tkinter import messagebox
-# # from Tkinter import messagebox
-import Tkinter 
+from tkinter import *
+# from Tkinter import *
+from tkinter import messagebox
+# from Tkinter import messagebox
 
 class ScreenMain:
     def __init__(self, root):
@@ -390,7 +389,7 @@ class ScreenMain:
             exit()
 
 
-root = ff.Tk()
+root = Tk()
 obj = ScreenMain(root)
 
 if __name__ == "__main__":
