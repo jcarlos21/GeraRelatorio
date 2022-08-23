@@ -11,6 +11,7 @@ from pageSetup import SetupPage
 from analysisFunctions import AnalysisFunc
 from dictFill import WriteDict
 from docx.oxml import OxmlElement, ns
+import datetime
 
 document = Document()
 texto = CriaTexto(document)
@@ -26,6 +27,7 @@ analise = AnalysisFunc(document)
 bilhete = '20XX.X-BRXX'
 causaCorrecao =  'O rompimento nas fibras foi causado por acidente por árvores.'
 rangeTeste = 30
+observations = ""
 
 celula = 'CELULA 1'
 entidade = 'ENTIDADE 1 DA CELULA 1'
@@ -347,50 +349,78 @@ document.save(f"REPORT_{bilhete}.docx")  # deve ser chamada pelo botão da inter
 
 # ========================================== Interface Gráfica =============================================== #
 
-# from tkinter import *
-# from tkinter import messagebox
+from tkinter import *
+# from Tkinter import *
+from tkinter import messagebox
+# from Tkinter import messagebox
 
-# class ScreenMain:
-#     def __init__(self, root):
-#         self.root = root
-#         self.root.title("Gerador de Relatórios - POP-RN/RNP")
-#         self.root.configure(background="blue")
-#         self.root.geometry("700x500")
-#         self.root.iconbitmap("imgMainScreen/doc2.ico")
-#         self.root.resizable(False, False)
+class ScreenMain:
+    def __init__(self, root):
+        self.root = root
+        self.root.title("Gerador de Relatórios - POP-RN/RNP")
+        self.root.configure(background="blue")
+        self.root.geometry("700x500")
+        self.root.iconbitmap("imgMainScreen/doc2.ico")
+        self.root.resizable(False, False)
 
-#         # ============= Imagem de Fundo ================================== #
-#         self.backGroundImage = PhotoImage(file="imgMainScreen/background1.png")
-#         Label(root, image=self.backGroundImage).place(x=0, y=0)
+        # ============= Imagem de Fundo ================================== #
+        self.backGroundImage = PhotoImage(file="imgMainScreen/background1.png")
+        Label(root, image=self.backGroundImage).place(x=0, y=0)
 
-#         # ==================== Barra de Menu ============================= #
-#         self.menubar = Menu(root)
-#         self.file = Menu(root, tearoff=False)
-#         self.file.add_separator()
-#         self.file.add_command(label="Exit", command=self.exitLogin)
-#         self.menubar.add_cascade(label="File", menu=self.file)
+        # ==================== Barra de Menu ============================= #
+        self.menubar = Menu(root)
+        self.file = Menu(root, tearoff=False)
+        self.file.add_separator()
+        self.file.add_command(label="Exit", command=self.exitLogin)
+        self.menubar.add_cascade(label="File", menu=self.file)
 
-#         self.file2 = Menu(root, tearoff=False)
-#         self.file2.add_command(label="Version 1.0")
-#         self.menubar.add_cascade(label="About", menu=self.file2)
+        self.file2 = Menu(root, tearoff=False)
+        self.file2.add_command(label="Version 1.0")
+        self.menubar.add_cascade(label="About", menu=self.file2)
 
-#         self.root.config(menu=self.menubar)
+        self.root.config(menu=self.menubar)
 
-#         # ==================== Botões ============================= #
+        # ==================== Botões ============================= #
     
-#     def exitLogin(self):
-#         self.result = messagebox.askquestion('System', 'Are you sure you want to exit?', icon="warning")
-#         if self.result == 'yes':
-#             self.root.destroy()
-#             exit()
+    def exitLogin(self):
+        self.result = messagebox.askquestion('System', 'Are you sure you want to exit?', icon="warning")
+        if self.result == 'yes':
+            self.root.destroy()
+            exit()
 
 
-# root = Tk()
-# obj = ScreenMain(root)
+root = ff.Tk()
+obj = ScreenMain(root)
 
-# if __name__ == "__main__":
-#     root.mainloop()
+if __name__ == "__main__":
+    root.mainloop()
 
 # git config --list
 # git pull
+
+
+# d = datetime.datetime.today().strftime('%d')
+# m = datetime.datetime.today().strftime('%B')
+# y = datetime.datetime.today().strftime('%Y')
+
+# nomeTecnico = '*Nome do Técnico*'
+# matriculaTecnico = '****'
+# nomeBolsista = '*Nome do bolsista*'
+# matriculaBolsista = '*Matrícula do bolsista*'
+# data = f'{d} de {m} de {y}'
+
+# bilhete = '20XX.X-BRXX'
+# causaCorrecao =  'O rompimento nas fibras foi causado por acidente por árvores.'
+# rangeTeste = 30
+# observations = ""
+
+# celula = 'CELULA 1'
+# entidade = 'ENTIDADE 1 DA CELULA 1'
+# endereco = 'Rua, Numero, Bairro, Cidade/Estado'
+# potMedia = -16
+# potBefore = -16
+# potAfter = -17
+# dadosDict = dict()
+
+# dadosDict = preencheDict.fillDict(dadosDict, celula, entidade, endereco, potMedia, potBefore, potAfter)  # dever ser chamada desta forma no botão da interface
 
