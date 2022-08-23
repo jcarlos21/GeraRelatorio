@@ -352,6 +352,7 @@ document.save(f"REPORT_{bilhete}.docx")  # deve ser chamada pelo botão da inter
 from tkinter import *
 # from Tkinter import *
 from tkinter import messagebox
+from tkinter import ttk
 # from Tkinter import messagebox
 
 class ScreenMain:
@@ -390,12 +391,39 @@ class ScreenMain:
 
         # ==================== Botões ============================= #
         Label(whiteScreen, text="Entre com as informações", font=("times new roman", 15, "bold"), bg="white", fg="#016AFB").place(x=120, y=10)
-        Label(whiteScreen, text="Técnico:", font=("times new roman", 12, "bold"), bg="white", fg="gray").place(x=120, y=50)
-        Entry(whiteScreen, font=("times new roman", 12), bg="lightgray").place(x=180, y=50, width=150)
+        Label(whiteScreen, text="Bilhete:", font=("times new roman", 12, "bold"), bg="white", fg="gray").place(x=120, y=60)
+        Entry(whiteScreen, font=("times new roman", 12), bg="lightgray").place(x=185, y=60, width=120)
 
-        Label(whiteScreen, text="Mat.:", font=("times new roman", 12, "bold"), bg="white", fg="gray").place(x=120, y=50)
-        Entry(whiteScreen, font=("times new roman", 12), bg="lightgray").place(x=180, y=90, width=80)
+        Label(whiteScreen, text="Célula:", font=("times new roman", 12, "bold"), bg="white", fg="gray").place(x=310, y=60)
+        Entry(whiteScreen, font=("times new roman", 12), bg="lightgray").place(x=370, y=60, width=120)
+
+        Label(whiteScreen, text="Data:", font=("times new roman", 12, "bold"), bg="white", fg="gray").place(x=495, y=60)
+        Entry(whiteScreen, font=("times new roman", 12), bg="lightgray").place(x=545, y=60, width=130)
+
+        Label(whiteScreen, text="Entidade:", font=("times new roman", 12, "bold"), bg="white", fg="gray").place(x=120, y=100)
+        Entry(whiteScreen, font=("times new roman", 12), bg="lightgray").place(x=195, y=100, width=165)
+
+        Label(whiteScreen, text="P.M.:", font=("times new roman", 12, "bold"), bg="white", fg="gray").place(x=365, y=100)
+        Entry(whiteScreen, font=("times new roman", 12), bg="lightgray").place(x=415, y=100, width=50)
     
+        Label(whiteScreen, text="P.A.:", font=("times new roman", 12, "bold"), bg="white", fg="gray").place(x=475, y=100)
+        Entry(whiteScreen, font=("times new roman", 12), bg="lightgray").place(x=520, y=100, width=50)
+
+        Label(whiteScreen, text="P.D.:", font=("times new roman", 12, "bold"), bg="white", fg="gray").place(x=580, y=100)
+        Entry(whiteScreen, font=("times new roman", 12), bg="lightgray").place(x=625, y=100, width=50)
+
+        Label(whiteScreen, text="Endereço:", font=("times new roman", 12, "bold"), bg="white", fg="gray").place(x=120, y=140)
+        Entry(whiteScreen, font=("times new roman", 12), bg="lightgray").place(x=195, y=140, width=240)
+
+        Label(whiteScreen, text="Testagem:", font=("times new roman", 12, "bold"), bg="white", fg="gray").place(x=440, y=140)
+        # Entry(whiteScreen, font=("times new roman", 12), bg="lightgray").place(x=530, y=140, width=70)
+
+        stateChosen = StringVar()
+        stateChoose = ttk.Combobox(whiteScreen, textvariable=stateChosen, width=21)
+        stateChoose['values'] = ['10 dais', '20 dias', '30 dias', '40 dias', '50 dias', '60 dias']
+        stateChoose.grid(column=0, row=0, padx=525, pady=140)
+        stateChoose.current(0)
+
     def exitLogin(self):
         self.result = messagebox.askquestion('System', 'Are you sure you want to exit?', icon="warning")
         if self.result == 'yes':
