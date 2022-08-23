@@ -359,17 +359,25 @@ class ScreenMain:
         self.root = root
         self.root.title("Gerador de Relatórios - POP-RN/RNP")
         self.root.configure(background="blue")
-        self.root.geometry("700x500")
+        self.root.geometry("900x500")
         self.root.iconbitmap("imgMainScreen/doc2.ico")
         self.root.resizable(False, False)
 
         # ============= Imagem de Fundo ================================== #
-        self.backGroundImage = PhotoImage(file="imgMainScreen/background1.png")
+        self.backGroundImage = PhotoImage(file="imgMainScreen/background8.png")
         Label(root, image=self.backGroundImage).place(x=0, y=0)
 
+        whiteScreen = Frame(self.root, bg="white")
+        whiteScreen.place(x=150, y=40, width=700, height=400)
+
+        photo = PhotoImage(file="imgMainScreen/Jump.png")
+        labelphoto = Label(root, width=200, height=300, image=photo)
+        labelphoto.place(x=50, y=85)
+        labelphoto.image = photo
+
         # ==================== Barra de Menu ============================= #
-        self.menubar = Menu(root)
-        self.file = Menu(root, tearoff=False)
+        self.menubar = Menu(self.root)
+        self.file = Menu(self.root, tearoff=False)
         self.file.add_separator()
         self.file.add_command(label="Exit", command=self.exitLogin)
         self.menubar.add_cascade(label="File", menu=self.file)
@@ -381,6 +389,12 @@ class ScreenMain:
         self.root.config(menu=self.menubar)
 
         # ==================== Botões ============================= #
+        Label(whiteScreen, text="Entre com as informações", font=("times new roman", 15, "bold"), bg="white", fg="#016AFB").place(x=120, y=10)
+        Label(whiteScreen, text="Técnico:", font=("times new roman", 12, "bold"), bg="white", fg="gray").place(x=120, y=50)
+        Entry(whiteScreen, font=("times new roman", 12), bg="lightgray").place(x=180, y=50, width=150)
+
+        Label(whiteScreen, text="Mat.:", font=("times new roman", 12, "bold"), bg="white", fg="gray").place(x=120, y=50)
+        Entry(whiteScreen, font=("times new roman", 12), bg="lightgray").place(x=180, y=90, width=80)
     
     def exitLogin(self):
         self.result = messagebox.askquestion('System', 'Are you sure you want to exit?', icon="warning")
