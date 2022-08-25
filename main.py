@@ -392,10 +392,10 @@ class ScreenMain:
         # ==================== Botões ============================= #
         Label(whiteScreen, text="Entre com as informações", font=("times new roman", 15, "bold"), bg="white", fg="#016AFB").place(x=120, y=10)
         Label(whiteScreen, text="Bilhete:", font=("times new roman", 12, "bold"), bg="white", fg="gray").place(x=120, y=60)
-        Entry(whiteScreen, font=("times new roman", 12), bg="lightgray").place(x=185, y=60, width=120)
+        Entry(whiteScreen, font=("times new roman", 12), bg="lightgray").place(x=195, y=60, width=120)
 
-        Label(whiteScreen, text="Célula:", font=("times new roman", 12, "bold"), bg="white", fg="gray").place(x=310, y=60)
-        Entry(whiteScreen, font=("times new roman", 12), bg="lightgray").place(x=370, y=60, width=120)
+        Label(whiteScreen, text="Célula:", font=("times new roman", 12, "bold"), bg="white", fg="gray").place(x=320, y=60)
+        Entry(whiteScreen, font=("times new roman", 12), bg="lightgray").place(x=380, y=60, width=110)
 
         Label(whiteScreen, text="Data:", font=("times new roman", 12, "bold"), bg="white", fg="gray").place(x=495, y=60)
         Entry(whiteScreen, font=("times new roman", 12), bg="lightgray").place(x=545, y=60, width=130)
@@ -416,13 +416,21 @@ class ScreenMain:
         Entry(whiteScreen, font=("times new roman", 12), bg="lightgray").place(x=195, y=140, width=240)
 
         Label(whiteScreen, text="Testagem:", font=("times new roman", 12, "bold"), bg="white", fg="gray").place(x=440, y=140)
-        # Entry(whiteScreen, font=("times new roman", 12), bg="lightgray").place(x=530, y=140, width=70)
 
         stateChosen = StringVar()
         stateChoose = ttk.Combobox(whiteScreen, textvariable=stateChosen, width=21)
         stateChoose['values'] = ['10 dais', '20 dias', '30 dias', '40 dias', '50 dias', '60 dias']
         stateChoose.grid(column=0, row=0, padx=525, pady=140)
         stateChoose.current(0)
+
+        Label(whiteScreen, text="Motivo:", font=("times new roman", 12, "bold"), bg="white", fg="gray").place(x=120, y=180)
+        Entry(whiteScreen, font=("times new roman", 12), bg="lightgray").place(x=195, y=180, width=480)
+
+        Label(whiteScreen, text="Técnico:", font=("times new roman", 12, "bold"), bg="white", fg="gray").place(x=120, y=220)
+        Entry(whiteScreen, font=("times new roman", 12), bg="lightgray").place(x=195, y=220, width=280)
+
+        Label(whiteScreen, text="Matrícula:", font=("times new roman", 12, "bold"), bg="white", fg="gray").place(x=480, y=220)
+        Entry(whiteScreen, font=("times new roman", 12), bg="lightgray").place(x=560, y=220, width=115)
 
     def exitLogin(self):
         self.result = messagebox.askquestion('System', 'Are you sure you want to exit?', icon="warning")
