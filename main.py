@@ -366,15 +366,15 @@ class ScreenMain:
 
         # ============= Imagem de Fundo ================================== #
         self.backGroundImage = PhotoImage(file="imgMainScreen/background8.png")
-        Label(root, image=self.backGroundImage).place(x=0, y=0)
+        Label(self.root, image=self.backGroundImage).place(x=0, y=0)
 
-        whiteScreen = Frame(self.root, bg="white")
-        whiteScreen.place(x=150, y=40, width=700, height=400)
+        self.whiteScreen = Frame(self.root, bg="white")
+        self.whiteScreen.place(x=150, y=40, width=700, height=400)
 
-        photo = PhotoImage(file="imgMainScreen/Jump.png")
-        labelphoto = Label(root, width=200, height=300, image=photo)
-        labelphoto.place(x=50, y=85)
-        labelphoto.image = photo
+        self.photo = PhotoImage(file="imgMainScreen/Jump.png")
+        self.labelphoto = Label(self.root, width=200, height=300, image=self.photo)
+        self.labelphoto.place(x=50, y=85)
+        self.labelphoto.image = self.photo
 
         # ==================== Barra de Menu ============================= #
         self.menubar = Menu(self.root)
@@ -389,48 +389,54 @@ class ScreenMain:
 
         self.root.config(menu=self.menubar)
 
-        # ==================== Botões ============================= #
-        Label(whiteScreen, text="Entre com as informações", font=("times new roman", 15, "bold"), bg="white", fg="#016AFB").place(x=120, y=10)
-        Label(whiteScreen, text="Bilhete:", font=("times new roman", 12, "bold"), bg="white", fg="gray").place(x=120, y=60)
-        Entry(whiteScreen, font=("times new roman", 12), bg="lightgray").place(x=195, y=60, width=120)
+        # ==================== Textos e Botões ============================= #
+        Label(self.whiteScreen, text="Entre com as informações", font=("times new roman", 15, "bold"), bg="white", fg="#016AFB").place(x=120, y=10)
+        Label(self.whiteScreen, text="Bilhete:", font=("times new roman", 12, "bold"), bg="white", fg="gray").place(x=120, y=60)
+        self.bilhete = Entry(self.whiteScreen, font=("times new roman", 12), bg="lightgray").place(x=195, y=60, width=120)
 
-        Label(whiteScreen, text="Célula:", font=("times new roman", 12, "bold"), bg="white", fg="gray").place(x=320, y=60)
-        Entry(whiteScreen, font=("times new roman", 12), bg="lightgray").place(x=380, y=60, width=110)
+        Label(self.whiteScreen, text="Célula:", font=("times new roman", 12, "bold"), bg="white", fg="gray").place(x=320, y=60)
+        self.celula = Entry(self.whiteScreen, font=("times new roman", 12), bg="lightgray").place(x=380, y=60, width=110)
 
-        Label(whiteScreen, text="Data:", font=("times new roman", 12, "bold"), bg="white", fg="gray").place(x=495, y=60)
-        Entry(whiteScreen, font=("times new roman", 12), bg="lightgray").place(x=545, y=60, width=130)
+        Label(self.whiteScreen, text="Data:", font=("times new roman", 12, "bold"), bg="white", fg="gray").place(x=495, y=60)
+        self.data = Entry(self.whiteScreen, font=("times new roman", 12), bg="lightgray").place(x=545, y=60, width=130)
 
-        Label(whiteScreen, text="Entidade:", font=("times new roman", 12, "bold"), bg="white", fg="gray").place(x=120, y=100)
-        Entry(whiteScreen, font=("times new roman", 12), bg="lightgray").place(x=195, y=100, width=165)
+        Label(self.whiteScreen, text="Entidade:", font=("times new roman", 12, "bold"), bg="white", fg="gray").place(x=120, y=100)
+        self.entidade = Entry(self.whiteScreen, font=("times new roman", 12), bg="lightgray").place(x=195, y=100, width=165)
 
-        Label(whiteScreen, text="P.M.:", font=("times new roman", 12, "bold"), bg="white", fg="gray").place(x=365, y=100)
-        Entry(whiteScreen, font=("times new roman", 12), bg="lightgray").place(x=415, y=100, width=50)
+        Label(self.whiteScreen, text="P.M.:", font=("times new roman", 12, "bold"), bg="white", fg="gray").place(x=365, y=100)
+        self.p_A = Entry(self.whiteScreen, font=("times new roman", 12), bg="lightgray").place(x=415, y=100, width=50)
     
-        Label(whiteScreen, text="P.A.:", font=("times new roman", 12, "bold"), bg="white", fg="gray").place(x=475, y=100)
-        Entry(whiteScreen, font=("times new roman", 12), bg="lightgray").place(x=520, y=100, width=50)
+        Label(self.whiteScreen, text="P.A.:", font=("times new roman", 12, "bold"), bg="white", fg="gray").place(x=475, y=100)
+        self.p_A = Entry(self.whiteScreen, font=("times new roman", 12), bg="lightgray").place(x=520, y=100, width=50)
 
-        Label(whiteScreen, text="P.D.:", font=("times new roman", 12, "bold"), bg="white", fg="gray").place(x=580, y=100)
-        Entry(whiteScreen, font=("times new roman", 12), bg="lightgray").place(x=625, y=100, width=50)
+        Label(self.whiteScreen, text="P.D.:", font=("times new roman", 12, "bold"), bg="white", fg="gray").place(x=580, y=100)
+        self.p_D = Entry(self.whiteScreen, font=("times new roman", 12), bg="lightgray").place(x=625, y=100, width=50)
 
-        Label(whiteScreen, text="Endereço:", font=("times new roman", 12, "bold"), bg="white", fg="gray").place(x=120, y=140)
-        Entry(whiteScreen, font=("times new roman", 12), bg="lightgray").place(x=195, y=140, width=240)
+        Label(self.whiteScreen, text="Endereço:", font=("times new roman", 12, "bold"), bg="white", fg="gray").place(x=120, y=140)
+        self.endereco = Entry(self.whiteScreen, font=("times new roman", 12), bg="lightgray").place(x=195, y=140, width=240)
 
-        Label(whiteScreen, text="Testagem:", font=("times new roman", 12, "bold"), bg="white", fg="gray").place(x=440, y=140)
+        Label(self.whiteScreen, text="Testagem:", font=("times new roman", 12, "bold"), bg="white", fg="gray").place(x=440, y=140)
 
-        stateChosen = StringVar()
-        stateChoose = ttk.Combobox(whiteScreen, textvariable=stateChosen, width=21)
-        stateChoose['values'] = ['10 dais', '20 dias', '30 dias', '40 dias', '50 dias', '60 dias']
-        stateChoose.grid(column=0, row=0, padx=525, pady=140)
-        stateChoose.current(0)
+        self.stateChosen = StringVar()
+        self.stateChoose = ttk.Combobox(self.whiteScreen, textvariable=self.stateChosen, width=21)
+        self.stateChoose['values'] = ['10 dais', '20 dias', '30 dias', '40 dias', '50 dias', '60 dias']
+        self.stateChoose.grid(column=0, row=0, padx=525, pady=140)
+        self.stateChoose.current(0)
 
-        Label(whiteScreen, text="Motivo:", font=("times new roman", 12, "bold"), bg="white", fg="gray").place(x=120, y=180)
-        Entry(whiteScreen, font=("times new roman", 12), bg="lightgray").place(x=195, y=180, width=480)
+        Label(self.whiteScreen, text="Motivo:", font=("times new roman", 12, "bold"), bg="white", fg="gray").place(x=120, y=180)
+        self.motivo = Entry(self.whiteScreen, font=("times new roman", 12), bg="lightgray").place(x=195, y=180, width=480)
 
-        Label(whiteScreen, text="Técnico:", font=("times new roman", 12, "bold"), bg="white", fg="gray").place(x=120, y=220)
-        Entry(whiteScreen, font=("times new roman", 12), bg="lightgray").place(x=195, y=220, width=280)
+        Label(self.whiteScreen, text="Técnico:", font=("times new roman", 12, "bold"), bg="white", fg="gray").place(x=120, y=220)
+        self.tecnico = Entry(self.whiteScreen, font=("times new roman", 12), bg="lightgray").place(x=195, y=220, width=280)
 
-        Label(whiteScreen, text="Matrícula:", font=("times new roman", 12, "bold"), bg="white", fg="gray").place(x=480, y=220)
-        Entry(whiteScreen, font=("times new roman", 12), bg="lightgray").place(x=560, y=220, width=115)
+        Label(self.whiteScreen, text="Matrícula:", font=("times new roman", 12, "bold"), bg="white", fg="gray").place(x=480, y=220)
+        self.matricula_tecnico = Entry(self.whiteScreen, font=("times new roman", 12), bg="lightgray").place(x=560, y=220, width=115)
+
+        Label(self.whiteScreen, text="Bolsista:", font=("times new roman", 12, "bold"), bg="white", fg="gray").place(x=120, y=260)
+        self.bolsista = Entry(self.whiteScreen, font=("times new roman", 12), bg="lightgray").place(x=195, y=260, width=280)
+
+        Label(self.whiteScreen, text="Matrícula:", font=("times new roman", 12, "bold"), bg="white", fg="gray").place(x=480, y=260)
+        self.matricula_bolsista = Entry(self.whiteScreen, font=("times new roman", 12), bg="lightgray").place(x=560, y=260, width=115)
 
     def exitLogin(self):
         self.result = messagebox.askquestion('System', 'Are you sure you want to exit?', icon="warning")
