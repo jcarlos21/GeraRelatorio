@@ -11,26 +11,36 @@ Atributos das entidades:
 	- Imagem referente ao range (previamente salva pelo usuário na pasta do software)
 """
 
-celula = ''
-entidade = ''
-endereco = ''
-potMedia = 0
-potBefore = 0
-potAfter = 0
+# celula = ''
+# entidade = ''
+# endereco = ''
+# potMedia = 0
+# potBefore = 0
+# potAfter = 0
 
 class WriteDict:
 
-	def __init__(self):
-		pass
+	def __init__(self, dadosDict={'dado': 1}, celula='', entidade='', endereco='', potMedia='', potBefore='', potAfter=''):
+		self.dadosDict = dadosDict
+		self.celula = celula
+		self.entidade = entidade
+		self.endereco = endereco
+		self.potMedia = potMedia
+		self.potBefore = potBefore
+		self.potAfter = potAfter
 
-	def fillDict (self, dadosDict, celula, entidade, endereco, potMedia, potBefore, potAfter):
-		if not dadosDict.get(celula):
-			dadosDict[celula] = {entidade: [endereco, potMedia, potBefore, potAfter]}
-			return dadosDict
+	def fillDict (self):
+		if not self.dadosDict.get(self.celula):
+			self.dadosDict[self.celula] = {self.entidade: [self.endereco, self.potMedia, self.potBefore, self.potAfter]}
+			# return self.dadosDict
+			retorno = 'Escola adicionada!'
+			return retorno, self.dadosDict
 		else:
 			# OBS: Note que se a entidade já existir, o valor dela será substituído por [endereco, potMedia, potBefore, potAfter]
-			dadosDict[celula][entidade] = [endereco, potMedia, potBefore, potAfter]
-			return dadosDict
+			self.dadosDict[self.celula][self.entidade] = [self.endereco, self.potMedia, self.potBefore, self.potAfter]
+			# return self.dadosDict
+			retorno = 'Escola adicionada!'
+			return retorno, self.dadosDict
 
 
 # teste = WriteDict()
@@ -52,16 +62,16 @@ class WriteDict:
 
 # {'Carlos': {'Hobby': ['Tocar', 'Cantar'], 'Graduação': ['C&T', 'Eng. Telecomunicações']}}
 
-DadosGerais = {celula: {entidade: [endereco, potMedia, potBefore, potAfter],
-						entidade: [endereco, potMedia, potBefore, potAfter],
-						entidade: [endereco, potMedia, potBefore, potAfter]},
+# DadosGerais = {celula: {entidade: [endereco, potMedia, potBefore, potAfter],
+# 						entidade: [endereco, potMedia, potBefore, potAfter],
+# 						entidade: [endereco, potMedia, potBefore, potAfter]},
 				
-				celula: {entidade: [endereco, potMedia, potBefore, potAfter],
-						entidade: [endereco, potMedia, potBefore, potAfter],
-						entidade: [endereco, potMedia, potBefore, potAfter]},
+# 				celula: {entidade: [endereco, potMedia, potBefore, potAfter],
+# 						entidade: [endereco, potMedia, potBefore, potAfter],
+# 						entidade: [endereco, potMedia, potBefore, potAfter]},
 				
-				celula: {entidade: [endereco, potMedia, potBefore, potAfter],
-						entidade: [endereco, potMedia, potBefore, potAfter],
-						entidade: [endereco, potMedia, potBefore, potAfter]}
+# 				celula: {entidade: [endereco, potMedia, potBefore, potAfter],
+# 						entidade: [endereco, potMedia, potBefore, potAfter],
+# 						entidade: [endereco, potMedia, potBefore, potAfter]}
 				
-				}
+# 				}
