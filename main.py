@@ -247,10 +247,10 @@ pageConfig.marginsPage(3.0, 3.0, 2.0, 2.0)
 # matBolsista = '*Matrícula do bolsista*'
 # dataEnt = 'XX de mês de 20XX'
 
-# texto.textoSimples(nomeTecnico, 'Arial', 1, False, False, 12, False)
-# texto.textoSimples(f'Matrícula: {matriculaTecnico}', 'Arial', 1, False, False, 12, False)
-# texto.textoSimples(f'Bolsista: {nomeBolsista}', 'Arial', 1, False, False, 12, False)
-# texto.textoSimples(f'Matrícula: {matriculaBolsista}', 'Arial', 1, False, False, 12, False)
+# texto.textoSimples(tecnicoEnt, 'Arial', 1, False, False, 12, False)
+# texto.textoSimples(f'Matrícula: {matTecnico}', 'Arial', 1, False, False, 12, False)
+# texto.textoSimples(f'Bolsista: {bolsista}', 'Arial', 1, False, False, 12, False)
+# texto.textoSimples(f'Matrícula: {matbolsista}', 'Arial', 1, False, False, 12, False)
 # texto.addNewLine(6)
 
 # titulo = f'Rede Giga Metrópole\nRelatório de Conformidade Referente ao Bilhete {bilheteEnt}'
@@ -517,3 +517,6 @@ pageConfig.marginsPage(3.0, 3.0, 2.0, 2.0)
 # texto.addNewLine(0)
 # texto4 = 'Conclui-se que os resultados apresentados nesse documento certificam que o serviço de manutenção corretiva foi executado em conformidade com os padrões exigidos e sanando todas as pendências, garantindo o correto funcionamento da rede.'
 # texto.textoSimples(texto4, 'Arial', 3, False, False, 12, True)
+
+# teste se a função abaixo funciona dentro de uma outra função sendo chamada no arquivo da interface
+document.save(f"REPORT_{bilheteEnt}.docx")
