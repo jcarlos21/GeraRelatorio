@@ -525,3 +525,23 @@ document.save(f"REPORT_{bilheteEnt}.docx")
 
 # OBS: seu arquivo do texto docx terá duas funções: uma que irá conter todo o conteúdo que produz o texto e que retorna o dadosDict e 
 # uma outra função, retornando o dado 'document.save(f"REPORT_{bilheteEnt}.docx")'
+
+
+# lembre-se dessa classe abaixo para criar as funções acima. Lembre-se também de instanciar as classes dentro da primeira função.
+"""
+class Imprime:
+    def __init__(self, dado=''):
+        self.dado = dado
+        pass
+    
+    def imprime(self):
+        return self.dado
+
+def teste(dado):
+    var1 = Imprime()
+    var1.dado = dado
+    return var1.imprime()
+
+print(teste('Carlos'))
+
+"""
