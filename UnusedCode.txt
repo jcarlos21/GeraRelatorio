@@ -93,3 +93,36 @@ print(dadosDict)
                 # p.style = 'List Bullet'
                 CriaTexto(self.document).addMarcadores(f'Endereço {i+1}: {dado[entidadeSuiperior][entidadeInferior][0]}', fonte, 0, negrito, italico, tam)
                 i += 1
+
+
+
+# preencheDict.celula = 'CELULA 1'
+# preencheDict.entidade = 'ENTIDADE 1 DA CELULA 1'
+# preencheDict.endereco = 'Rua, Numero, Bairro, Cidade/Estado'
+# preencheDict.potMedia = -16
+# preencheDict.potBefore = -16
+# preencheDict.potAfter = -17
+
+# preencheDict.dadosDict = dadosDict
+
+# preencheDict.fillDict()  # dever ser chamada desta forma no botão da interface
+
+# celula = 'CELULA 1'
+# entidade = 'ENTIDADE 2 DA CELULA 1'
+# endereco = 'Rua, Numero, Bairro, Cidade/Estado'
+# potMedia = -11
+# potBefore = -15.80
+# potAfter = -12.79
+
+# dadosDict = preencheDict.fillDict(dadosDict, celula, entidade, endereco, potMedia, potBefore, potAfter)
+
+# celula = 'CELULA 2'
+# entidade = 'ENTIDADE 1 DA CELULA 2'
+# endereco = 'Rua, Numero, Bairro, Cidade/Estado'
+# potMedia = -10
+# potBefore = -12.85
+# potAfter = -15.64
+
+# dadosDict = preencheDict.fillDict(dadosDict, celula, entidade, endereco, potMedia, potBefore, potAfter)
+
+# print('Linha 62:', dadosDict)

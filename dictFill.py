@@ -34,13 +34,13 @@ class WriteDict:
 			self.dadosDict[self.celula] = {self.entidade: [self.endereco, self.potMedia, self.potBefore, self.potAfter]}
 			# return self.dadosDict
 			retorno = 'Escola adicionada!'
-			return retorno, self.dadosDict
+			return retorno
 		else:
 			# OBS: Note que se a entidade já existir, o valor dela será substituído por [endereco, potMedia, potBefore, potAfter]
 			self.dadosDict[self.celula][self.entidade] = [self.endereco, self.potMedia, self.potBefore, self.potAfter]
 			# return self.dadosDict
 			retorno = 'Escola adicionada!'
-			return retorno, self.dadosDict
+			return retorno
 
 
 # teste = WriteDict()
