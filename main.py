@@ -520,3 +520,8 @@ pageConfig.marginsPage(3.0, 3.0, 2.0, 2.0)
 
 # teste se a função abaixo funciona dentro de uma outra função sendo chamada no arquivo da interface
 document.save(f"REPORT_{bilheteEnt}.docx")
+
+
+
+# OBS: seu arquivo do texto docx terá duas funções: uma que irá conter todo o conteúdo que produz o texto e que retorna o dadosDict e 
+# uma outra função, retornando o dado 'document.save(f"REPORT_{bilheteEnt}.docx")'
