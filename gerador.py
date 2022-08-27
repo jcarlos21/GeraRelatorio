@@ -314,7 +314,7 @@ class TextGenerator:
     def generator_docx(self):
         self.document.save(f"REPORT_{self.ticket}.docx")
 
-
+# ================== TESTE ==================== #
 
 global document, dadosDict
 document = Document()
@@ -326,6 +326,10 @@ relatorio.document = document
 relatorio.ticket = '2022.2-BR21'
 relatorio.data = '22/05/2025'
 relatorio.cause_correction = 'Rompimento devido a formigas no PTO'
-relatorio.dataDict = dadosDict
-relatorio.technician = 'Cadu'
+relatorio.range_test = 45
+relatorio.technician = 'David Manoel Oliveira dos Santos'
 relatorio.technician_reg = 12542
+relatorio.scholarship = 'José Carlos dos Santos'
+relatorio.scholarship_reg = 20200150373
+relatorio.observations = 'Foi constatado que uma escola da celula em análise estava desativada.'
+relatorio.dataDict = dadosDict

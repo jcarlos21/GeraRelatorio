@@ -96,9 +96,9 @@ def add_ao_arquivo():
 
     # Excluindo dados digitados nas caixas
     
-    bilhete.delete(0, END)
-    celula.delete(0, END)
-    data.delete(0, END)
+    # bilhete.delete(0, END)
+    # celula.delete(0, END)
+    # data.delete(0, END)
     entidade.delete(0, END)
     endereco.delete(0, END)
     p_M.delete(0, END)
