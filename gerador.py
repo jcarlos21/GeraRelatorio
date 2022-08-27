@@ -16,7 +16,7 @@ from docx.oxml import OxmlElement, ns
 class TextGenerator:
 
     def __init__(self, document='', ticket='', data='', cause_correction='', range_test=30, technician='',
-                    technician_reg=1, scholarship='', scholarship_reg=1, observations='', dadaDict={'dado': 1}):
+                    technician_reg=1, scholarship='', scholarship_reg=1, observations='', dataDict={'dado': 1}):
         
         self.document = document
         self.ticket = ticket
@@ -28,13 +28,13 @@ class TextGenerator:
         self.scholarship = scholarship
         self.scholarship_reg = scholarship_reg
         self.observations = observations
-        self.dataDict = dadaDict
+        self.dataDict = dataDict
     
     def text_genetator(self):
 
         texto = CriaTexto(self.document)
         estilos = StylesText(self.document)
-        preencheDict = WriteDict()
+        # preencheDict = WriteDict()
         pageConfig = SetupPage(self.document)
         analise = AnalysisFunc(self.document)
 
@@ -166,8 +166,8 @@ class TextGenerator:
         r2b = ' é de '
         texto.repeteListaEmUmaLinha(r2b, pj, 'Arial', False, False, 12)
 
-        for caixa in self.dadosDict.keys():  # Lembre-se de criar um método para tratar os loops
-            for escola in self.dadosDict[caixa].keys():
+        for caixa in self.dataDict.keys():  # Lembre-se de criar um método para tratar os loops
+            for escola in self.dataDict[caixa].keys():
                 texto.repeteListaEmUmaLinha(str(self.dataDict[caixa][escola][1]) + ' dBm, ', pj, 'Arial', False, False, 12)
 
         r2c = ' a potência obtida na(s) ONU(s) após o reparo estão na mesma ordem de grandeza do valor médio?'
@@ -320,6 +320,8 @@ global document, dadosDict
 document = Document()
 dadosDict = dict()
 
+preencheDict = WriteDict()
+
 relatorio = TextGenerator()
 
 relatorio.document = document
@@ -333,3 +335,19 @@ relatorio.scholarship = 'José Carlos dos Santos'
 relatorio.scholarship_reg = 20200150373
 relatorio.observations = 'Foi constatado que uma escola da celula em análise estava desativada.'
 relatorio.dataDict = dadosDict
+
+preencheDict.celula = 'CELULA 1'
+preencheDict.entidade = 'ENTIDADE 1 DA CELULA 1'
+preencheDict.endereco = 'Rua, Numero, Bairro, Cidade/Estado'
+preencheDict.potMedia = -16
+preencheDict.potBefore = -16
+preencheDict.potAfter = -17
+
+preencheDict.dadosDict = relatorio.dataDict
+preencheDict.fillDict()
+relatorio.text_genetator()
+
+preencheDict.dadosDict = relatorio.dataDict
+preencheDict.fillDict()
+relatorio.generator_docx()
+
