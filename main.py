@@ -208,7 +208,7 @@ botao_add_arquivo['command'] = add_ao_arquivo    # trata-se de uma função mais
 botao_add_arquivo.place(x=520, y=360)
 
 botao_salvar_doc = Button(whiteScreen, text="Gerar arquivo", bg="blue", fg="white", borderwidth=3, cursor="hand2")
-# botao_salvar_doc['command'] = gerar_arquivo
+botao_salvar_doc['command'] = gerar_arquivo
 botao_salvar_doc.place(x=590, y=360)
 
 # ==================== Mensagens de confirmação ============================= #
@@ -217,6 +217,8 @@ mensagem_insercao =  Label(whiteScreen, text="", font=("arial", 10, "italic"), b
 mensagem_insercao.place(x=275, y=345)
 mensagem_gravacao =  Label(whiteScreen, font=("arial", 10, "italic"), bg="white", fg="green")
 mensagem_gravacao.place(x=275, y=350)
+
+print(dadosDict)
 
 
 if __name__ == "__main__":
@@ -232,24 +234,22 @@ if __name__ == "__main__":
 
 # data = f'{d} de {m} de {y}'
 
-print(dadosDict)
 
+# # ============================================== Margins ===================================================== #
 
-# ============================================== Margins ===================================================== #
+# pageConfig.marginsPage(3.0, 3.0, 2.0, 2.0)
 
-pageConfig.marginsPage(3.0, 3.0, 2.0, 2.0)
+# # ================================================ Capa ====================================================== #
 
-# ================================================ Capa ====================================================== #
-
-# tecnico = '*Nome do Técnico*'
+# tecnicoEnt = '*Nome do Técnico*'
 # matTecnico = '****'
-# bolsista = '*Nome do bolsista*'
-# matBolsista = '*Matrícula do bolsista*'
+# bolsistaEnt = '*Nome do bolsista*'
+# matbolsista = '*Matrícula do bolsista*'
 # dataEnt = 'XX de mês de 20XX'
 
 # texto.textoSimples(tecnicoEnt, 'Arial', 1, False, False, 12, False)
 # texto.textoSimples(f'Matrícula: {matTecnico}', 'Arial', 1, False, False, 12, False)
-# texto.textoSimples(f'Bolsista: {bolsista}', 'Arial', 1, False, False, 12, False)
+# texto.textoSimples(f'Bolsista: {bolsistaEnt}', 'Arial', 1, False, False, 12, False)
 # texto.textoSimples(f'Matrícula: {matbolsista}', 'Arial', 1, False, False, 12, False)
 # texto.addNewLine(6)
 
@@ -518,16 +518,16 @@ pageConfig.marginsPage(3.0, 3.0, 2.0, 2.0)
 # texto4 = 'Conclui-se que os resultados apresentados nesse documento certificam que o serviço de manutenção corretiva foi executado em conformidade com os padrões exigidos e sanando todas as pendências, garantindo o correto funcionamento da rede.'
 # texto.textoSimples(texto4, 'Arial', 3, False, False, 12, True)
 
-# teste se a função abaixo funciona dentro de uma outra função sendo chamada no arquivo da interface
-document.save(f"REPORT_{bilheteEnt}.docx")
+# # teste se a função abaixo funciona dentro de uma outra função sendo chamada no arquivo da interface
+# # document.save(f"REPORT_{bilheteEnt}.docx")
 
 
 
-# OBS: seu arquivo do texto docx terá duas funções: uma que irá conter todo o conteúdo que produz o texto e que retorna o dadosDict e 
-# uma outra função, retornando o dado 'document.save(f"REPORT_{bilheteEnt}.docx")'
+# # OBS: seu arquivo do texto docx terá duas funções: uma que irá conter todo o conteúdo que produz o texto e que retorna o dadosDict e 
+# # uma outra função, retornando o dado 'document.save(f"REPORT_{bilheteEnt}.docx")'
 
 
-# lembre-se dessa classe abaixo para criar as funções acima. Lembre-se também de instanciar as classes dentro da primeira função.
+# # lembre-se dessa classe abaixo para criar as funções acima. Lembre-se também de instanciar as classes dentro da primeira função.
 """
 class Imprime:
     def __init__(self, dado=''):
