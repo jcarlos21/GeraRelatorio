@@ -220,7 +220,6 @@ mensagem_gravacao.place(x=275, y=350)
 
 print(dadosDict)
 
-
 if __name__ == "__main__":
     root.mainloop()
 

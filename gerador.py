@@ -351,3 +351,4 @@ preencheDict.dadosDict = relatorio.dataDict
 preencheDict.fillDict()
 relatorio.generator_docx()
 
+print(preencheDict.dadosDict)
