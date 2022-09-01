@@ -11,13 +11,14 @@ from pageSetup import SetupPage
 from analysisFunctions import AnalysisFunc
 from dictFill import WriteDict
 from docx.oxml import OxmlElement, ns
-import datetime
 from gerador import TextGenerator
+import datetime
 
 from tkinter import *
 import tkinter as tk
 from tkinter import messagebox
 from tkinter import ttk
+
 
 global document
 document = Document()
@@ -30,10 +31,16 @@ relatorio = TextGenerator()
 
 # ================================= Dados para alimentação do relatório ====================================== #
 
-bilheteEnt = '20XX.X-BRXX'
-causaCorrecao =  'O rompimento nas fibras foi causado por acidente por árvores.'
-rangeTeste = 30
-observations = ""
+# bilheteEnt = '20XX.X-BRXX'
+# causaCorrecao =  'O rompimento nas fibras foi causado por acidente por árvores.'
+# rangeTeste = 30
+# observations = ""
+
+global d, m, y, data
+d = datetime.datetime.today().strftime('%d')
+m = datetime.datetime.today().strftime('%B')
+y = datetime.datetime.today().strftime('%Y')
+
 global dadosDict
 dadosDict = dict()
 
@@ -82,7 +89,7 @@ def add_ao_arquivo():
     preencheDict.dadosDict = dadosDict
     preencheDict.celula = celula.get()
     
-    relatorio.data = data.get()
+    # relatorio.data = data.get()
     
     preencheDict.entidade = entidade.get()
     preencheDict.endereco = endereco.get()
@@ -137,11 +144,12 @@ bilhete.place(x=195, y=60, width=120)
 
 Label(whiteScreen, text="Célula:", font=("times new roman", 12, "bold"), bg="white", fg="gray").place(x=320, y=60)
 celula = Entry(whiteScreen, font=("times new roman", 12), bg="lightgray")
-celula.place(x=380, y=60, width=110)
+celula.place(x=375, y=60, width=100)
 
-Label(whiteScreen, text="Data:", font=("times new roman", 12, "bold"), bg="white", fg="gray").place(x=495, y=60)
-data = Entry(whiteScreen, font=("times new roman", 12), bg="lightgray")
-data.place(x=545, y=60, width=130)
+Label(whiteScreen, text="Data:", font=("times new roman", 12, "bold"), bg="white", fg="gray").place(x=480, y=60)
+Label(whiteScreen, text=f'{d} de {m} de {y}', font=("times new roman", 11), bg="white", fg="blue").place(x=525, y=60)
+# data = Entry(whiteScreen, font=("times new roman", 12), bg="lightgray")
+# data.place(x=545, y=60, width=130)
 
 Label(whiteScreen, text="Escola:", font=("times new roman", 12, "bold"), bg="white", fg="gray").place(x=120, y=100)
 entidade = Entry(whiteScreen, font=("times new roman", 12), bg="lightgray")

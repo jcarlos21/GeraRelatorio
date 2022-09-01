@@ -12,10 +12,17 @@ from analysisFunctions import AnalysisFunc
 from dictFill import WriteDict
 from docx.oxml import OxmlElement, ns
 
+import datetime
+
+global d, m, y, data
+d = datetime.datetime.today().strftime('%d')
+m = datetime.datetime.today().strftime('%B')
+y = datetime.datetime.today().strftime('%Y')
+
 
 class TextGenerator:
 
-    def __init__(self, document='', ticket='', data='', cause_correction='', range_test=30, technician='',
+    def __init__(self, document='', ticket='', data=f'{d} de {m} de {y}', cause_correction='', range_test=30, technician='',
                     technician_reg=1, scholarship='', scholarship_reg=1, observations='', dataDict={'dado': 1}):
         
         self.document = document
