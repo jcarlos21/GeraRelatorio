@@ -12,6 +12,7 @@ from analysisFunctions import AnalysisFunc
 from dictFill import WriteDict
 from docx.oxml import OxmlElement, ns
 import datetime
+from gerador import TextGenerator
 
 document = Document()
 texto = CriaTexto(document)
@@ -19,6 +20,7 @@ estilos = StylesText(document)
 preencheDict = WriteDict()
 pageConfig = SetupPage(document)
 analise = AnalysisFunc(document)
+relatorio = TextGenerator()
 
 # Páginas
 
