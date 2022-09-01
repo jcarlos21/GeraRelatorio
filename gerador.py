@@ -316,39 +316,39 @@ class TextGenerator:
 
 # ================== TESTE ==================== #
 
-global document, dadosDict
-document = Document()
-dadosDict = dict()
+# global document, dadosDict
+# document = Document()
+# dadosDict = dict()
 
-preencheDict = WriteDict()
+# preencheDict = WriteDict()
 
-relatorio = TextGenerator()
+# relatorio = TextGenerator()
 
-relatorio.document = document
-relatorio.ticket = '2022.2-BR21'
-relatorio.data = '22/05/2025'
-relatorio.cause_correction = 'Rompimento devido a formigas no PTO'
-relatorio.range_test = 45
-relatorio.technician = 'David Manoel Oliveira dos Santos'
-relatorio.technician_reg = 12542
-relatorio.scholarship = 'José Carlos dos Santos'
-relatorio.scholarship_reg = 20200150373
-relatorio.observations = 'Foi constatado que uma escola da celula em análise estava desativada.'
-relatorio.dataDict = dadosDict
+# relatorio.document = document
+# relatorio.ticket = '2022.2-BR21'
+# relatorio.data = '22/05/2025'
+# relatorio.cause_correction = 'Rompimento devido a formigas no PTO'
+# relatorio.range_test = 45
+# relatorio.technician = 'David Manoel Oliveira dos Santos'
+# relatorio.technician_reg = 12542
+# relatorio.scholarship = 'José Carlos dos Santos'
+# relatorio.scholarship_reg = 20200150373
+# relatorio.observations = 'Foi constatado que uma escola da celula em análise estava desativada.'
+# relatorio.dataDict = dadosDict
 
-preencheDict.celula = 'CELULA 1'
-preencheDict.entidade = 'ENTIDADE 1 DA CELULA 1'
-preencheDict.endereco = 'Rua, Numero, Bairro, Cidade/Estado'
-preencheDict.potMedia = -16
-preencheDict.potBefore = -16
-preencheDict.potAfter = -17
+# preencheDict.celula = 'CELULA 1'
+# preencheDict.entidade = 'ENTIDADE 1 DA CELULA 1'
+# preencheDict.endereco = 'Rua, Numero, Bairro, Cidade/Estado'
+# preencheDict.potMedia = -16
+# preencheDict.potBefore = -16
+# preencheDict.potAfter = -17
 
-preencheDict.dadosDict = relatorio.dataDict
-preencheDict.fillDict()
-relatorio.text_genetator()
+# preencheDict.dadosDict = relatorio.dataDict
+# preencheDict.fillDict()
+# relatorio.text_genetator()
 
-preencheDict.dadosDict = relatorio.dataDict
-preencheDict.fillDict()
-relatorio.generator_docx()
+# preencheDict.dadosDict = relatorio.dataDict
+# preencheDict.fillDict()
+# relatorio.generator_docx()
 
-print(preencheDict.dadosDict)
+# print(preencheDict.dadosDict)

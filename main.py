@@ -14,6 +14,7 @@ from docx.oxml import OxmlElement, ns
 import datetime
 from gerador import TextGenerator
 
+global document
 document = Document()
 texto = CriaTexto(document)
 estilos = StylesText(document)
@@ -37,6 +38,10 @@ dadosDict = dict()
 # # ===================================== Armazenamento do arquivo ============================================= #
 
 # document.save(f"REPORT_{bilheteEnt}.docx")  # deve ser chamada pelo botão da interface
+
+relatorio.document = document
+relatorio.dataDict = dadosDict
+
 
 
 # # ========================================== Interface Gráfica =============================================== #
@@ -79,14 +84,18 @@ def add_ao_arquivo():
     preencheDict = WriteDict()
 
     bilheteEnt = bilhete.get()
+    
     preencheDict.dadosDict = dadosDict
     preencheDict.celula = celula.get()
+    
     dataEnt = data.get()
+    
     preencheDict.entidade = entidade.get()
     preencheDict.endereco = endereco.get()
     preencheDict.potMedia = p_M.get()
     preencheDict.potBefore = p_A.get()
     preencheDict.potAfter = p_D.get()
+    
     causaCorrecao = motivo.get()
     tecnicoEnt = tecnico.get()
     matTecnico = matricula_tecnico.get()
@@ -116,7 +125,8 @@ def add_ao_arquivo():
     # return dadosDict
 
 def gerar_arquivo():
-    document.save(f"REPORT_{bilheteEnt}.docx")
+    relatorio.generator_docx()
+    # document.save(f"REPORT_{bilheteEnt}.docx")
 
     # pass
 
