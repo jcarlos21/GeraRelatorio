@@ -40,9 +40,6 @@ dadosDict = dict()
 # document.save(f"REPORT_{bilheteEnt}.docx")  # deve ser chamada pelo botão da interface
 
 relatorio.document = document
-relatorio.dataDict = dadosDict
-
-
 
 # # ========================================== Interface Gráfica =============================================== #
 
@@ -83,12 +80,13 @@ def add_ao_arquivo():
 
     preencheDict = WriteDict()
 
-    bilheteEnt = bilhete.get()
+    relatorio.ticket = bilhete.get()
+    relatorio.dataDict = dadosDict
     
     preencheDict.dadosDict = dadosDict
     preencheDict.celula = celula.get()
     
-    dataEnt = data.get()
+    relatorio.data = data.get()
     
     preencheDict.entidade = entidade.get()
     preencheDict.endereco = endereco.get()
@@ -96,12 +94,14 @@ def add_ao_arquivo():
     preencheDict.potBefore = p_A.get()
     preencheDict.potAfter = p_D.get()
     
-    causaCorrecao = motivo.get()
-    tecnicoEnt = tecnico.get()
-    matTecnico = matricula_tecnico.get()
-    bolsistaEnt = bolsista.get()
-    matBolsista = matricula_bolsista.get()
-    observations = obervacao.get()
+    relatorio.cause_correction = motivo.get()
+    relatorio.technician = tecnico.get()
+    relatorio.technician_reg = matricula_tecnico.get()
+    relatorio.scholarship = bolsista.get()
+    relatorio.scholarship_reg = matricula_bolsista.get()
+    relatorio.observations = obervacao.get()
+    
+    relatorio.range_test = 3854
 
     mensagem_insercao['text'] = preencheDict.fillDict()
 
@@ -115,16 +115,17 @@ def add_ao_arquivo():
     p_M.delete(0, END)
     p_A.delete(0, END)
     p_D.delete(0, END)
-    motivo.delete(0, END)
-    tecnico.delete(0, END)
-    matricula_tecnico.delete(0, END)
-    bolsista.delete(0, END)
-    matricula_bolsista.delete(0, END)
+    # motivo.delete(0, END)
+    # tecnico.delete(0, END)
+    # matricula_tecnico.delete(0, END)
+    # bolsista.delete(0, END)
+    # matricula_bolsista.delete(0, END)
     obervacao.delete(0, END)
 
     # return dadosDict
 
 def gerar_arquivo():
+    relatorio.text_genetator()
     relatorio.generator_docx()
     # document.save(f"REPORT_{bilheteEnt}.docx")
 
