@@ -31,11 +31,6 @@ relatorio = TextGenerator()
 
 # ================================= Dados para alimentação do relatório ====================================== #
 
-# bilheteEnt = '20XX.X-BRXX'
-# causaCorrecao =  'O rompimento nas fibras foi causado por acidente por árvores.'
-# rangeTeste = 30
-# observations = ""
-
 global d, m, y, data
 d = datetime.datetime.today().strftime('%d')
 m = datetime.datetime.today().strftime('%B')
