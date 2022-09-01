@@ -317,6 +317,7 @@ class TextGenerator:
 
     def generator_docx(self):
         self.document.save(f"REPORT_{self.ticket}.docx")
+        return 'Documento gerado com sucesso!'
 
 # ================== TESTE ==================== #
 

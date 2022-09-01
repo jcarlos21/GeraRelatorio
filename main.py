@@ -90,8 +90,6 @@ def add_ao_arquivo():
     preencheDict.celula = celula.get()
     relatorio.range_test = stateChosen.get()
     
-    # relatorio.data = data.get()
-    
     preencheDict.entidade = entidade.get()
     preencheDict.endereco = endereco.get()
     preencheDict.potMedia = p_M.get()
@@ -105,8 +103,6 @@ def add_ao_arquivo():
     relatorio.scholarship_reg = matricula_bolsista.get()
     relatorio.observations = obervacao.get()
     
-    
-
     mensagem_insercao['text'] = preencheDict.fillDict()
 
     # Excluindo dados digitados nas caixas
@@ -120,7 +116,9 @@ def add_ao_arquivo():
 
 def gerar_arquivo():
     relatorio.text_genetator()
-    relatorio.generator_docx()
+    
+
+    mensagem_gravacao['text'] = relatorio.generator_docx()
 
 # ===================== Barra de Menu ============================= #
 
@@ -220,19 +218,13 @@ botao_salvar_doc.place(x=590, y=360)
 # ==================== Mensagens de confirmação ============================= #
 
 mensagem_insercao =  Label(whiteScreen, text="", font=("arial", 10, "italic"), bg="white", fg="green")
-mensagem_insercao.place(x=275, y=345)
-mensagem_gravacao =  Label(whiteScreen, font=("arial", 10, "italic"), bg="white", fg="green")
-mensagem_gravacao.place(x=275, y=350)
+mensagem_insercao.place(x=275, y=335)
+mensagem_gravacao =  Label(whiteScreen, font=("arial", 10, "italic"), bg="white", fg="blue")
+mensagem_gravacao.place(x=230, y=360)
+
 
 if __name__ == "__main__":
     root.mainloop()
 
 # git config --list
 # git pull
-
-
-# d = datetime.datetime.today().strftime('%d')
-# m = datetime.datetime.today().strftime('%B')
-# y = datetime.datetime.today().strftime('%Y')
-
-# data = f'{d} de {m} de {y}'

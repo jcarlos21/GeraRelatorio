@@ -109,11 +109,3 @@ class CriaTexto:
                 estilos.addStyles(p.add_run(f'{entidadeSuperior.upper()} - {entidadeInferior.upper()}; '), fonte, negrito, italico, tam)
     
 
-    # def repeteEntidadeEmUmaLinha(self, dado, p, fonte, negrito, italico, tam):
-    #     for i in range(0, len(dado)):
-    #         if i < len(dado) - 1:
-    #             t = p.add_run(f'{dado[i][0]}, ')
-    #             estilos.addStyles(t, fonte, negrito, italico, tam)
-    #         else:
-    #             t = p.add_run(f'{dado[i][0]}')
-    #             estilos.addStyles(t, fonte, negrito, italico, tam)

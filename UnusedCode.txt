@@ -570,3 +570,13 @@ print(teste('Carlos'))
         # dataStatus = []  # Table data in a form of list
         # for i in range(0,3):  # o range do for pode variar em função da quantidade de entidades
         #     dataStatus.append([f'Entidade {i+1}', str(-17.65), str(-12.65)])
+
+    
+    # def repeteEntidadeEmUmaLinha(self, dado, p, fonte, negrito, italico, tam):
+    #     for i in range(0, len(dado)):
+    #         if i < len(dado) - 1:
+    #             t = p.add_run(f'{dado[i][0]}, ')
+    #             estilos.addStyles(t, fonte, negrito, italico, tam)
+    #         else:
+    #             t = p.add_run(f'{dado[i][0]}')
+    #             estilos.addStyles(t, fonte, negrito, italico, tam)
