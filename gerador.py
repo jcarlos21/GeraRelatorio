@@ -41,10 +41,9 @@ class TextGenerator:
 
         texto = CriaTexto(self.document)
         estilos = StylesText(self.document)
-        # preencheDict = WriteDict()
         pageConfig = SetupPage(self.document)
         analise = AnalysisFunc(self.document)
-
+        
         pageConfig.marginsPage(3.0, 3.0, 2.0, 2.0)
 
         # Capa
