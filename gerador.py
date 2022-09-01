@@ -52,9 +52,7 @@ class TextGenerator:
         texto.textoSimples(titulo, 'Arial', 1, True, False, 12, False)
         texto.addNewLine(6)
 
-        cabecalho = """Ponto de Presença da Rede Nacional de Ensino e Pesquisa no Rio Grande do Norte - POP-RN
-        Rede GigaMetropole
-        Setor de Infraestrutura"""
+        cabecalho = """Ponto de Presença da Rede Nacional de Ensino e Pesquisa no Rio Grande do Norte - POP-RN\nRede GigaMetropole\nSetor de Infraestrutura"""
         texto.textoSimples(cabecalho, 'Arial', 1, False, False, 12, False)
         texto.addNewLine(5)
 
