@@ -116,8 +116,6 @@ def add_ao_arquivo():
 
 def gerar_arquivo():
     relatorio.text_genetator()
-    
-
     mensagem_gravacao['text'] = relatorio.generator_docx()
 
 # ===================== Barra de Menu ============================= #
