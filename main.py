@@ -88,6 +88,7 @@ def add_ao_arquivo():
     
     preencheDict.dadosDict = dadosDict
     preencheDict.celula = celula.get()
+    relatorio.range_test = stateChosen.get()
     
     # relatorio.data = data.get()
     
@@ -104,7 +105,7 @@ def add_ao_arquivo():
     relatorio.scholarship_reg = matricula_bolsista.get()
     relatorio.observations = obervacao.get()
     
-    relatorio.range_test = 3854
+    
 
     mensagem_insercao['text'] = preencheDict.fillDict()
 
@@ -175,7 +176,8 @@ Label(whiteScreen, text="Testagem:", font=("times new roman", 12, "bold"), bg="w
 
 stateChosen = StringVar()
 stateChoose = ttk.Combobox(whiteScreen, textvariable=stateChosen, width=21)
-stateChoose['values'] = ['10 dais', '20 dias', '30 dias', '40 dias', '50 dias', '60 dias']
+stateChoose['values'] = ['10 dias', '20 dias', '30 dias', '40 dias', '50 dias', '60 dias']
+stateChoose.set('20 dias')
 stateChoose.grid(column=0, row=0, padx=525, pady=140)
 stateChoose.current(0)
 

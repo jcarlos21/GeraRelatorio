@@ -565,3 +565,8 @@ print(teste('Carlos'))
     # bilhete.delete(0, END)
     # celula.delete(0, END)
     # data.delete(0, END)
+
+
+        # dataStatus = []  # Table data in a form of list
+        # for i in range(0,3):  # o range do for pode variar em função da quantidade de entidades
+        #     dataStatus.append([f'Entidade {i+1}', str(-17.65), str(-12.65)])

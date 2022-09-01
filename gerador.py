@@ -205,6 +205,7 @@ class TextGenerator:
         dataDiagnostic = list()
         dataDiagnosticStatus = list()
         dataDiagnosticPot = list()
+
         for enS in self.dataDict.keys():
             for enI in self.dataDict[enS].keys():
                 a1 = analise.rR1(self.dataDict[enS][enI][2], self.dataDict[enS][enI][3])
@@ -214,7 +215,6 @@ class TextGenerator:
                 dataDiagnostic.append([enI, a1, a2, a3])
                 dataDiagnosticStatus.append([enI, status])
                 dataDiagnosticPot.append([enI, str(self.dataDict[enS][enI][2]), str(self.dataDict[enS][enI][3])])
-
 
         for escola, r1, r2, r3 in dataDiagnostic:  # Adding a row and then adding data in it.
             row = table.add_row().cells
@@ -274,10 +274,6 @@ class TextGenerator:
         headerRow3 = ['ESCOLA', 'PRxA[dBm]', 'PRxB[dBm]']
         texto.alimentaTabela(row3, headerRow3, 'Arial', 12)
 
-        # dataStatus = []  # Table data in a form of list
-        # for i in range(0,3):  # o range do for pode variar em função da quantidade de entidades
-        #     dataStatus.append([f'Entidade {i+1}', str(-17.65), str(-12.65)])
-
         for escola, ptA, ptD in dataDiagnosticPot:  # Adding a row and then adding data in it.
             row3 = table3.add_row().cells
             listaLinhas3 = [escola, ptA, ptD]
@@ -301,7 +297,7 @@ class TextGenerator:
 
         self.document.add_page_break()
 
-        texto3 = f'No(s) gráfico(s) apresentado(s) na(s) figura(s) a seguir, os resultados mostram o comportamento do sinal recebido durante o período de {self.range_test} dias, considerando antes e após o serviço de reparação ser executado. É importante ressaltar que no decorrer do período de amostragem apresentado no(s) gráfico(s) podem ocorrer intervalos sem amostras, como o período de observação é grande e os dados são enviados pelas ONU, é possível que em algum momento o equipamento seja desligado.'
+        texto3 = f'No(s) gráfico(s) apresentado(s) na(s) figura(s) a seguir, os resultados mostram o comportamento do sinal recebido durante o período de {self.range_test}, considerando antes e após o serviço de reparação ser executado. É importante ressaltar que no decorrer do período de amostragem apresentado no(s) gráfico(s) podem ocorrer intervalos sem amostras, como o período de observação é grande e os dados são enviados pelas ONU, é possível que em algum momento o equipamento seja desligado.'
         texto.textoSimples(texto3, 'Arial', 3, False, False, 12, True)
         texto.addNewLine(0)
 
