@@ -41,11 +41,14 @@ class TextGenerator:
         pageConfig.marginsPage(3.0, 3.0, 2.0, 2.0)
 
         # Capa
+        
+        # Formatação 1:
+        fte = ('Arial', 1, False, False, 12, False)
 
-        texto.textoSimples(self.technician, 'Arial', 1, False, False, 12, False)
-        texto.textoSimples(f'Matrícula: {self.technician_reg}', 'Arial', 1, False, False, 12, False)
-        texto.textoSimples(f'Bolsista: {self.scholarship}', 'Arial', 1, False, False, 12, False)
-        texto.textoSimples(f'Matrícula: {self.scholarship_reg}', 'Arial', 1, False, False, 12, False)
+        texto.textoSimples(self.technician.strip(), fte[0], fte[1], fte[2], fte[3], fte[4], fte[5])
+        texto.textoSimples(f'Matrícula: {self.technician_reg.strip()}', fte[0], fte[1], fte[2], fte[3], fte[4], fte[5])
+        texto.textoSimples(f'Bolsista: {self.scholarship.strip()}', fte[0], fte[1], fte[2], fte[3], fte[4], fte[5])
+        texto.textoSimples(f'Matrícula: {self.scholarship_reg.strip()}', fte[0], fte[1], fte[2], fte[3], fte[4], fte[5])
         texto.addNewLine(6)
 
         titulo = f'Rede Giga Metrópole\nRelatório de Conformidade Referente ao Bilhete {self.ticket}'
@@ -53,11 +56,11 @@ class TextGenerator:
         texto.addNewLine(6)
 
         cabecalho = """Ponto de Presença da Rede Nacional de Ensino e Pesquisa no Rio Grande do Norte - POP-RN\nRede GigaMetropole\nSetor de Infraestrutura"""
-        texto.textoSimples(cabecalho, 'Arial', 1, False, False, 12, False)
+        texto.textoSimples(cabecalho, fte[0], fte[1], fte[2], fte[3], fte[4], fte[5])
         texto.addNewLine(5)
 
-        texto.textoSimples('Natal - RN', 'Arial', 1, False, False, 12, False)
-        texto.textoSimples(self.data, 'Arial', 1, False, False, 12, False)
+        texto.textoSimples('Natal - RN', fte[0], fte[1], fte[2], fte[3], fte[4], fte[5])
+        texto.textoSimples(self.data.strip(), fte[0], fte[1], fte[2], fte[3], fte[4], fte[5])
 
         # Sumário
 
@@ -81,7 +84,7 @@ class TextGenerator:
 
         t1 = p.add_run('Objetivo: certificar o serviço de manutenção corretiva realizado pela empresa Interjato Soluções (')
         estilos.addStyles(t1, 'Arial', False, False, 12)
-        estilos.addStyles(p.add_run(f'bilhete {self.ticket}'), 'Arial', True, False, 12)
+        estilos.addStyles(p.add_run(f'bilhete {self.ticket.strip()}'), 'Arial', True, False, 12)
 
         t3 = p.add_run(') para restabelecer à conectividade GPON na(s) célula(s) ')
         estilos.addStyles(t3, 'Arial', False, False, 12)
@@ -103,7 +106,7 @@ class TextGenerator:
 
         texto.imprimeMarcadorEndereco(self.dataDict, 'Arial', negrito=False, italico=False, tam=12)
 
-        q = self.document.add_paragraph()  # necessário pois, ao usar o método .textoSimples(), um novo .add_paragraph() é iniciado.
+        q = self.document.add_paragraph()  # necessário pois, ao usar o método .textoSimples(), um novo .add_paragraph() (ou seja, um novo parágrafo) é iniciado.
         pf = q.paragraph_format
         pf.left_indent = Inches(0.5)
         q.style = 'List Bullet'
@@ -185,7 +188,7 @@ class TextGenerator:
 
         # Tabela 1
 
-        texto.textoSimples('Tabela 1 – Resultado do diagnóstico', 'Arial', 1, False, False, 12, False)
+        texto.textoSimples('Tabela 1 – Resultado do diagnóstico', fte[0], fte[1], fte[2], fte[3], fte[4], fte[5])
 
         table = self.document.add_table(rows=1, cols=4)
         row = table.rows[0].cells
@@ -229,7 +232,7 @@ class TextGenerator:
         texto.textoSimples('O serviço de manutenção corretiva é qualificado conforme os status apresentados na tabela 2.', 'Arial', 3, False, False, 12, True)
         texto.addNewLine(0)
 
-        texto.textoSimples('Tabela 2 – Status do serviço de manutenção corretiva', 'Arial', 1, False, False, 12, False)
+        texto.textoSimples('Tabela 2 – Status do serviço de manutenção corretiva', fte[0], fte[1], fte[2], fte[3], fte[4], fte[5])
 
         table2 = self.document.add_table(rows=1, cols=2)
         row2 = table2.rows[0].cells
@@ -257,7 +260,7 @@ class TextGenerator:
 
         # Tabela 3
 
-        texto.textoSimples('Tabela 3 – Valor médio da potência óptica recebida nas ONUs', 'Arial', 1, False, False, 12, False)
+        texto.textoSimples('Tabela 3 – Valor médio da potência óptica recebida nas ONUs', fte[0], fte[1], fte[2], fte[3], fte[4], fte[5])
 
         table3 = self.document.add_table(rows=1, cols=3)
         row3 = table3.rows[0].cells
@@ -296,7 +299,7 @@ class TextGenerator:
         texto.addNewLine(0)
 
         for i in range(0, len(dataDiagnosticStatus)):
-            texto.textoSimples(f'Figura {i+1} - Monitoramento GPON: potência óptica recebida na ONU da {dataDiagnosticStatus[i][0]}', 'Arial', 1, False, False, 12, False)
+            texto.textoSimples(f'Figura {i+1} - Monitoramento GPON: potência óptica recebida na ONU da {dataDiagnosticStatus[i][0]}', fte[0], fte[1], fte[2], fte[3], fte[4], fte[5])
             self.document.add_picture(f'img/0{str(i+1)}.JPG')
             texto.addNewLine(0)
         

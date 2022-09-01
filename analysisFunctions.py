@@ -9,19 +9,19 @@ class AnalysisFunc:
         self.document = document
     
     def rR1 (self, potBefore, potAfter):
-        if (float(potAfter) + 1) >= float(potBefore):
+        if (float(potAfter.strip()) + 1) >= float(potBefore.strip()):
             return 'OK'
         else:
             return 'X'
 
     def rR2 (self, potMedia, potAfter):
-        if (float(potAfter) + 2.5) >= float(potMedia) :
+        if (float(potAfter.strip()) + 2.5) >= float(potMedia.strip()) :
             return 'OK'
         else:
             return 'X'
 
     def rR3 (self, potAfter):
-        if float(potAfter) > -21.00:
+        if float(potAfter.strip()) > -21.00:
             return 'OK'
         else:
             return 'X'

@@ -14,6 +14,11 @@ from docx.oxml import OxmlElement, ns
 import datetime
 from gerador import TextGenerator
 
+from tkinter import *
+import tkinter as tk
+from tkinter import messagebox
+from tkinter import ttk
+
 global document
 document = Document()
 texto = CriaTexto(document)
@@ -22,8 +27,6 @@ preencheDict = WriteDict()
 pageConfig = SetupPage(document)
 analise = AnalysisFunc(document)
 relatorio = TextGenerator()
-
-# Páginas
 
 # ================================= Dados para alimentação do relatório ====================================== #
 
@@ -35,18 +38,11 @@ global dadosDict
 dadosDict = dict()
 
 
-# # ===================================== Armazenamento do arquivo ============================================= #
-
-# document.save(f"REPORT_{bilheteEnt}.docx")  # deve ser chamada pelo botão da interface
+# ===================================== Armazenamento do arquivo ============================================= #
 
 relatorio.document = document
 
-# # ========================================== Interface Gráfica =============================================== #
-
-from tkinter import *
-import tkinter as tk
-from tkinter import messagebox
-from tkinter import ttk
+# ========================================== Interface Gráfica =============================================== #
 
 root = Tk()
 root.title("Gerador de Relatórios - POP-RN/RNP")
@@ -106,30 +102,17 @@ def add_ao_arquivo():
     mensagem_insercao['text'] = preencheDict.fillDict()
 
     # Excluindo dados digitados nas caixas
-    
-    # bilhete.delete(0, END)
-    # celula.delete(0, END)
-    # data.delete(0, END)
+
     entidade.delete(0, END)
     endereco.delete(0, END)
     p_M.delete(0, END)
     p_A.delete(0, END)
     p_D.delete(0, END)
-    # motivo.delete(0, END)
-    # tecnico.delete(0, END)
-    # matricula_tecnico.delete(0, END)
-    # bolsista.delete(0, END)
-    # matricula_bolsista.delete(0, END)
     obervacao.delete(0, END)
-
-    # return dadosDict
 
 def gerar_arquivo():
     relatorio.text_genetator()
     relatorio.generator_docx()
-    # document.save(f"REPORT_{bilheteEnt}.docx")
-
-    # pass
 
 # ===================== Barra de Menu ============================= #
 
@@ -230,8 +213,6 @@ mensagem_insercao =  Label(whiteScreen, text="", font=("arial", 10, "italic"), b
 mensagem_insercao.place(x=275, y=345)
 mensagem_gravacao =  Label(whiteScreen, font=("arial", 10, "italic"), bg="white", fg="green")
 mensagem_gravacao.place(x=275, y=350)
-
-print(dadosDict)
 
 if __name__ == "__main__":
     root.mainloop()

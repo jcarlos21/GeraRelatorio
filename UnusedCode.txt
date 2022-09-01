@@ -551,3 +551,17 @@ def teste(dado):
 print(teste('Carlos'))
 
 """
+
+
+
+
+
+    # motivo.delete(0, END)
+    # tecnico.delete(0, END)
+    # matricula_tecnico.delete(0, END)
+    # bolsista.delete(0, END)
+    # matricula_bolsista.delete(0, END)
+        
+    # bilhete.delete(0, END)
+    # celula.delete(0, END)
+    # data.delete(0, END)
