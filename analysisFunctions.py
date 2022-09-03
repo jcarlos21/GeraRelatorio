@@ -31,4 +31,3 @@ class AnalysisFunc:
             return 'APROVADO'
         else:
             return 'REAVALIAR'
-    

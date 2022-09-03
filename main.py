@@ -19,6 +19,11 @@ import tkinter as tk
 from tkinter import messagebox
 from tkinter import ttk
 
+# from _tkinter import *
+# import _tkinter as tk
+# from _tkinter import messagebox
+# from _tkinter import ttk
+
 
 global document
 document = Document()
