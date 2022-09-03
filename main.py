@@ -24,7 +24,6 @@ from tkinter import ttk
 # from _tkinter import messagebox
 # from _tkinter import ttk
 
-
 global document
 document = Document()
 texto = CriaTexto(document)
