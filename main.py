@@ -1,3 +1,9 @@
+import tkinter
+from tkinter import *
+import tkinter as tk
+from tkinter import messagebox
+from tkinter import ttk
+
 from docx import Document
 from docx.enum.text import WD_ALIGN_PARAGRAPH
 from docx.enum.table import WD_TABLE_ALIGNMENT
@@ -13,11 +19,6 @@ from dictFill import WriteDict
 from docx.oxml import OxmlElement, ns
 from gerador import TextGenerator
 import datetime
-
-from tkinter import *
-import tkinter as tk
-from tkinter import messagebox
-from tkinter import ttk
 
 # from _tkinter import *
 # import _tkinter as tk
