@@ -106,5 +106,3 @@ class CriaTexto:
         for entidadeSuperior in dado.keys():
             for entidadeInferior in dado[entidadeSuperior].keys():
                 estilos.addStyles(p.add_run(f'{entidadeSuperior.upper()} - {entidadeInferior.upper()}; '), fonte, negrito, italico, tam)
-    
-

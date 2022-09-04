@@ -23,3 +23,4 @@ class WriteDict:
 			# return self.dadosDict
 			retorno = 'Escola adicionada!'
 			return retorno
+
