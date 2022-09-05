@@ -14,7 +14,7 @@ from docx.oxml import OxmlElement, ns
 
 import datetime
 
-global d, m, y, data, my_chapters
+global d, m, y, data, my_chapters, data_up
 d = datetime.datetime.today().strftime('%d')
 m = datetime.datetime.today().strftime('%B')
 y = datetime.datetime.today().strftime('%Y')
