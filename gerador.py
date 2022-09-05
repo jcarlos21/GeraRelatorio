@@ -14,7 +14,7 @@ from docx.oxml import OxmlElement, ns
 
 import datetime
 
-global d, m, y, data
+global d, m, y, data, my_chapters
 d = datetime.datetime.today().strftime('%d')
 m = datetime.datetime.today().strftime('%B')
 y = datetime.datetime.today().strftime('%Y')
@@ -70,7 +70,15 @@ class TextGenerator:
 
         # Sumário
 
-        texto.textoSimples('INSIRA O SUMÁRIO AQUI', 'Arial', 1, False, False, 40, False)
+        self.document.add_page_break()  # Quebra 1
+
+        texto.textoSimples('SUMÁRIO'.upper(), 'Arial', 1, True, False, 12, False)
+        
+        my_chapters = ['1   Certificação', '    1.1 Metodologia', '    1.2 Diagnóstico', '    1.3 Status', '2   Resultados', '3   Conclusão']
+
+        texto.sumario(my_chapters)
+
+        # texto.textoSimples('INSIRA O SUMÁRIO AQUI', 'Arial', 1, False, False, 40, False)
 
         # Número de página
 
@@ -81,7 +89,7 @@ class TextGenerator:
 
         # Manutenção Corretiva RGM
 
-        self.document.add_page_break()
+        self.document.add_page_break()  # Quebra 2
 
         texto.textoSimples ('Manutenção Corretiva RGM', 'Arial', 1, True, False, 12, False)
         texto.addNewLine(0)
@@ -130,7 +138,7 @@ class TextGenerator:
 
         # Página Simples 1
 
-        self.document.add_page_break()
+        self.document.add_page_break()  # Quebra 3
 
         texto1 = """Todos os ativos GPON da Rede Gigametrópole são monitorados pelo software GRAFANA. Dentre os parâmetros monitorados, são de interesse nesse processo de certificação os valores de potência óptica recebidos que são enviados periodicamente pelas ONU(s). A certificação é baseadas nos seguintes requisitos:"""
 
@@ -184,6 +192,8 @@ class TextGenerator:
         texto.addMarcadores(r3, 'Arial', 3, False, False, 12)
 
         # Página Simples 2
+
+        self.document.add_page_break()  # Quebra 4
         
         texto.textoSimples('Legendas das respostas aos requisitos:', 'Arial', 3, False, False, 12, False)
         texto.addNewLine(0)
@@ -294,7 +304,7 @@ class TextGenerator:
 
         # Página Simples 3
 
-        self.document.add_page_break()
+        self.document.add_page_break()  # Quebra 4
 
         texto3 = f'No(s) gráfico(s) apresentado(s) na(s) figura(s) a seguir, os resultados mostram o comportamento do sinal recebido durante o período de {self.range_test}, considerando antes e após o serviço de reparação ser executado. É importante ressaltar que no decorrer do período de amostragem apresentado no(s) gráfico(s) podem ocorrer intervalos sem amostras, como o período de observação é grande e os dados são enviados pelas ONU, é possível que em algum momento o equipamento seja desligado.'
         texto.textoSimples(texto3, 'Arial', 3, False, False, 12, True)
@@ -307,7 +317,7 @@ class TextGenerator:
         
         # Página Simples 4
 
-        self.document.add_page_break()
+        self.document.add_page_break()  # Quebra 6
 
         texto.textoSimples('3   Conclusão', 'Arial', 3, True, False, 12, False)
         texto.addNewLine(0)
@@ -315,6 +325,7 @@ class TextGenerator:
         texto.textoSimples(texto4, 'Arial', 3, False, False, 12, True)
 
     def generator_docx(self):
+
         self.document.save(f"REPORT_{self.ticket}.docx")
         return 'Documento gerado com sucesso!'
 

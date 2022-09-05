@@ -16,7 +16,7 @@ from docx.shared import Inches
 from pageSetup import SetupPage
 from analysisFunctions import AnalysisFunc
 from dictFill import WriteDict
-from docx.oxml import OxmlElement, ns
+# from docx.oxml import OxmlElement, ns
 from gerador import TextGenerator
 import datetime
 

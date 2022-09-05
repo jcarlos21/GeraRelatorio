@@ -5,8 +5,12 @@ from docx.shared import Pt
 from stylesTexts import StylesText
 from docx.shared import Inches
 
+from docx.oxml.ns import qn
+from docx.oxml import OxmlElement
+
 document = Document()
 estilos = StylesText(document)
+
 
 class CriaTexto:
 
@@ -106,3 +110,8 @@ class CriaTexto:
         for entidadeSuperior in dado.keys():
             for entidadeInferior in dado[entidadeSuperior].keys():
                 estilos.addStyles(p.add_run(f'{entidadeSuperior.upper()} - {entidadeInferior.upper()}; '), fonte, negrito, italico, tam)
+    
+    def sumario(self, my_chapters):
+        for chapter in my_chapters:            
+            CriaTexto(self.document).textoSimples(chapter, 'Arial', 3, True, False, 12, False)
+            
