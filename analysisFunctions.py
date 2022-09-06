@@ -3,6 +3,7 @@ from docx import Document
 
 document = Document()
 
+
 class AnalysisFunc:
     
     def __init__ (self, document):

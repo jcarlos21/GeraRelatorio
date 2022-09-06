@@ -18,7 +18,6 @@ class CriaTexto:
 
     def __init__(self, document):
         self.document = document
-        pass
     
     def addNewLine(self, qtd):
         line = self.document.add_paragraph("\n"*qtd)
@@ -102,11 +101,9 @@ class CriaTexto:
                 CriaTexto(self.document).addMarcadores (entidadeInferior, fonte, alinhamento, negrito, italico, tam)
 
     def imprimeMarcadorEndereco(self, dado, fonte, negrito, italico, tam):
-        i=0
         for entidadeSuiperior in dado.keys():
             for entidadeInferior in dado[entidadeSuiperior].keys():
-                CriaTexto(self.document).addMarcadores(f'Endereço {i+1}: {dado[entidadeSuiperior][entidadeInferior][0]}', fonte, 0, negrito, italico, tam)
-                i += 1
+                CriaTexto(self.document).addMarcadores(f'Endereço: {dado[entidadeSuiperior][entidadeInferior][0]}', fonte, 0, negrito, italico, tam)
     
     def imprimeCaixaEntidade(self, dado, p, fonte, negrito, italico, tam):
         for entidadeSuperior in dado.keys():
@@ -125,6 +122,4 @@ class CriaTexto:
             for paragraph in template_document.paragraphs:
                 num = tb.tableOfContents(my_chapters[i], name_doc)
                 tb.replace_text_in_paragraph(paragraph, text_start[i], my_chapters[i] + ' ' + (126-len(my_chapters[i]))*'.' + f' {num}')
-
         template_document.save(name_doc)
-

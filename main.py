@@ -16,14 +16,8 @@ from docx.shared import Inches
 from pageSetup import SetupPage
 from analysisFunctions import AnalysisFunc
 from dictFill import WriteDict
-# from docx.oxml import OxmlElement, ns
 from gerador import TextGenerator
 import datetime
-
-# from _tkinter import *
-# import _tkinter as tk
-# from _tkinter import messagebox
-# from _tkinter import ttk
 
 global document
 document = Document()
@@ -34,7 +28,7 @@ pageConfig = SetupPage(document)
 analise = AnalysisFunc(document)
 relatorio = TextGenerator()
 
-# ================================= Dados para alimentação do relatório ====================================== #
+# ================================= Dados Gerais ====================================== #
 
 global d, m, y, data
 d = datetime.datetime.today().strftime('%d')
@@ -112,7 +106,6 @@ def add_ao_arquivo():
     p_M.delete(0, END)
     p_A.delete(0, END)
     p_D.delete(0, END)
-    obervacao.delete(0, END)
 
 def gerar_arquivo():
     relatorio.text_genetator()
@@ -205,8 +198,8 @@ Label(root, text="Desenvolvido por:\nJosé Carlos dos Santos", font=("arial", 7,
 
 # ==================== Botões ============================= #
 
-botao_add_arquivo = Button(whiteScreen, text="Adicionar", borderwidth=3, cursor="hand2")  # Definindo botão salvar
-botao_add_arquivo['command'] = add_ao_arquivo    # trata-se de uma função mais adiante
+botao_add_arquivo = Button(whiteScreen, text="Adicionar", borderwidth=3, cursor="hand2")
+botao_add_arquivo['command'] = add_ao_arquivo 
 botao_add_arquivo.place(x=520, y=360)
 
 botao_salvar_doc = Button(whiteScreen, text="Gerar arquivo", bg="blue", fg="white", borderwidth=3, cursor="hand2")

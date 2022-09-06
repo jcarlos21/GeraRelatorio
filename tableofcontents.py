@@ -5,7 +5,6 @@ def tableOfContents(dado, doc):
     
     fn=doc
     document = Document(fn)
-
     pn=1
     lista = list()
 

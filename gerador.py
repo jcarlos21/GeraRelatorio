@@ -53,7 +53,7 @@ class TextGenerator:
 
         texto.textoSimples(self.technician.strip(), fte[0], fte[1], fte[2], fte[3], fte[4], fte[5])
         texto.textoSimples(f'Matrícula: {self.technician_reg.strip()}', fte[0], fte[1], fte[2], fte[3], fte[4], fte[5])
-        texto.textoSimples(f'Bolsista: {self.scholarship.strip()}', fte[0], fte[1], fte[2], fte[3], fte[4], fte[5])
+        texto.textoSimples(f'{self.scholarship.strip()}', fte[0], fte[1], fte[2], fte[3], fte[4], fte[5])
         texto.textoSimples(f'Matrícula: {self.scholarship_reg.strip()}', fte[0], fte[1], fte[2], fte[3], fte[4], fte[5])
         texto.addNewLine(6)
 
@@ -72,7 +72,7 @@ class TextGenerator:
 
         self.document.add_page_break()  # Quebra 1
 
-        texto.textoSimples('SUMÁRIO'.upper(), 'Arial', 1, True, False, 12, False)
+        texto.textoSimples('Sumário', 'Arial', 1, True, False, 12, False)
         texto.addNewLine(0)
         base = ['Texto_1', 'Texto_2', 'Texto_3', 'Texto_4', 'Texto_5', 'Texto_6']
         texto.sumario_inicial(base)
@@ -332,42 +332,3 @@ class TextGenerator:
         texto.sumario (f"REPORT_{self.ticket}.docx", base, my_chapters)
 
         return 'Documento gerado com sucesso!'
-
-# ================== TESTE ==================== #
-
-# global document, dadosDict
-# document = Document()
-# dadosDict = dict()
-
-# preencheDict = WriteDict()
-
-# relatorio = TextGenerator()
-
-# relatorio.document = document
-# relatorio.ticket = '2022.2-BR21'
-# relatorio.data = '22/05/2025'
-# relatorio.cause_correction = 'Rompimento devido a formigas no PTO'
-# relatorio.range_test = 45
-# relatorio.technician = 'David Manoel Oliveira dos Santos'
-# relatorio.technician_reg = 12542
-# relatorio.scholarship = 'José Carlos dos Santos'
-# relatorio.scholarship_reg = 20200150373
-# relatorio.observations = 'Foi constatado que uma escola da celula em análise estava desativada.'
-# relatorio.dataDict = dadosDict
-
-# preencheDict.celula = 'CELULA 1'
-# preencheDict.entidade = 'ENTIDADE 1 DA CELULA 1'
-# preencheDict.endereco = 'Rua, Numero, Bairro, Cidade/Estado'
-# preencheDict.potMedia = -16
-# preencheDict.potBefore = -16
-# preencheDict.potAfter = -17
-
-# preencheDict.dadosDict = relatorio.dataDict
-# preencheDict.fillDict()
-# relatorio.text_genetator()
-
-# preencheDict.dadosDict = relatorio.dataDict
-# preencheDict.fillDict()
-# relatorio.generator_docx()
-
-# print(preencheDict.dadosDict)
