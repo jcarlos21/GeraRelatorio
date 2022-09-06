@@ -1,0 +1,10 @@
+distlib==0.3.6
+filelock==3.8.0
+lxml==4.9.1
+pbr==5.10.0
+platformdirs==2.5.2
+python-docx==0.8.11
+stevedore==4.0.0
+virtualenv==20.16.4
+virtualenv-clone==0.5.7
+virtualenvwrapper==4.8.4
