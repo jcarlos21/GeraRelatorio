@@ -1,15 +1,10 @@
 from docx import Document
-fn='REPORT_2022.2-BR38.docx'
-document = Document(fn)
-
-my_chapters = ['1   Certificação', '1.1 Metodologia', '1.2 Diagnóstico', '1.3 Status', '2   Resultados', '3   Conclusão']
-
-pn=1    
 import re
 
-def tableOfContents(dado):
-    # fn=doc
-    # document = Document(fn)
+def tableOfContents(dado, doc):
+    
+    fn=doc
+    document = Document(fn)
 
     pn=1
     lista = list()
@@ -25,4 +20,9 @@ def tableOfContents(dado):
                 # print('!!','='*50,pn)
     return lista[-1]
 
-print(tableOfContents(my_chapters[5]))
+def replace_text_in_paragraph(paragraph, key, value):
+    if key in paragraph.text:
+        inline = paragraph.runs
+        for item in inline:
+            if key in item.text:
+                item.text = item.text.replace(key, value)

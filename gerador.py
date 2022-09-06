@@ -73,10 +73,9 @@ class TextGenerator:
         self.document.add_page_break()  # Quebra 1
 
         texto.textoSimples('SUMÁRIO'.upper(), 'Arial', 1, True, False, 12, False)
-        
-        my_chapters = ['1   Certificação', '    1.1 Metodologia', '    1.2 Diagnóstico', '    1.3 Status', '2   Resultados', '3   Conclusão']
+        base = ['Texto_1', 'Texto_2', 'Texto_3', 'Texto_4', 'Texto_5', 'Texto_6']
 
-        texto.sumario(my_chapters)
+        texto.sumario_inicial(base)
 
         # texto.textoSimples('INSIRA O SUMÁRIO AQUI', 'Arial', 1, False, False, 40, False)
 
@@ -325,7 +324,15 @@ class TextGenerator:
         texto.textoSimples(texto4, 'Arial', 3, False, False, 12, True)
 
     def generator_docx(self):
+
         self.document.save(f"REPORT_{self.ticket}.docx")
+
+        texto = CriaTexto(self.document)
+
+        base = ['Texto_1', 'Texto_2', 'Texto_3', 'Texto_4', 'Texto_5', 'Texto_6']
+        my_chapters = ['1   Certificação', '1.1 Metodologia', '1.2 Diagnóstico', '1.3 Status', '2   Resultados', '3   Conclusão']
+        texto.sumario (f"REPORT_{self.ticket}.docx", base, my_chapters)
+
         return 'Documento gerado com sucesso!'
 
 # ================== TESTE ==================== #
