@@ -1,3 +1,4 @@
+from re import template
 from docx import Document
 from docx.enum.text import WD_ALIGN_PARAGRAPH
 from docx.enum.section import WD_SECTION
@@ -112,7 +113,18 @@ class CriaTexto:
             for entidadeInferior in dado[entidadeSuperior].keys():
                 estilos.addStyles(p.add_run(f'{entidadeSuperior.upper()} - {entidadeInferior.upper()}; '), fonte, negrito, italico, tam)
     
-    def sumario(self, my_chapters):
+    def sumario_inicial(self, my_chapters):
         for chapter in my_chapters:
-            CriaTexto(self.document).textoSimples(chapter, 'Arial', 3, True, False, 12, False)
-            
+            CriaTexto(self.document).textoSimples(chapter, 'Arial', 3, False, False, 12, False)
+    
+    def sumario(self, name_doc, text_start, my_chapters):
+
+        template_document = Document(name_doc)
+
+        for i in range(0, len(text_start)):
+            for paragraph in template_document.paragraphs:
+                num = tb.tableOfContents(my_chapters[i], name_doc)
+                tb.replace_text_in_paragraph(paragraph, text_start[i], my_chapters[i] + (125-len(my_chapters[i]))*'.' + f'{num}')
+
+        template_document.save(name_doc)
+
