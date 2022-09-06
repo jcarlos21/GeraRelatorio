@@ -1,5 +1,5 @@
 from docx import Document
-fn='REPORT_2022.2-BR27.docx'
+fn='REPORT_2022.2-BR38.docx'
 document = Document(fn)
 
 my_chapters = ['1   Certificação', '1.1 Metodologia', '1.2 Diagnóstico', '1.3 Status', '2   Resultados', '3   Conclusão']
@@ -25,6 +25,4 @@ def tableOfContents(dado):
                 # print('!!','='*50,pn)
     return lista[-1]
 
-# print(tableOfContents(my_chapters[2]))
-
-
+print(tableOfContents(my_chapters[5]))
