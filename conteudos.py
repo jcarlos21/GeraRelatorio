@@ -124,7 +124,7 @@ class CriaTexto:
         for i in range(0, len(text_start)):
             for paragraph in template_document.paragraphs:
                 num = tb.tableOfContents(my_chapters[i], name_doc)
-                tb.replace_text_in_paragraph(paragraph, text_start[i], my_chapters[i] + (125-len(my_chapters[i]))*'.' + f'{num}')
+                tb.replace_text_in_paragraph(paragraph, text_start[i], my_chapters[i] + ' ' + (126-len(my_chapters[i]))*'.' + f' {num}')
 
         template_document.save(name_doc)
 

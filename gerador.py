@@ -73,6 +73,7 @@ class TextGenerator:
         self.document.add_page_break()  # Quebra 1
 
         texto.textoSimples('SUMÁRIO'.upper(), 'Arial', 1, True, False, 12, False)
+        texto.addNewLine(0)
         base = ['Texto_1', 'Texto_2', 'Texto_3', 'Texto_4', 'Texto_5', 'Texto_6']
 
         texto.sumario_inicial(base)
