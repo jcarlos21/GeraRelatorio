@@ -108,8 +108,8 @@ def add_ao_arquivo():
     p_D.delete(0, END)
 
 def gerar_arquivo():
-    relatorio.text_genetator()
-    mensagem_gravacao['text'] = relatorio.generator_docx()
+    relatorio.text_genetator()  # Gerando as informações que estarão presentes no arquivo.
+    mensagem_gravacao['text'] = relatorio.generator_docx()  # Salvando o arquivo.
 
 # ===================== Barra de Menu ============================= #
 

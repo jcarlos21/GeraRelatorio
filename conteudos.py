@@ -114,12 +114,12 @@ class CriaTexto:
         for chapter in my_chapters:
             CriaTexto(self.document).textoSimples(chapter, 'Arial', 3, False, False, 12, False)
     
-    def sumario(self, name_doc, text_start, my_chapters):
+    def sumario(self, name_doc, text_start, my_chapters_s, my_chapters_w):
 
         template_document = Document(name_doc)
 
         for i in range(0, len(text_start)):
             for paragraph in template_document.paragraphs:
-                num = tb.tableOfContents(my_chapters[i], name_doc)
-                tb.replace_text_in_paragraph(paragraph, text_start[i], my_chapters[i] + ' ' + (126-len(my_chapters[i]))*'.' + f' {num}')
+                num = tb.tableOfContents(my_chapters_s[i], name_doc)
+                tb.replace_text_in_paragraph(paragraph, text_start[i], my_chapters_w[i] + (120-len(my_chapters_w[i]))*'.' + f' {num}')
         template_document.save(name_doc)
