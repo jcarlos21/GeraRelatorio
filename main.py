@@ -49,7 +49,7 @@ root = Tk()
 root.title("Gerador de Relatórios - POP-RN/RNP")
 root.configure(background="blue")
 root.geometry("900x500")
-root.iconbitmap("imgMainScreen/doc2.ico")
+# root.iconbitmap("imgMainScreen/doc2.ico")
 root.resizable(False, False)
 
 # ============= Imagem de Fundo ================================== #
