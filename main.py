@@ -208,7 +208,7 @@ botao_salvar_doc.place(x=590, y=360)
 
 # ==================== Mensagens de confirmação ============================= #
 
-mensagem_insercao =  Label(whiteScreen, text="", font=("arial", 9, "italic"), bg="white", fg="green")
+mensagem_insercao =  Label(whiteScreen, text="", font=("arial", 8, "italic"), bg="white", fg="green")
 mensagem_insercao.place(x=140, y=335)
 mensagem_gravacao =  Label(whiteScreen, font=("arial", 10, "italic"), bg="white", fg="blue")
 mensagem_gravacao.place(x=230, y=370)
