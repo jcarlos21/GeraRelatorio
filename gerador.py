@@ -329,7 +329,7 @@ class TextGenerator:
 
         base = ['Texto_1', 'Texto_2', 'Texto_3', 'Texto_4', 'Texto_5', 'Texto_6']
         my_chapters_search = ['1   Certificação', '1.1 Metodologia', '1.2 Diagnóstico', '1.3 Status', '2   Resultados', '3   Conclusão']
-        my_chapters_write = ['1    Certificação.....', '1.1 Metodologia..', '1.2 Diagnóstico...', '1.3 Status...........', '2    Resultados....', '3    Conclusão.....']
+        my_chapters_write = ['1    Certificação...', '1.1 Metodologia..', '1.2 Diagnóstico...', '1.3 Status...........', '2    Resultados....', '3    Conclusão.....']
         texto.sumario (f"REPORT_{self.ticket}.docx", base, my_chapters_search, my_chapters_write)
 
         return 'Documento gerado com sucesso!'
