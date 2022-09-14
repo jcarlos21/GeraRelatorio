@@ -318,7 +318,7 @@ class TextGenerator:
 
         texto.textoSimples('3   Conclusão', 'Arial', 3, True, False, 12, False)
         texto.addNewLine(0)
-        texto4 = 'Conclui-se que os resultados apresentados nesse documento certificam que o serviço de manutenção corretiva foi executado em conformidade com os padrões exigidos e sanando todas as pendências, garantindo o correto funcionamento da rede.'
+        texto4 = f'{self.observations}. Diante do dados analisados, conclui-se que os resultados apresentados nesse documento certificam que o serviço de manutenção corretiva foi executado em conformidade com os padrões exigidos e sanando todas as pendências, garantindo o correto funcionamento da rede.'
         texto.textoSimples(texto4, 'Arial', 3, False, False, 12, True)
 
     def generator_docx(self):
