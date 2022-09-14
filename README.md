@@ -1,2 +1,2 @@
 # GeraRelatorio
-Aplicação que gera relatórios para sinistros no PoP-RN
+Aplicação que gera relatórios de sinistros em fibra ópticas.
