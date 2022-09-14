@@ -30,7 +30,7 @@ relatorio = TextGenerator()
 
 # ================================= Dados Gerais ====================================== #
 
-global d, m, y, data
+global d, m, y, data, root
 d = datetime.datetime.today().strftime('%d')
 m = datetime.datetime.today().strftime('%B')
 y = datetime.datetime.today().strftime('%Y')
@@ -71,7 +71,7 @@ def exitLogin():
     result = messagebox.askquestion('System', 'Are you sure you want to exit?', icon="warning")
     if result == 'yes':
         root.destroy()
-        exit()
+        # exit()
 
 def add_ao_arquivo():
 
