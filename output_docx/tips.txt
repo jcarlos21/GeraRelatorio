@@ -1,0 +1,1 @@
+É preciso que haja um arquivo na pasta para que o commit da pasta seja possível.
