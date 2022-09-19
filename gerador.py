@@ -47,7 +47,6 @@ class TextGenerator:
         pageConfig.marginsPage(3.0, 3.0, 2.0, 2.0)
 
         # Capa
-        
         # Formatação 1:
         fte = ('Arial', 1, False, False, 12, False)
 
