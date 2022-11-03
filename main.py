@@ -38,6 +38,7 @@ y = datetime.datetime.today().strftime('%Y')
 global dadosDict
 dadosDict = dict()
 
+
 # ===================================== Armazenamento do arquivo ============================================= #
 
 relatorio.document = document
